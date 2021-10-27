@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-shared-course-qr-code-heading" jhiTranslate="compassApp.sharedCourseQrCode.home.createOrEditLabel">Create or edit a Shared Course Qr Code</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.sharedCourseQrCode.device" for="field_device">Device</label>
+                    <input type="text" class="form-control" name="device" id="field_device"
+                           formControlName="device"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.sharedCourseQrCode.qrCode" for="field_qrCode">Qr Code</label>
+                    <input type="text" class="form-control" name="qrCode" id="field_qrCode"
+                           formControlName="qrCode"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.sharedCourseQrCode.scanned" for="field_scanned">Scanned</label>
+                    <input type="checkbox" class="form-control" name="scanned" id="field_scanned"
+                           formControlName="scanned"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.sharedCourseQrCode.timeStampScanned" for="field_timeStampScanned">Time Stamp Scanned</label>
+                    <div class="d-flex">
+                        <input id="field_timeStampScanned" type="datetime-local" class="form-control" name="timeStampScanned" formControlName="timeStampScanned" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.sharedCourseQrCode.sharedCourse" for="field_sharedCourse">Shared Course</label>
+                    <select class="form-control" id="field_sharedCourse" name="sharedCourse" formControlName="sharedCourse">
+                        <option *ngIf="!editForm.get('sharedCourse')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="sharedCourseOption.id === editForm.get('sharedCourse')!.value?.id ? editForm.get('sharedCourse')!.value : sharedCourseOption" *ngFor="let sharedCourseOption of sharedcourses; trackBy: trackById">{{ sharedCourseOption.id }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('sharedCourse')!.invalid && (editForm.get('sharedCourse')!.dirty || editForm.get('sharedCourse')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('sharedCourse')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

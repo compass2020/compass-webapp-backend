@@ -1,0 +1,122 @@
+#feedbackmap {
+  width: 100%;
+  height: 500px;
+}
+
+#profile {
+  width: 100%;
+  height: 300px;
+}
+
+.fb-table {
+  width: 100%;
+  max-width: 100%;
+  border: solid 1px #ccc;
+  display: block;
+  background: white;
+  border-radius: 4px;
+  margin: auto;
+  table-layout: fixed;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.fb-tablerow {
+  padding: 5px 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  align-items: center;
+  box-sizing: border-box;
+  /* cursor: move; */
+  background: white;
+  font-size: 14px;
+}
+
+.fb-table td,
+.fb-table th {
+  padding: 10px;
+}
+
+.fb-tablerow:last-child {
+  border-bottom: 0px;
+}
+
+.table-heading {
+  background-color: #e95420;
+  color: #fff;
+}
+
+::ng-deep .mat-sort-header-container {
+  justify-content: center;
+}
+
+::ng-deep .mat-sort-header-arrow {
+  color: #fff;
+}
+
+::ng-deep .mat-checkbox-layout {
+  margin-bottom: 0px;
+}
+
+td,
+th {
+  vertical-align: middle !important;
+  padding: 0.25rem;
+  text-align: center;
+}
+
+.coloredCircle {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.coloredCircleOuter {
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle !important;
+}
+
+.coloredCircleOuter > * {
+  display: inline-block;
+}
+
+::ng-deep .ol-legend {
+  background-color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 40px;
+}
+::ng-deep .ol-legend:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.clickableIcon {
+  cursor: pointer;
+}
+
+::ng-deep .question-tooltip {
+  font-size: 16px;
+  text-align: center;
+}
+
+.expertToggle {
+  margin-bottom: 20px;
+}
+
+.roundBorderBox {
+  margin-bottom: 20px;
+}
+
+#chart {
+  width: 100%;
+  height: 500px;
+}
+
+/* On screens that are 600px or less */
+@media screen and (max-width: 600px) {
+  #chart {
+    height: 300px;
+  }
+}

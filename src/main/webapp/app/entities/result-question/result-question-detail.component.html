@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="resultQuestion">
+            <h2><span jhiTranslate="compassApp.resultQuestion.detail.title">Result Question</span> {{ resultQuestion.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="compassApp.resultQuestion.text">Text</span></dt>
+                <dd>
+                    <span>{{ resultQuestion.text }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.resultQuestion.type">Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'compassApp.QuestionType.' + resultQuestion.type }}">{{ resultQuestion.type }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.resultQuestion.difficulty">Difficulty</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'compassApp.Difficulty.' + resultQuestion.difficulty }}">{{ resultQuestion.difficulty }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.resultQuestion.answeredCorrectly">Answered Correctly</span></dt>
+                <dd>
+                    <span>{{ resultQuestion.answeredCorrectly }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.resultQuestion.category">Category</span></dt>
+                <dd>
+                    <div *ngIf="resultQuestion.category">
+                        <a [routerLink]="['/category', resultQuestion.category?.id, 'view']">{{ resultQuestion.category?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/result-question', resultQuestion.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

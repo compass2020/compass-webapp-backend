@@ -1,0 +1,26 @@
+{
+  "compassApp": {
+    "sharedCourseQrCode": {
+      "home": {
+        "title": "Shared Course Qr Codes",
+        "createLabel": "Lisa uus Shared Course Qr Code",
+        "createOrEditLabel": "Lisa või muuda Shared Course Qr Code",
+        "notFound": "No Shared Course Qr Codes found"
+      },
+      "created": "Uus Shared Course Qr Code on loodud identifikaatoriga {{ param }}",
+      "updated": "Shared Course Qr Code identifikaatoriga {{ param }} on muudetud",
+      "deleted": "Shared Course Qr Code identifikaatoriga {{ param }} on kustutatud",
+      "delete": {
+        "question": "Kas olete kindel, et soovite kustutada Shared Course Qr Code {{ id }}?"
+      },
+      "detail": {
+        "title": "Shared Course Qr Code"
+      },
+      "device": "Device",
+      "qrCode": "Qr Code",
+      "scanned": "Scanned",
+      "timeStampScanned": "Time Stamp Scanned",
+      "sharedCourse": "Shared Course"
+    }
+  }
+}

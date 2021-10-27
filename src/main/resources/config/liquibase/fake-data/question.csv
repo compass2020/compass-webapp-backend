@@ -1,0 +1,3 @@
+id;text;type;difficulty;personal;category_id;created_by
+1;How many soccer players should be on the field at the same time?;SINGLE;EASY;true;2;admin
+2;Which country will host the 2020 Summer Olympics?;SINGLE;EASY;true;2;admin

@@ -1,0 +1,57 @@
+.singleCode {
+  display: block;
+  /* float: left; */
+}
+
+.textOverQRCode {
+  display: block;
+  width: 240px;
+  text-align: center;
+}
+
+.textBig {
+  margin-top: 150px;
+  margin-bottom: 50px;
+  width: 900px;
+  font-size: 40px;
+}
+
+#printButton,
+#slide-toggle {
+  clear: both;
+  display: block;
+  margin-bottom: 40px;
+  margin-left: 100px;
+}
+
+.map {
+  width: 1000px;
+  height: 1350px;
+  margin: auto;
+  cursor: crosshair;
+}
+
+#logo {
+  display: none;
+  float: right;
+}
+
+.optionsDiv {
+  text-align: center;
+  margin: 20px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.optionsDiv:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#printMenu {
+  text-align: center;
+}
+
+.mapToggle {
+  margin-bottom: 20px;
+}

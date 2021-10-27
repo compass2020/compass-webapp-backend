@@ -1,0 +1,84 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="compassApp.course.home.title">Courses</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-course" [routerLink]="['/course/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="compassApp.course.home.createLabel">
+            Create a new Course
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="courses?.length === 0">
+        <span jhiTranslate="compassApp.course.home.notFound">No courses found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="courses && courses.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.course.name">Name</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.course.shared">Shared</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.course.mapFinalSmall">Map Final Small</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.course.location">Location</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.course.altitudeUp">Altitude Up</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.course.altitudeDown">Altitude Down</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.course.length">Length</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.course.orienteeringMap">Orienteering Map</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let course of courses ;trackBy: trackId">
+                    <td><a [routerLink]="['/course', course.id, 'view']">{{ course.id }}</a></td>
+                    <td>{{ course.name }}</td>
+                    <td>{{ course.shared }}</td>
+                    <td>
+                        <a *ngIf="course.mapFinalSmall" (click)="openFile(course.mapFinalSmallContentType, course.mapFinalSmall)">
+                            <img [src]="'data:' + course.mapFinalSmallContentType + ';base64,' + course.mapFinalSmall" style="max-height: 30px;" alt="course image"/>
+                        </a>
+                        <span *ngIf="course.mapFinalSmall">{{ course.mapFinalSmallContentType }}, {{ byteSize(course.mapFinalSmall) }}</span>
+                    </td>
+                    <td>{{ course.location }}</td>
+                    <td>{{ course.altitudeUp }}</td>
+                    <td>{{ course.altitudeDown }}</td>
+                    <td>{{ course.length }}</td>
+                    <td>
+                        <div *ngIf="course.orienteeringMap">
+                            <a [routerLink]="['/orienteering-map', course.orienteeringMap?.id, 'view']" >{{ course.orienteeringMap?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/course', course.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/course', course.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(course)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

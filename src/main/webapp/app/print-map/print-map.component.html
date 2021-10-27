@@ -1,0 +1,14 @@
+<div id="printMenu">
+  <h5 style="text-align: center; margin-bottom: 20px;" jhiTranslate="print.documentOrientation">Select document orientation</h5>
+  <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="20">
+    <div class="optionsDiv" (click)="this.printPortrait = true; this.resize()">
+      <img src="/content/images/assets/portrait.jpg" />
+    </div>
+
+    <div class="optionsDiv" (click)="this.printPortrait = false; this.resize()">
+      <img src="/content/images/assets/landscape.jpg" />
+    </div>
+  </div>
+</div>
+
+<div id="map" class="map"></div>

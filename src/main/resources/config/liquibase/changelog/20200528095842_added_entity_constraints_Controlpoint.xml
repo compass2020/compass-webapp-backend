@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity Controlpoint.
+    -->
+    <changeSet id="20200528095842-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="controlpoint_id"
+                                 baseTableName="controlpoint_question"
+                                 constraintName="fk_controlpoint_question_controlpoint_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="controlpoint"/>
+
+        <addForeignKeyConstraint baseColumnNames="question_id"
+                                 baseTableName="controlpoint_question"
+                                 constraintName="fk_controlpoint_question_question_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="question"/>
+        
+        <addForeignKeyConstraint baseColumnNames="controlpoint_id"
+                                 baseTableName="controlpoint_controlpoint_info"
+                                 constraintName="fk_controlpoint_controlpoint_info_controlpoint_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="controlpoint"/>
+
+        <addForeignKeyConstraint baseColumnNames="controlpoint_info_id"
+                                 baseTableName="controlpoint_controlpoint_info"
+                                 constraintName="fk_controlpoint_controlpoint_info_controlpoint_info_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="controlpoint_info"/>
+        
+        <addForeignKeyConstraint baseColumnNames="course_id"
+                                 baseTableName="controlpoint"
+                                 constraintName="fk_controlpoint_course_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="course"/>
+
+    </changeSet>
+</databaseChangeLog>

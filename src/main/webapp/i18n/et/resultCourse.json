@@ -1,0 +1,31 @@
+{
+  "compassApp": {
+    "resultCourse": {
+      "home": {
+        "title": "Result Courses",
+        "createLabel": "Lisa uus Result Course",
+        "createOrEditLabel": "Lisa või muuda Result Course",
+        "notFound": "No Result Courses found"
+      },
+      "created": "Uus Result Course on loodud identifikaatoriga {{ param }}",
+      "updated": "Result Course identifikaatoriga {{ param }} on muudetud",
+      "deleted": "Result Course identifikaatoriga {{ param }} on kustutatud",
+      "delete": {
+        "question": "Kas olete kindel, et soovite kustutada Result Course {{ id }}?"
+      },
+      "detail": {
+        "title": "Result Course"
+      },
+      "nickName": "Nick Name",
+      "timeStampFinished": "Time Stamp Finished",
+      "timeStampStarted": "Time Stamp Started",
+      "totalDurationInMillis": "Total Duration In Millis",
+      "viewCode": "View Code",
+      "showPositionCounter": "Show Position Counter",
+      "switchAppCounter": "Switch App Counter",
+      "resultAdditionalinfo": "Result Additionalinfo",
+      "resultControlpoint": "Result Controlpoint",
+      "sharedCourse": "Shared Course"
+    }
+  }
+}

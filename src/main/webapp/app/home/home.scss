@@ -1,0 +1,99 @@
+/* ==========================================================================
+Main page styles
+========================================================================== */
+
+.hipster {
+  display: inline-block;
+  width: 347px;
+  height: 497px;
+  background: url('../../content/images/jhipster_family_member_2.svg') no-repeat center top;
+  background-size: contain;
+}
+
+/* wait autoprefixer update to allow simple generation of high pixel density media query */
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (-moz-min-device-pixel-ratio: 2),
+  only screen and (-o-min-device-pixel-ratio: 2/1),
+  only screen and (min-resolution: 192dpi),
+  only screen and (min-resolution: 2dppx) {
+  .hipster {
+    background: url('../../content/images/jhipster_family_member_2.svg') no-repeat center top;
+    background-size: contain;
+  }
+}
+
+.dashboard {
+  margin-top: 50px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.dashboard .cardNew {
+  width: 250px;
+}
+
+.dashboard .cardFirstTime {
+  width: 100%;
+}
+
+.slider_image {
+  width: 100%;
+  height: auto;
+}
+
+.header-image {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: -30px;
+}
+
+.content-block {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.youtube-embed {
+  height: 28vw;
+}
+
+/* On screens that are 600px or less */
+@media screen and (max-width: 959px) {
+  .youtube-embed {
+    height: 57vw;
+    width: 100%;
+  }
+}
+
+.carousel-caption {
+  padding-bottom: 10px;
+  color: #000;
+}
+
+.header-image-overlay {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 3vw;
+  width: 30vw;
+  padding-bottom: 20px;
+  left: auto;
+  bottom: 20%;
+}
+
+.header-image-overlay img {
+  width: 25vw;
+}
+
+.cardBottom {
+  width: 400px;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.dashboard .cardBottom {
+  width: 400px;
+}

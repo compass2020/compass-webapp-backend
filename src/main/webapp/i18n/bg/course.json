@@ -1,0 +1,31 @@
+{
+  "compassApp": {
+    "course": {
+      "home": {
+        "title": "Courses",
+        "createLabel": "Създайте нов Course",
+        "createOrEditLabel": "Създайте или редактирайте Course",
+        "notFound": "Courses не са намерени"
+      },
+      "created": "Създаден е нов Course с идентификатор {{ param }}",
+      "updated": "Course с идентификатор {{ param }} e oбновен",
+      "deleted": "Course с идентификатор {{ param }} е изтрит",
+      "delete": {
+        "question": "Наистина ли искате да изтриете Course {{ id }}?"
+      },
+      "detail": {
+        "title": "Course"
+      },
+      "name": "Name",
+      "shared": "Shared",
+      "mapFinalSmall": "Map Final Small",
+      "location": "Location",
+      "altitudeUp": "Altitude Up",
+      "altitudeDown": "Altitude Down",
+      "length": "Length",
+      "orienteeringMap": "Orienteering Map",
+      "controlpoint": "Controlpoint",
+      "sharedCourse": "Shared Course"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "compassApp": {
+    "resultCourse": {
+      "home": {
+        "title": "Result Courses",
+        "createLabel": "Creeare o nouă entitate Result Course",
+        "createOrEditLabel": "Creeare sau editare Result Course",
+        "notFound": "No Result Courses found"
+      },
+      "created": "A fost creată o nouă entitate Result Course cu identificatorul {{ param }}",
+      "updated": "Result Course cu identificatorul {{ param }} a fost actualizată",
+      "deleted": "Result Course cu identificatorul {{ param }} a fost ștearsă",
+      "delete": {
+        "question": "Sunteți sigur că doriți să ștergeți Result Course {{ id }}?"
+      },
+      "detail": {
+        "title": "Result Course"
+      },
+      "nickName": "Nick Name",
+      "timeStampFinished": "Time Stamp Finished",
+      "timeStampStarted": "Time Stamp Started",
+      "totalDurationInMillis": "Total Duration In Millis",
+      "viewCode": "View Code",
+      "showPositionCounter": "Show Position Counter",
+      "switchAppCounter": "Switch App Counter",
+      "resultAdditionalinfo": "Result Additionalinfo",
+      "resultControlpoint": "Result Controlpoint",
+      "sharedCourse": "Shared Course"
+    }
+  }
+}

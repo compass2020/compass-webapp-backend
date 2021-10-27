@@ -1,0 +1,44 @@
+@import '~bootswatch/dist/united/variables';
+.correctAnswer {
+  color: $orange;
+}
+
+.dropPanel {
+  border: solid 1px #ccc;
+  min-height: 48px;
+  background: white;
+  border-radius: 4px;
+  margin-bottom: 50px;
+  display: block;
+}
+
+::ng-deep .mat-accordion {
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.shortenText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.questionText {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.listWithHeightAuto .mat-list-item {
+  height: auto;
+}
+.questions-container {
+  margin-bottom: 20px;
+}
+
+/* On screens that are 600px or less */
+@media screen and (max-width: 992px) {
+  .questions-container {
+    width: 100vw;
+    margin-bottom: 20px;
+  }
+}

@@ -1,0 +1,59 @@
+/* my-courses.component.scss */
+.course-list {
+  width: 1000px;
+  max-width: 100%;
+  border: solid 1px #ccc;
+  display: block;
+  background: white;
+  border-radius: 4px;
+  margin: auto;
+  table-layout: fixed;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.course-box {
+  padding: 5px 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  align-items: center;
+  box-sizing: border-box;
+  /* cursor: move; */
+  background: white;
+  font-size: 14px;
+}
+
+.course-box td {
+  padding: 10px;
+}
+
+.course-box:last-child {
+  border-bottom: 0px;
+}
+
+.mat-card {
+  cursor: default;
+  width: 550px;
+}
+
+.cardBox .mat-card-avatar {
+  width: 150px !important;
+  height: 150px !important;
+}
+
+.mat-card-title {
+  margin-top: 20px !important;
+}
+
+.mat-card-header {
+  text-align: center;
+}
+
+.cardNew {
+  cursor: pointer;
+}
+
+::ng-deep .mat-card-content {
+  text-align: center;
+  margin-bottom: 0px !important;
+}

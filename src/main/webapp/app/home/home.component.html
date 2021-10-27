@@ -1,0 +1,137 @@
+<div class="row">
+  <div class="col-md-12" style="text-align: center;">
+    <div
+      *ngIf="isAuthenticated()"
+      class="dashboard"
+      fxLayout="row wrap"
+      fxLayout.sm="column"
+      fxLayout.lt-sm="column"
+      fxLayoutAlign="space-around stretch"
+      style="margin-bottom: 50px;"
+    >
+      <mat-card class="cardNew" routerLink="/create-course">
+        <mat-card-header>
+          <div mat-card-avatar style="margin-right: 50px;">
+            <fa-icon icon="plus-circle" [fixedWidth]="true" size="4x" [styles]="{ color: '#e95420' }"></fa-icon>
+          </div>
+          <mat-card-title jhiTranslate="dashboard.createCourse">Create a new course</mat-card-title>
+        </mat-card-header>
+      </mat-card>
+      <mat-card class="cardNew" routerLink="/my-courses">
+        <mat-card-header>
+          <div mat-card-avatar style="margin-right: 50px;">
+            <fa-icon icon="route" [fixedWidth]="true" size="4x" [styles]="{ color: '#e95420' }"></fa-icon>
+          </div>
+          <mat-card-title jhiTranslate="dashboard.manageCourses">Manage Courses</mat-card-title>
+        </mat-card-header>
+      </mat-card>
+      <mat-card class="cardNew" routerLink="/result-sessions">
+        <mat-card-header>
+          <div mat-card-avatar style="margin-right: 50px;">
+            <fa-icon icon="poll" [fixedWidth]="true" size="4x" [styles]="{ color: '#e95420' }"></fa-icon>
+          </div>
+          <mat-card-title jhiTranslate="dashboard.showResults">Show results</mat-card-title>
+        </mat-card-header>
+      </mat-card>
+    </div>
+
+    <div class="picsum-img-wrapper header-image">
+      <img src="/content/images/header_no_overlay.jpg" class="slider_image" />
+      <div class="carousel-caption header-image-overlay">
+        <img src="/content/images/compass_logo.png" />
+      </div>
+    </div>
+    <div
+      class="content-block"
+      fxLayout="row wrap"
+      fxLayoutAlign="space-around center"
+      fxLayoutGap="20px"
+      fxLayout.lt-md="column"
+      fxLayoutAlign.lt-md="center center"
+      fxLayoutGap.lt-md="50px"
+      height="30vw"
+    >
+      <div fxFlex>
+        <h4 jhiTranslate="startpage.whatIsCompass"></h4>
+        <p jhiTranslate="startpage.whatIsCompassDescription"></p>
+        <p jhiTranslate="startpage.watchVideo"></p>
+      </div>
+
+      <div fxFlex class="youtube-embed">
+        <iframe
+          width="100%"
+          style="max-width: 1000px;"
+          height="100%"
+          src="https://www.youtube-nocookie.com/embed/1hvqsfPHO5E"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <h3 style="margin-top: 80px; margin-bottom: 20px;" jhiTranslate="startpage.howDoesItWork"></h3>
+    <h4 jhiTranslate="startpage.compassIsFree"></h4>
+
+    <div
+      style="margin-top: 100px;"
+      fxLayout="row wrap"
+      fxLayoutAlign="space-around center"
+      fxLayoutGap="20px"
+      fxLayout.lt-md="column"
+      fxLayoutAlign.lt-md="center center"
+      fxLayoutGap.lt-md="50px"
+    >
+      <mat-card class="cardNew cardBottom" routerLink="account/register">
+        <mat-card-header>
+          <div mat-card-avatar style="margin-right: 50px;">
+            <fa-icon icon="user-plus" [fixedWidth]="true" size="4x" [styles]="{ color: '#e95420' }"></fa-icon>
+          </div>
+          <mat-card-title jhiTranslate="startpage.step1"></mat-card-title>
+        </mat-card-header>
+      </mat-card>
+      <mat-card class="cardNew cardBottom" (click)="redirectToPlayStore()">
+        <mat-card-header>
+          <div mat-card-avatar style="margin-right: 50px;">
+            <img src="/content/images/assets/google-play-badge.png" style="height: 64px;" />
+          </div>
+          <mat-card-title jhiTranslate="startpage.step2"></mat-card-title>
+        </mat-card-header>
+      </mat-card>
+      <mat-card class="cardNew cardBottom" style="cursor: auto;">
+        <mat-card-header>
+          <div mat-card-avatar style="margin-right: 50px;">
+            <fa-icon icon="running" [fixedWidth]="true" size="4x" [styles]="{ color: '#e95420' }"></fa-icon>
+          </div>
+          <mat-card-title jhiTranslate="startpage.step3"></mat-card-title>
+        </mat-card-header>
+      </mat-card>
+    </div>
+
+    <div class="dashboard" fxLayout="row wrap" fxLayout.sm="column" fxLayout.lt-sm="column" fxLayoutAlign="space-around stretch">
+      <a
+        href="https://www.youtube.com/watch?v=1hvqsfPHO5E&list=PLJ61timOT1z3U-wEpNdV9sq96yqRCXP57&index=1&ab_channel=COMPASSOrienteering"
+        target="_blank"
+        ><mat-card class="cardNew cardBottom">
+          <mat-card-header>
+            <div mat-card-avatar style="margin-right: 50px;">
+              <fa-icon icon="question" [fixedWidth]="true" size="4x" [styles]="{ color: '#11984F' }"></fa-icon>
+            </div>
+            <mat-card-title jhiTranslate="dashboard.firstVisit"
+              >Is this your first visit? Watch this video to get an overview!</mat-card-title
+            >
+          </mat-card-header>
+        </mat-card></a
+      >
+      <a href="http://compass.orienteering.bg/" target="_blank"
+        ><mat-card class="cardNew cardBottom">
+          <mat-card-header>
+            <div mat-card-avatar style="margin-right: 50px;">
+              <fa-icon icon="info" [fixedWidth]="true" size="4x" [styles]="{ color: '#11984F' }"></fa-icon>
+            </div>
+            <mat-card-title jhiTranslate="dashboard.findOutMoreAboutCompass"></mat-card-title>
+          </mat-card-header> </mat-card
+      ></a>
+    </div>
+  </div>
+</div>

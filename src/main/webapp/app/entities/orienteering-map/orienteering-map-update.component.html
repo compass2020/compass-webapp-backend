@@ -1,0 +1,98 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-orienteering-map-heading" jhiTranslate="compassApp.orienteeringMap.home.createOrEditLabel">Create or edit a Orienteering Map</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.orienteeringMap.mapOverlayImage" for="field_mapOverlayImage">Map Overlay Image</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('mapOverlayImageContentType')!.value + ';base64,' + editForm.get('mapOverlayImage')!.value" style="max-height: 100px;" *ngIf="editForm.get('mapOverlayImage')!.value" alt="orienteeringMap image"/>
+                        <div *ngIf="editForm.get('mapOverlayImage')!.value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{ editForm.get('mapOverlayImageContentType')!.value }}, {{ byteSize(editForm.get('mapOverlayImage')!.value) }}</span>
+                            <button type="button" (click)="clearInputImage('mapOverlayImage', 'mapOverlayImageContentType', 'file_mapOverlayImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_mapOverlayImage" (change)="setFileData($event, 'mapOverlayImage', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="mapOverlayImage" id="field_mapOverlayImage"
+                           formControlName="mapOverlayImage"/>
+                    <input type="hidden" class="form-control" name="mapOverlayImageContentType" id="field_mapOverlayImageContentType"
+                           formControlName="mapOverlayImageContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.orienteeringMap.mapOverlayKml" for="field_mapOverlayKml">Map Overlay Kml</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('mapOverlayKmlContentType')!.value + ';base64,' + editForm.get('mapOverlayKml')!.value" style="max-height: 100px;" *ngIf="editForm.get('mapOverlayKml')!.value" alt="orienteeringMap image"/>
+                        <div *ngIf="editForm.get('mapOverlayKml')!.value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{ editForm.get('mapOverlayKmlContentType')!.value }}, {{ byteSize(editForm.get('mapOverlayKml')!.value) }}</span>
+                            <button type="button" (click)="clearInputImage('mapOverlayKml', 'mapOverlayKmlContentType', 'file_mapOverlayKml')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_mapOverlayKml" (change)="setFileData($event, 'mapOverlayKml', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="mapOverlayKml" id="field_mapOverlayKml"
+                           formControlName="mapOverlayKml"/>
+                    <input type="hidden" class="form-control" name="mapOverlayKmlContentType" id="field_mapOverlayKmlContentType"
+                           formControlName="mapOverlayKmlContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.orienteeringMap.imageScaleX" for="field_imageScaleX">Image Scale X</label>
+                    <input type="number" class="form-control" name="imageScaleX" id="field_imageScaleX"
+                           formControlName="imageScaleX"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.orienteeringMap.imageScaleY" for="field_imageScaleY">Image Scale Y</label>
+                    <input type="number" class="form-control" name="imageScaleY" id="field_imageScaleY"
+                           formControlName="imageScaleY"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.orienteeringMap.imageCenterX" for="field_imageCenterX">Image Center X</label>
+                    <input type="number" class="form-control" name="imageCenterX" id="field_imageCenterX"
+                           formControlName="imageCenterX"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.orienteeringMap.imageCenterY" for="field_imageCenterY">Image Center Y</label>
+                    <input type="number" class="form-control" name="imageCenterY" id="field_imageCenterY"
+                           formControlName="imageCenterY"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.orienteeringMap.imageRotation" for="field_imageRotation">Image Rotation</label>
+                    <input type="number" class="form-control" name="imageRotation" id="field_imageRotation"
+                           formControlName="imageRotation"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.orienteeringMap.declination" for="field_declination">Declination</label>
+                    <input type="number" class="form-control" name="declination" id="field_declination"
+                           formControlName="declination"/>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

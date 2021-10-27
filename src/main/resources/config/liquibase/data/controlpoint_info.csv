@@ -1,0 +1,171 @@
+id;image;image_content_type;col;description;message_key;sort
+1;../fake-data/blob/north.png;image/png;C;The more northern of two similar features, or the northern-most of several similar features.;controlpointInfo.description.north;10
+2;../fake-data/blob/northeast.png;image/png;C;The more north eastern of two similar features, or the north-eastern-most of several similar features.;controlpointInfo.description.northeast;20
+3;../fake-data/blob/east.png;image/png;C;The more eastern of two similar features, or the eastern-most of several similar features.;controlpointInfo.description.east;30
+4;../fake-data/blob/southeast.png;image/png;C;The more south eastern of two similar features, or the south-eastern-most of several similar features.;controlpointInfo.description.southeast;40
+5;../fake-data/blob/south.png;image/png;C;The more southern of two similar features, or the southern-most of several similar features.;controlpointInfo.description.south;50
+6;../fake-data/blob/southwest.png;image/png;C;The more south western of two similar features, or the south-western-most of several similar features.;controlpointInfo.description.southwest;60
+7;../fake-data/blob/west.png;image/png;C;The more western of two similar features, or the western-most of several similar features.;controlpointInfo.description.west;70
+8;../fake-data/blob/northwest.png;image/png;C;The more north western of two similar features, or the north-western-most of several similar features.;controlpointInfo.description.northwest;80
+9;../fake-data/blob/upper.png;image/png;C;Where the control feature is directly above a similar feature;controlpointInfo.description.upper;90
+10;../fake-data/blob/lower.png;image/png;C;Where the control feature is directly below a similar feature;controlpointInfo.description.lower;100
+11;../fake-data/blob/middle.png;image/png;C;Where the control feature is the middle one of a number of similar features;controlpointInfo.description.middle;110
+12;../fake-data/blob/terrace.png;image/png;D;A level area on a slope;controlpointInfo.description.terrace;120
+13;../fake-data/blob/spur.png;image/png;D;A contour projection or “nose” rising from the surrounding ground;controlpointInfo.description.spur;130
+14;../fake-data/blob/reentrant.png;image/png;D;A contour indentation, a valley, the opposite of a spur;controlpointInfo.description.reentrant;140
+15;../fake-data/blob/earthbank.png;image/png;D;An abrupt change in ground level which can clearly be distinguished from its surroundings;controlpointInfo.description.earthbank;150
+16;../fake-data/blob/quarry.png;image/png;D;Gravel, sand or stone working in flat or inclined ground;controlpointInfo.description.quarry;160
+17;../fake-data/blob/earthwall.png;image/png;D;A narrow wall of earth projecting above the surrounding terrain, may be partially stone faced, usually man-made;controlpointInfo.description.earthwall;170
+18;../fake-data/blob/erosiongully.png;image/png;D;An erosion gully or trench, normally dry;controlpointInfo.description.erosiongully;180
+19;../fake-data/blob/smallerosiongully.png;image/png;D;A small erosion gully or trench, normally dry;controlpointInfo.description.smallerosiongully;190
+20;../fake-data/blob/hill.png;image/png;D;A high point. Shown on the map with contour lines;controlpointInfo.description.hill;200
+21;../fake-data/blob/knoll.png;image/png;D;A small obvious mound or knoll;controlpointInfo.description.knoll;210
+22;../fake-data/blob/saddle.png;image/png;D;The low point between two higher points;controlpointInfo.description.saddle;220
+23;../fake-data/blob/depression.png;image/png;D;A depression or hollow from which the ground rises on all sides. Shown on the map with contour lines;controlpointInfo.description.depression;230
+24;../fake-data/blob/smalldepression.png;image/png;D;A small, shallow, natural depression or hollow from which the ground rises on all sides;controlpointInfo.description.smalldepression;240
+25;../fake-data/blob/pit.png;image/png;D;A pit or hole with distinct steep-sides. Usually man made;controlpointInfo.description.pit;250
+26;../fake-data/blob/brokenground.png;image/png;D;Clearly disturbed ground with features too small or too numerous to be mapped individually, including animal earths;controlpointInfo.description.brokenground;260
+27;../fake-data/blob/anthill.png;image/png;D;The mound made by ants or termites;controlpointInfo.description.anthill;270
+28;../fake-data/blob/cliff.png;image/png;D;A cliff or rock face. May be passable or impassable.;controlpointInfo.description.cliff;280
+29;../fake-data/blob/rock.png;image/png;D;A high, natural rock projection.;controlpointInfo.description.rock;290
+30;../fake-data/blob/cave.png;image/png;D;A hole in a rock face or hill side, often leading to underground workings.;controlpointInfo.description.cave;300
+31;../fake-data/blob/boulder.png;image/png;D;A prominent free-standing block of rock or stone.;controlpointInfo.description.boulder;310
+32;../fake-data/blob/boulderField.png;image/png;D;An area covered by so many boulders that they cannot be individually mapped.;controlpointInfo.description.boulderField;320
+33;../fake-data/blob/boulderCluster.png;image/png;D;A small distinct group of boulders so closely clustered together that they cannot be individually mapped.;controlpointInfo.description.boulderCluster;330
+34;../fake-data/blob/stonyGround.png;image/png;D;An area covered with many small stones or rocks.;controlpointInfo.description.stonyGround;340
+35;../fake-data/blob/bareRock.png;image/png;D;A runnable area of rock with no earth or vegetation cover.;controlpointInfo.description.bareRock;350
+36;../fake-data/blob/narrowPassage.png;image/png;D;A gap between two cliffs or rock faces that face each other.;controlpointInfo.description.narrowPassage;360
+37;../fake-data/blob/trench.png;image/png;D;A rocky or artificial trench.;controlpointInfo.description.trench;370
+38;../fake-data/blob/lake.png;image/png;D;A large area of water, normally mapped as uncrossable.;controlpointInfo.description.lake;380
+39;../fake-data/blob/pond.png;image/png;D;A small area of water, may be shallow or seasonal.;controlpointInfo.description.pond;390
+40;../fake-data/blob/waterhole.png;image/png;D;A water-filled pit or depression.;controlpointInfo.description.waterhole;400
+41;../fake-data/blob/river.png;image/png;D;A natural or artificial watercourse with either moving or standing water.;controlpointInfo.description.river;410
+42;../fake-data/blob/ditch.png;image/png;D;A natural or man made minor water channel which may contain water only intermittently.;controlpointInfo.description.ditch;420
+43;../fake-data/blob/narrowMarsh.png;image/png;D;A narrow marsh or trickle of water, too narrow to be shown on the map with the marsh symbol.;controlpointInfo.description.narrowMarsh;430
+44;../fake-data/blob/marsh.png;image/png;D;A permanently wet area with marsh vegetation.;controlpointInfo.description.marsh;440
+45;../fake-data/blob/firmGroundInMarsh.png;image/png;D;A non-marshy area within a marsh, or between two marshes.;controlpointInfo.description.firmGroundInMarsh;450
+46;../fake-data/blob/well.png;image/png;D;A shaft containing water or a captive spring, clearly visible on the ground. Often with some form of man-made surround.;controlpointInfo.description.well;460
+47;../fake-data/blob/spring.png;image/png;D;The source of a watercourse with a distinct outflow.;controlpointInfo.description.spring;470
+48;../fake-data/blob/waterTank.png;image/png;D;A man made water container.;controlpointInfo.description.waterTank;480
+49;../fake-data/blob/openLand.png;image/png;D;An area with no trees. Grassland, a meadow or a field. Also heath or moorland.;controlpointInfo.description.openLand;490
+50;../fake-data/blob/semiOpenLand.png;image/png;D;An area of open land with scattered trees or bushes.;controlpointInfo.description.semiOpenLand;500
+51;../fake-data/blob/forestCorner.png;image/png;D;The corner or tip of a forested area projecting into open land.;controlpointInfo.description.forestCorner;510
+52;../fake-data/blob/clearing.png;image/png;D;A small area of land free from trees within the forest.;controlpointInfo.description.clearing;520
+53;../fake-data/blob/thicket.png;image/png;D;A small area of forest where the tree cover or undergrowth is so dense that it is difficult to pass. May also be used for an individual bush (typically in Sprint competitions).;controlpointInfo.description.thicket;530
+54;../fake-data/blob/linearThicket.png;image/png;D;A man-made line of trees or bushes that is difficult to cross. May also be used for a hedge (typically in Sprint competitions).;controlpointInfo.description.linearThicket;540
+55;../fake-data/blob/vegetationBoundary.png;image/png;D;A distinct boundary between different types of trees or vegetation.;controlpointInfo.description.vegetationBoundary;550
+56;../fake-data/blob/copse.png;image/png;D;A small area of trees in open ground.;controlpointInfo.description.copse;560
+57;../fake-data/blob/prominentTree.png;image/png;D;"An unusual or prominent tree in either open land or forest; frequently information is also given as to its type.";controlpointInfo.description.prominentTree;570
+58;../fake-data/blob/treeStump.png;image/png;D;The upturned root of a fallen tree, with or without the trunk. The stump of a tree.;controlpointInfo.description.treeStump;580
+59;../fake-data/blob/road.png;image/png;D;A metalled/asphalt surfaced or dirt road, suitable for vehicles in normal weather conditions.;controlpointInfo.description.road;590
+60;../fake-data/blob/track.png;image/png;D;A visible route made by people or animals. Tracks may be driven by rugged vehicles.;controlpointInfo.description.track;600
+61;../fake-data/blob/ride.png;image/png;D;A forest ride or a prominent trace through the terrain which does not have a distinct runnable path along it.;controlpointInfo.description.ride;610
+62;../fake-data/blob/bridge.png;image/png;D;A crossing point over a watercourse or other linear feature.;controlpointInfo.description.bridge;620
+63;../fake-data/blob/powerLine.png;image/png;D;A power or telephone line, cableway or ski lift.;controlpointInfo.description.powerLine;630
+64;../fake-data/blob/powerLinePylon.png;image/png;D;A support for power or telephone line, cableway or ski lift.;controlpointInfo.description.powerLinePylon;640
+65;../fake-data/blob/tunnel.png;image/png;D;A way under roads, railways, etc.;controlpointInfo.description.tunnel;650
+66;../fake-data/blob/wall.png;image/png;D;A wall wall of stone or other materials.;controlpointInfo.description.wall;660
+67;../fake-data/blob/fence.png;image/png;D;A wire or wooden boundary.;controlpointInfo.description.fence;670
+68;../fake-data/blob/crossingPoint.png;image/png;D;A way through or over a wall, fence, or other linear feature, including a gate or stile.;controlpointInfo.description.crossingPoint;680
+69;../fake-data/blob/building.png;image/png;D;A standing brick, wood or stone structure.;controlpointInfo.description.building;690
+70;../fake-data/blob/pavedArea.png;image/png;D;An area of hard standing used for parking or other purposes.;controlpointInfo.description.pavedArea;700
+71;../fake-data/blob/ruin.png;image/png;D;The remains of a building that has fallen down.;controlpointInfo.description.ruin;710
+72;../fake-data/blob/pipeline.png;image/png;D;A prominent line feature such as a pipeline (gas, water, oil, etc.) or a bobsleigh/ skeleton track which is above ground level.;controlpointInfo.description.pipeline;720
+73;../fake-data/blob/tower.png;image/png;D;A metal, wooden or brick tower or pylon.;controlpointInfo.description.tower;730
+74;../fake-data/blob/shootingPlatform.png;image/png;D;A structure attached to a tree where a marksman or observer can sit.;controlpointInfo.description.shootingPlatform;740
+75;../fake-data/blob/boundaryStone.png;image/png;D;A man made stone or pile of stones. A cairn, memorial stone, boundary stone or trigonometric point.;controlpointInfo.description.boundaryStone;750
+76;../fake-data/blob/fodderRack.png;image/png;D;A construction for holding feed for animals.;controlpointInfo.description.fodderRack;760
+77;../fake-data/blob/charcoalBurningGround.png;image/png;D;The clear remains of an area where charcoal was burned. A small level man made area on a slope (a platform).;controlpointInfo.description.charcoalBurningGround;770
+78;../fake-data/blob/monument.png;image/png;D;A monument, memorial or statue.;controlpointInfo.description.monument;780
+79;../fake-data/blob/canopy.png;image/png;D;An accessible area with a roof. A canopy or a covered passageway through a building.;controlpointInfo.description.canopy;790
+80;../fake-data/blob/stairway.png;image/png;D;A stairway of at least two steps.;controlpointInfo.description.stairway;800
+81;../fake-data/blob/outOfBoundsArea.png;image/png;D;Out of Bounds area. Typically a flower bed or similar feature.;controlpointInfo.description.outOfBoundsArea;810
+82;../fake-data/blob/prominentFeature_1.png;image/png;D;If used, an explanation of its meaning must be supplied to competitors in the pre-race information.;controlpointInfo.description.prominentFeature_1;820
+83;../fake-data/blob/prominentFeature_2.png;image/png;D;If used, an explanation of its meaning must be supplied to competitors in the pre-race information.;controlpointInfo.description.prominentFeature_2;830
+84;../fake-data/blob/low.png;image/png;E;"Where the control feature is particularly low or flat but this is not indicated on the map; e.g. Hill, low.";controlpointInfo.description.low;840
+85;../fake-data/blob/shallow.png;image/png;E;"Where the control feature is particularly shallow but this is not indicated on the map; e.g. Reentrant, shallow.";controlpointInfo.description.shallow;850
+86;../fake-data/blob/deep.png;image/png;E;"Where the control feature is particularly deep but this is not indicated on the map; e.g. Pit, deep.";controlpointInfo.description.deep;860
+87;../fake-data/blob/overgrown.png;image/png;E;"Where the feature is partially covered in undergrowth or bushes that are not indicated on the map; e.g. Ruin, overgrown.";controlpointInfo.description.overgrown;870
+88;../fake-data/blob/open.png;image/png;E;"Where the feature is in an area where the tree cover is less than the surroundings but this is not indicated on the map; e.g. Marsh, open.";controlpointInfo.description.open;880
+89;../fake-data/blob/rocky.png;image/png;E;"Where the feature is in an area of rocky or stony ground not indicated on the map; e.g. Pit, rocky.";controlpointInfo.description.rocky;890
+90;../fake-data/blob/marshy.png;image/png;E;"Where the feature is in an area of marshy ground not indicated on the map; e.g. Re-entrant, marshy.";controlpointInfo.description.marshy;900
+91;../fake-data/blob/sandy.png;image/png;E;"Where the feature is in an area of sandy ground; e.g. Spur, sandy.";controlpointInfo.description.sandy;910
+92;../fake-data/blob/needleLeaved.png;image/png;E;"Where the tree or trees associated with the control feature have needle shaped leaves; e.g. Prominent tree, needle leaved.";controlpointInfo.description.needleLeaved;920
+93;../fake-data/blob/broadLeaved.png;image/png;E;"Where the tree or trees associated with the control feature are broad-leaved; e.g. Copse, broad leaved.";controlpointInfo.description.broadLeaved;930
+94;../fake-data/blob/ruined.png;image/png;E;"Where the feature has fallen to ground level; e.g. Fence, ruined.";controlpointInfo.description.ruined;940
+95;../fake-data/blob/crossing.png;image/png;F;The point at which two linear features cross.;controlpointInfo.description.crossing;950
+96;../fake-data/blob/junction.png;image/png;F;"The point at which two linear features meet; or where a linear feature meets the side or edge of an areal feature.";controlpointInfo.description.junction;960
+97;../fake-data/blob/bend.png;image/png;F;"Used where a linear feature makes a smooth change of direction; e.g. Path bend; River bend.";controlpointInfo.description.bend;970
+98;../fake-data/blob/upperPart.png;image/png;G;"Where the feature extends over two or more contours and the control is located near the top; e.g. Erosion Gully, upper part.";controlpointInfo.description.upperPart;980
+99;../fake-data/blob/lowerPart.png;image/png;G;"Where the feature extends over two or more contours and the control is located near the bottom; e.g. Re-entrant, lower part.";controlpointInfo.description.lowerPart;990
+100;../fake-data/blob/top.png;image/png;G;"Where the control is located at the highest point of the feature and this is not the default location; e.g. Cliff, top; Stairway, top.";controlpointInfo.description.top;1000
+101;../fake-data/blob/foot.png;image/png;G;"Where the control is located at the lower junction of the slope of the feature and the surface of the surrounding area and this is not the default location; e.g. Earth bank, foot; Stairway, foot.";controlpointInfo.description.foot;1010
+102;../fake-data/blob/beneath.png;image/png;G;"Where the control is located underneath the feature; e.g. Pipeline, beneath.";controlpointInfo.description.beneath;1020
+103;../fake-data/blob/between.png;image/png;G;"Where the control is located between two features; e.g. Between thickets; Between boulder and knoll.";controlpointInfo.description.between;1030
+104;../fake-data/blob/firstAid.png;image/png;H;Control site where First Aid is available;controlpointInfo.description.firstAid;1040
+105;../fake-data/blob/refreshment.png;image/png;H;Control site where Refreshments are available.;controlpointInfo.description.refreshment;1050
+106;../fake-data/blob/mannedControl.png;image/png;H;Manned control site.;controlpointInfo.description.mannedControl;1060
+107;../fake-data/blob/side_n.png;image/png;G;"The feature extends above the surface of the ground; e.g. Boulder, north east side; Ruin, west side. A control on the side of a raised feature will not usually be visible from the opposite side.";controlpointInfo.description.side_n;1070
+108;../fake-data/blob/side_ne.png;image/png;G;"The feature extends above the surface of the ground; e.g. Boulder, north east side; Ruin, west side. A control on the side of a raised feature will not usually be visible from the opposite side.";controlpointInfo.description.side_ne;1080
+109;../fake-data/blob/side_e.png;image/png;G;"The feature extends above the surface of the ground; e.g. Boulder, north east side; Ruin, west side. A control on the side of a raised feature will not usually be visible from the opposite side.";controlpointInfo.description.side_e;1090
+110;../fake-data/blob/side_se.png;image/png;G;"The feature extends above the surface of the ground; e.g. Boulder, north east side; Ruin, west side. A control on the side of a raised feature will not usually be visible from the opposite side.";controlpointInfo.description.side_se;1100
+111;../fake-data/blob/side_s.png;image/png;G;"The feature extends above the surface of the ground; e.g. Boulder, north east side; Ruin, west side. A control on the side of a raised feature will not usually be visible from the opposite side.";controlpointInfo.description.side_s;1110
+112;../fake-data/blob/side_sw.png;image/png;G;"The feature extends above the surface of the ground; e.g. Boulder, north east side; Ruin, west side. A control on the side of a raised feature will not usually be visible from the opposite side.";controlpointInfo.description.side_sw;1120
+113;../fake-data/blob/side_w.png;image/png;G;"The feature extends above the surface of the ground; e.g. Boulder, north east side; Ruin, west side. A control on the side of a raised feature will not usually be visible from the opposite side.";controlpointInfo.description.side_w;1130
+114;../fake-data/blob/side_nw.png;image/png;G;"The feature extends above the surface of the ground; e.g. Boulder, north east side; Ruin, west side. A control on the side of a raised feature will not usually be visible from the opposite side.";controlpointInfo.description.side_nw;1140
+115;../fake-data/blob/edge_n.png;image/png;G;"The feature extends down from the surface of the surrounding ground and the control is situated on the edge at ground level; e.g. Depression, south east edge.";controlpointInfo.description.edge_n;1150
+116;../fake-data/blob/edge_ne.png;image/png;G;"The feature extends down from the surface of the surrounding ground and the control is situated on the edge at ground level; e.g. Depression, south east edge.";controlpointInfo.description.edge_ne;1160
+117;../fake-data/blob/edge_e.png;image/png;G;"The feature extends down from the surface of the surrounding ground and the control is situated on the edge at ground level; e.g. Depression, south east edge.";controlpointInfo.description.edge_e;1170
+118;../fake-data/blob/edge_se.png;image/png;G;"The feature extends down from the surface of the surrounding ground and the control is situated on the edge at ground level; e.g. Depression, south east edge.";controlpointInfo.description.edge_se;1180
+119;../fake-data/blob/edge_s.png;image/png;G;"The feature extends down from the surface of the surrounding ground and the control is situated on the edge at ground level; e.g. Depression, south east edge.";controlpointInfo.description.edge_s;1190
+120;../fake-data/blob/edge_sw.png;image/png;G;"The feature extends down from the surface of the surrounding ground and the control is situated on the edge at ground level; e.g. Depression, south east edge.";controlpointInfo.description.edge_sw;1200
+121;../fake-data/blob/edge_w.png;image/png;G;"The feature extends down from the surface of the surrounding ground and the control is situated on the edge at ground level; e.g. Depression, south east edge.";controlpointInfo.description.edge_w;1210
+122;../fake-data/blob/edge_nw.png;image/png;G;"The feature extends down from the surface of the surrounding ground and the control is situated on the edge at ground level; e.g. Depression, south east edge.";controlpointInfo.description.edge_nw;1220
+123;../fake-data/blob/part_n.png;image/png;G;"Used where the feature extends over a significant area and the control is located neither at the centre, nor on any of the edges; e.g. Marsh, west part; Depression, south east part.";controlpointInfo.description.part_n;1230
+124;../fake-data/blob/part_e.png;image/png;G;"Used where the feature extends over a significant area and the control is located neither at the centre, nor on any of the edges; e.g. Marsh, west part; Depression, south east part.";controlpointInfo.description.part_e;1250
+125;../fake-data/blob/part_s.png;image/png;G;"Used where the feature extends over a significant area and the control is located neither at the centre, nor on any of the edges; e.g. Marsh, west part; Depression, south east part.";controlpointInfo.description.part_s;1270
+126;../fake-data/blob/part_w.png;image/png;G;"Used where the feature extends over a significant area and the control is located neither at the centre, nor on any of the edges; e.g. Marsh, west part; Depression, south east part.";controlpointInfo.description.part_w;1290
+127;../fake-data/blob/inside_corner_n.png;image/png;G;"The edge of a feature turns through an angle of 45-135 degrees; e.g. Open land, east corner (inside); Ruin, north west corner (outside).";controlpointInfo.description.inside_corner_n;1310
+128;../fake-data/blob/inside_corner_e.png;image/png;G;"The edge of a feature turns through an angle of 45-135 degrees; e.g. Open land, east corner (inside); Ruin, north west corner (outside).";controlpointInfo.description.inside_corner_e;1330
+129;../fake-data/blob/inside_corner_s.png;image/png;G;"The edge of a feature turns through an angle of 45-135 degrees; e.g. Open land, east corner (inside); Ruin, north west corner (outside).";controlpointInfo.description.inside_corner_s;1350
+130;../fake-data/blob/inside_corner_w.png;image/png;G;"The edge of a feature turns through an angle of 45-135 degrees; e.g. Open land, east corner (inside); Ruin, north west corner (outside).";controlpointInfo.description.inside_corner_w;1370
+131;../fake-data/blob/outside_corner_n.png;image/png;G;"The edge of a feature turns through an angle of 45-135 degrees; e.g. Open land, east corner (inside); Ruin, north west corner (outside).";controlpointInfo.description.outside_corner_n;1390
+132;../fake-data/blob/outside_corner_e.png;image/png;G;"The edge of a feature turns through an angle of 45-135 degrees; e.g. Open land, east corner (inside); Ruin, north west corner (outside).";controlpointInfo.description.outside_corner_e;1410
+133;../fake-data/blob/outside_corner_s.png;image/png;G;"The edge of a feature turns through an angle of 45-135 degrees; e.g. Open land, east corner (inside); Ruin, north west corner (outside).";controlpointInfo.description.outside_corner_s;1430
+134;../fake-data/blob/outside_corner_w.png;image/png;G;"The edge of a feature turns through an angle of 45-135 degrees; e.g. Open land, east corner (inside); Ruin, north west corner (outside).";controlpointInfo.description.outside_corner_w;1450
+135;../fake-data/blob/tip_ne.png;image/png;G;"Used where the edge of a feature turns through an angle of less than 45 degrees; e.g. Marsh, south west tip.";controlpointInfo.description.tip_ne;1480
+136;../fake-data/blob/tip_se.png;image/png;G;"Used where the edge of a feature turns through an angle of less than 45 degrees; e.g. Marsh, south west tip.";controlpointInfo.description.tip_se;1500
+137;../fake-data/blob/tip_sw.png;image/png;G;"Used where the edge of a feature turns through an angle of less than 45 degrees; e.g. Marsh, south west tip.";controlpointInfo.description.tip_sw;1520
+138;../fake-data/blob/tip_nw.png;image/png;G;"Used where the edge of a feature turns through an angle of less than 45 degrees; e.g. Marsh, south west tip.";controlpointInfo.description.tip_nw;1540
+139;../fake-data/blob/end_ne.png;image/png;G;"The point at which a linear feature ends or starts; e.g. Ride, north west end; Stone wall, south end.";controlpointInfo.description.end_ne;1560
+140;../fake-data/blob/end_se.png;image/png;G;"The point at which a linear feature ends or starts; e.g. Ride, north west end; Stone wall, south end.";controlpointInfo.description.end_se;1580
+141;../fake-data/blob/end_sw.png;image/png;G;"The point at which a linear feature ends or starts; e.g. Ride, north west end; Stone wall, south end.";controlpointInfo.description.end_sw;1600
+142;../fake-data/blob/end_nw.png;image/png;G;"The point at which a linear feature ends or starts; e.g. Ride, north west end; Stone wall, south end.";controlpointInfo.description.end_nw;1620
+143;../fake-data/blob/foot_ne.png;image/png;G;"Where the feature is large enough for the control to be placed in more than one location around it; e.g. Hill, north east foot.";controlpointInfo.description.foot_ne;1640
+144;../fake-data/blob/foot_se.png;image/png;G;"Where the feature is large enough for the control to be placed in more than one location around it; e.g. Hill, north east foot.";controlpointInfo.description.foot_se;1660
+145;../fake-data/blob/foot_sw.png;image/png;G;"Where the feature is large enough for the control to be placed in more than one location around it; e.g. Hill, north east foot.";controlpointInfo.description.foot_sw;1680
+146;../fake-data/blob/foot_nw.png;image/png;G;"Where the feature is large enough for the control to be placed in more than one location around it; e.g. Hill, north east foot.";controlpointInfo.description.foot_nw;1700
+147;../fake-data/blob/part_ne.png;image/png;G;"Used where the feature extends over a significant area and the control is located neither at the centre, nor on any of the edges; e.g. Marsh, north east part; Depression, north east part.";controlpointInfo.description.part_ne;1240
+148;../fake-data/blob/part_se.png;image/png;G;"Used where the feature extends over a significant area and the control is located neither at the centre, nor on any of the edges; e.g. Marsh, south east part; Depression, south east part.";controlpointInfo.description.part_se;1260
+149;../fake-data/blob/part_sw.png;image/png;G;"Used where the feature extends over a significant area and the control is located neither at the centre, nor on any of the edges; e.g. Marsh, south west part; Depression, south west part.";controlpointInfo.description.part_sw;1280
+150;../fake-data/blob/part_nw.png;image/png;G;"Used where the feature extends over a significant area and the control is located neither at the centre, nor on any of the edges; e.g. Marsh, north west part; Depression, north east part.";controlpointInfo.description.part_nw;1300
+151;../fake-data/blob/inside_corner_ne.png;image/png;G;"The edge of a feature turns through an angle of 45-135 degrees; e.g. Open land, east corner (inside); Ruin, north west corner (outside).";controlpointInfo.description.inside_corner_ne;1320
+152;../fake-data/blob/inside_corner_se.png;image/png;G;"The edge of a feature turns through an angle of 45-135 degrees; e.g. Open land, east corner (inside); Ruin, north west corner (outside).";controlpointInfo.description.inside_corner_se;1340
+153;../fake-data/blob/inside_corner_sw.png;image/png;G;"The edge of a feature turns through an angle of 45-135 degrees; e.g. Open land, east corner (inside); Ruin, north west corner (outside).";controlpointInfo.description.inside_corner_sw;1360
+154;../fake-data/blob/inside_corner_nw.png;image/png;G;"The edge of a feature turns through an angle of 45-135 degrees; e.g. Open land, east corner (inside); Ruin, north west corner (outside).";controlpointInfo.description.inside_corner_nw;1380
+155;../fake-data/blob/outside_corner_ne.png;image/png;G;"The edge of a feature turns through an angle of 45-135 degrees; e.g. Open land, east corner (inside); Ruin, north west corner (outside).";controlpointInfo.description.outside_corner_ne;1400
+156;../fake-data/blob/outside_corner_se.png;image/png;G;"The edge of a feature turns through an angle of 45-135 degrees; e.g. Open land, east corner (inside); Ruin, north west corner (outside).";controlpointInfo.description.outside_corner_se;1420
+157;../fake-data/blob/outside_corner_sw.png;image/png;G;"The edge of a feature turns through an angle of 45-135 degrees; e.g. Open land, east corner (inside); Ruin, north west corner (outside).";controlpointInfo.description.outside_corner_sw;1440
+158;../fake-data/blob/outside_corner_nw.png;image/png;G;"The edge of a feature turns through an angle of 45-135 degrees; e.g. Open land, east corner (inside); Ruin, north west corner (outside).";controlpointInfo.description.outside_corner_nw;1460
+159;../fake-data/blob/tip_n.png;image/png;G;"Used where the edge of a feature turns through an angle of less than 45 degrees; e.g. Marsh, south west tip.";controlpointInfo.description.tip_n;1470
+160;../fake-data/blob/tip_e.png;image/png;G;"Used where the edge of a feature turns through an angle of less than 45 degrees; e.g. Marsh, south west tip.";controlpointInfo.description.tip_e;1490
+161;../fake-data/blob/tip_s.png;image/png;G;"Used where the edge of a feature turns through an angle of less than 45 degrees; e.g. Marsh, south west tip.";controlpointInfo.description.tip_s;1510
+162;../fake-data/blob/tip_w.png;image/png;G;"Used where the edge of a feature turns through an angle of less than 45 degrees; e.g. Marsh, south west tip.";controlpointInfo.description.tip_w;1530
+163;../fake-data/blob/end_n.png;image/png;G;"The point at which a linear feature ends or starts; e.g. Ride, north west end; Stone wall, south end.";controlpointInfo.description.end_n;1550
+164;../fake-data/blob/end_e.png;image/png;G;"The point at which a linear feature ends or starts; e.g. Ride, north west end; Stone wall, south end.";controlpointInfo.description.end_e;1570
+165;../fake-data/blob/end_s.png;image/png;G;"The point at which a linear feature ends or starts; e.g. Ride, north west end; Stone wall, south end.";controlpointInfo.description.end_s;1590
+166;../fake-data/blob/end_w.png;image/png;G;"The point at which a linear feature ends or starts; e.g. Ride, north west end; Stone wall, south end.";controlpointInfo.description.end_w;1610
+167;../fake-data/blob/foot_n.png;image/png;G;"Where the feature is large enough for the control to be placed in more than one location around it; e.g. Hill, north east foot.";controlpointInfo.description.foot_n;1630
+168;../fake-data/blob/foot_e.png;image/png;G;"Where the feature is large enough for the control to be placed in more than one location around it; e.g. Hill, north east foot.";controlpointInfo.description.foot_e;1650
+169;../fake-data/blob/foot_s.png;image/png;G;"Where the feature is large enough for the control to be placed in more than one location around it; e.g. Hill, north east foot.";controlpointInfo.description.foot_s;1670
+170;../fake-data/blob/foot_w.png;image/png;G;"Where the feature is large enough for the control to be placed in more than one location around it; e.g. Hill, north east foot.";controlpointInfo.description.foot_w;1690

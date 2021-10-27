@@ -1,0 +1,15 @@
+Auf keinen Fall jhipster upgrade aufrufen, danach ist das Projekt gelöscht!!!
+
+1. sudo npm install -g generator-jhipster
+2. rm -rf node_modules 
+
+ist notwnedig damit die global installierte jhipster-generator version verwendet wird.
+Löscht man das node_modules Verzeichnis nicht so wird die Version aus dem node_modules Ordner verwendet 
+
+
+2. jhipster
+
+Hier sieht man ganz am Anfang welche JHipster Version verwendet wird - unbedingt kontrollieren!!!
+
+3. mit a bestätigen --> es werden alle Files upgedated
+4. Alle geänderten Files mittels diff kontrollieren und die gewünschten Änderungen commiten

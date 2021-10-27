@@ -1,0 +1,87 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="compassApp.resultControlpoint.home.title">Result Controlpoints</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-result-controlpoint" [routerLink]="['/result-controlpoint/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="compassApp.resultControlpoint.home.createLabel">
+            Create a new Result Controlpoint
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="resultControlpoints?.length === 0">
+        <span jhiTranslate="compassApp.resultControlpoint.home.notFound">No resultControlpoints found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="resultControlpoints && resultControlpoints.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.resultControlpoint.sequence">Sequence</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.resultControlpoint.timeReached">Time Reached</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.resultControlpoint.latitude">Latitude</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.resultControlpoint.longitude">Longitude</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.resultControlpoint.skipAllowed">Skip Allowed</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.resultControlpoint.reached">Reached</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.resultControlpoint.borgScale">Borg Scale</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.resultControlpoint.forceSkipped">Force Skipped</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.resultControlpoint.resultQuestion">Result Question</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.resultControlpoint.resultCourse">Result Course</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let resultControlpoint of resultControlpoints ;trackBy: trackId">
+                    <td><a [routerLink]="['/result-controlpoint', resultControlpoint.id, 'view']">{{ resultControlpoint.id }}</a></td>
+                    <td>{{ resultControlpoint.sequence }}</td>
+                    <td>{{ resultControlpoint.timeReached | date:'medium' }}</td>
+                    <td>{{ resultControlpoint.latitude }}</td>
+                    <td>{{ resultControlpoint.longitude }}</td>
+                    <td>{{ resultControlpoint.skipAllowed }}</td>
+                    <td>{{ resultControlpoint.reached }}</td>
+                    <td>{{ resultControlpoint.borgScale }}</td>
+                    <td>{{ resultControlpoint.forceSkipped }}</td>
+                    <td>
+                        <span *ngFor="let resultQuestion of resultControlpoint.resultQuestions; let last = last">
+                            <a class="form-control-static" [routerLink]="['/result-question', resultQuestion?.id, 'view']">{{ resultQuestion.id }}</a>{{ last ? '' : ', ' }}
+                        </span>
+                    </td>
+                    <td>
+                        <div *ngIf="resultControlpoint.resultCourse">
+                            <a [routerLink]="['/result-course', resultControlpoint.resultCourse?.id, 'view']" >{{ resultControlpoint.resultCourse?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/result-controlpoint', resultControlpoint.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/result-controlpoint', resultControlpoint.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(resultControlpoint)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

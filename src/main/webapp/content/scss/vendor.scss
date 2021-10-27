@@ -1,0 +1,174 @@
+/* after changing this file run 'npm run webpack:build' */
+
+/***************************
+put Sass variables here:
+eg $input-color: red;
+****************************/
+@import '~bootswatch/dist/united/variables';
+// Override Bootstrap variables
+@import 'bootstrap-variables';
+// Import Bootstrap source files from node_modules
+@import '~bootstrap/scss/bootstrap';
+@import '~bootswatch/dist/united/bootswatch';
+
+// TOASTR SCSS
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/mixins';
+@import '~ngx-toastr/toastr-bs4-alert';
+
+/* @import '~@angular/material/prebuilt-themes/indigo-pink.css'; */
+@import '~@angular/material/theming';
+@include mat-core();
+
+/* For use in src/lib/core/theming/_palette.scss */
+$primary-palette: (
+  50: #fceae4,
+  100: #f8ccbc,
+  200: #f4aa90,
+  300: #f08763,
+  400: #ec6e41,
+  500: #e95420,
+  600: #e64d1c,
+  700: #e34318,
+  800: #df3a13,
+  900: #d9290b,
+  A100: #ffffff,
+  A200: #ffd6d1,
+  A400: #ffa99e,
+  A700: #ff9285,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$grey-palette: (
+  50: #f5f4f3,
+  100: #e7e5e2,
+  200: #d7d3cf,
+  300: #c6c1bc,
+  400: #bab4ad,
+  500: #aea79f,
+  600: #a79f97,
+  700: #9d968d,
+  800: #948c83,
+  900: #847c72,
+  A100: #ffffff,
+  A200: #fcead4,
+  A400: #ffd19f,
+  A700: #ffc585,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+/* For use in src/lib/core/theming/_palette.scss */
+$green-palette: (
+  50: #e7f6e9,
+  100: #c3e9c9,
+  200: #9cdaa5,
+  300: #74cb80,
+  400: #56bf65,
+  500: #38b44a,
+  600: #32ad43,
+  700: #2ba43a,
+  800: #249c32,
+  900: #178c22,
+  A100: #c3ffc7,
+  A200: #90ff98,
+  A400: #5dff69,
+  A700: #43ff52,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+/* For use in src/lib/core/theming/_palette.scss */
+$warn-palette: (
+  50: #fdf6e8,
+  100: #fae9c5,
+  200: #f7db9f,
+  300: #f4cd78,
+  400: #f1c25b,
+  500: #efb73e,
+  600: #edb038,
+  700: #eba730,
+  800: #e89f28,
+  900: #e4901b,
+  A100: #ffffff,
+  A200: #fff3e5,
+  A400: #ffddb2,
+  A700: #ffd198,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #000000,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$my-app-primary: mat-palette($primary-palette);
+$my-app-accent: mat-palette($grey-palette, 500, 900, A100);
+$my-app-warn: mat-palette($warn-palette);
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+@include angular-material-theme($my-app-theme);
+
+@import '~ol/ol.css';
+@import '~ol-ext/dist/ol-ext.css';
+@import '~ol-geocoder/dist/ol-geocoder.css';
+/* ==========================================================================
+For more customization see: https://www.npmjs.com/package/ngx-cookieconsent
+========================================================================== */
+@import '~cookieconsent/build/cookieconsent.min.css';
+
+@import '~ng-pick-datetime/assets/style/picker.min.css';
+
+/* jhipster-needle-scss-add-vendor JHipster will add new css style */

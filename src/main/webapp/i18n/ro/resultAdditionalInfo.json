@@ -1,0 +1,24 @@
+{
+  "compassApp": {
+    "resultAdditionalInfo": {
+      "home": {
+        "title": "Result Additional Infos",
+        "createLabel": "Creeare o nouă entitate Result Additional Info",
+        "createOrEditLabel": "Creeare sau editare Result Additional Info",
+        "notFound": "No Result Additional Infos found"
+      },
+      "created": "A fost creată o nouă entitate Result Additional Info cu identificatorul {{ param }}",
+      "updated": "Result Additional Info cu identificatorul {{ param }} a fost actualizată",
+      "deleted": "Result Additional Info cu identificatorul {{ param }} a fost ștearsă",
+      "delete": {
+        "question": "Sunteți sigur că doriți să ștergeți Result Additional Info {{ id }}?"
+      },
+      "detail": {
+        "title": "Result Additional Info"
+      },
+      "gpxTrack": "Gpx Track",
+      "heartRate": "Heart Rate",
+      "resultCourse": "Result Course"
+    }
+  }
+}

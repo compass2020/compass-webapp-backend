@@ -1,0 +1,12 @@
+version: '2'
+services:
+  compass-postgresql:
+    image: postgres:12.3
+    # volumes:
+    #     - ~/volumes/jhipster/compass/postgresql/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=compass
+      - POSTGRES_PASSWORD=
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - 5432:5432

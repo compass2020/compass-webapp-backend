@@ -1,0 +1,73 @@
+{
+  "name": "Course",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "shared",
+      "fieldType": "Boolean",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "mapFinalSmall",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "location",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "altitudeUp",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "altitudeDown",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "length",
+      "fieldType": "Double"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "orienteeringMap",
+      "otherEntityRelationshipName": "course",
+      "relationshipName": "orienteeringMap",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "controlpoint",
+      "otherEntityRelationshipName": "course",
+      "relationshipName": "controlpoint"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "sharedCourse",
+      "otherEntityRelationshipName": "course",
+      "relationshipName": "sharedCourse"
+    }
+  ],
+  "changelogDate": "20200528095742",
+  "entityTableName": "course",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

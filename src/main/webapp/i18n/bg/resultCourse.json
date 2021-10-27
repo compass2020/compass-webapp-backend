@@ -1,0 +1,31 @@
+{
+  "compassApp": {
+    "resultCourse": {
+      "home": {
+        "title": "Result Courses",
+        "createLabel": "Създайте нов Result Course",
+        "createOrEditLabel": "Създайте или редактирайте Result Course",
+        "notFound": "Result Courses не са намерени"
+      },
+      "created": "Създаден е нов Result Course с идентификатор {{ param }}",
+      "updated": "Result Course с идентификатор {{ param }} e oбновен",
+      "deleted": "Result Course с идентификатор {{ param }} е изтрит",
+      "delete": {
+        "question": "Наистина ли искате да изтриете Result Course {{ id }}?"
+      },
+      "detail": {
+        "title": "Result Course"
+      },
+      "nickName": "Nick Name",
+      "timeStampFinished": "Time Stamp Finished",
+      "timeStampStarted": "Time Stamp Started",
+      "totalDurationInMillis": "Total Duration In Millis",
+      "viewCode": "View Code",
+      "showPositionCounter": "Show Position Counter",
+      "switchAppCounter": "Switch App Counter",
+      "resultAdditionalinfo": "Result Additionalinfo",
+      "resultControlpoint": "Result Controlpoint",
+      "sharedCourse": "Shared Course"
+    }
+  }
+}

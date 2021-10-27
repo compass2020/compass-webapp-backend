@@ -1,0 +1,26 @@
+{
+  "compassApp": {
+    "sharedCourseQrCode": {
+      "home": {
+        "title": "Shared Course Qr Codes",
+        "createLabel": "Създайте нов Shared Course Qr Code",
+        "createOrEditLabel": "Създайте или редактирайте Shared Course Qr Code",
+        "notFound": "Shared Course Qr Codes не са намерени"
+      },
+      "created": "Създаден е нов Shared Course Qr Code с идентификатор {{ param }}",
+      "updated": "Shared Course Qr Code с идентификатор {{ param }} e oбновен",
+      "deleted": "Shared Course Qr Code с идентификатор {{ param }} е изтрит",
+      "delete": {
+        "question": "Наистина ли искате да изтриете Shared Course Qr Code {{ id }}?"
+      },
+      "detail": {
+        "title": "Shared Course Qr Code"
+      },
+      "device": "Device",
+      "qrCode": "Qr Code",
+      "scanned": "Scanned",
+      "timeStampScanned": "Time Stamp Scanned",
+      "sharedCourse": "Shared Course"
+    }
+  }
+}

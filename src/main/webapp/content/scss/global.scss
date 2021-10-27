@@ -1,0 +1,373 @@
+@import 'bootstrap-variables';
+@import '~bootstrap/scss/functions';
+@import '~bootswatch/dist/united/variables';
+@import '~bootstrap/scss/variables';
+
+/* ==============================================================
+Bootstrap tweaks
+===============================================================*/
+body,
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 300;
+}
+
+a:hover {
+  /* make sure browsers use the pointer cursor for anchors, even with no href */
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  color: $dropdown-link-hover-color;
+}
+
+/* ==========================================================================
+Browser Upgrade Prompt
+========================================================================== */
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+/* ==========================================================================
+Generic styles
+========================================================================== */
+
+/* other generic styles */
+
+.jh-card {
+  padding: 1.5%;
+  margin-top: 20px;
+  border: none;
+}
+
+.error {
+  color: white;
+  background-color: red;
+}
+
+.pad {
+  padding: 10px;
+}
+
+.w-40 {
+  width: 40% !important;
+}
+
+.w-60 {
+  width: 60% !important;
+}
+
+.break {
+  white-space: normal;
+  word-break: break-all;
+}
+
+.readonly {
+  background-color: #eee;
+  opacity: 1;
+}
+
+.footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.hand,
+[jhisortby] {
+  cursor: pointer;
+}
+
+/* ==========================================================================
+Custom alerts for notification
+========================================================================== */
+.alerts {
+  .alert {
+    text-overflow: ellipsis;
+    pre {
+      background: none;
+      border: none;
+      font: inherit;
+      color: inherit;
+      padding: 0;
+      margin: 0;
+    }
+    .popover pre {
+      font-size: 10px;
+    }
+  }
+  .jhi-toast {
+    position: fixed;
+    width: 100%;
+    &.left {
+      left: 5px;
+    }
+    &.right {
+      right: 5px;
+    }
+    &.top {
+      top: 55px;
+    }
+    &.bottom {
+      bottom: 55px;
+    }
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .alerts .jhi-toast {
+    width: 50%;
+  }
+}
+
+/* ==========================================================================
+entity detail page css
+========================================================================== */
+.row.jh-entity-details > {
+  dd {
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .row.jh-entity-details > {
+    dt {
+      margin-bottom: 15px;
+    }
+    dd {
+      border-bottom: 1px solid #eee;
+      padding-left: 180px;
+      margin-left: 0;
+    }
+  }
+}
+
+/* ==========================================================================
+ui bootstrap tweaks
+========================================================================== */
+.nav,
+.pagination,
+.carousel,
+.panel-title a {
+  cursor: pointer;
+}
+
+.thread-dump-modal-lock {
+  max-width: 450px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* jhipster-needle-scss-add-main JHipster will add new css style */
+
+.ng-fa-icon {
+  padding-right: 4px;
+}
+
+.nav-border {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.stepper-nav-buttons button {
+  margin: 20px 20px 20px 20px;
+  float: right;
+}
+
+.mat-slider-thumb-label {
+  transform: rotate(45deg) !important;
+  border-radius: 50% 50% 0 !important;
+}
+
+.mat-slider-thumb {
+  transform: scale(0) !important;
+}
+
+.mat-slider-thumb-label-text {
+  opacity: 1 !important;
+}
+
+.mat-step-header[aria-selected='true'] {
+  background-color: #eeeeee;
+  border-radius: 10px 10px 0px 0px;
+  overflow: hidden;
+}
+
+.mat-horizontal-content-container {
+  padding-bottom: 0px !important;
+}
+
+.container-fluid {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.sticky-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.jh-card {
+  padding-bottom: 80px;
+}
+
+.roundBorderBox {
+  border-radius: 10px;
+  border: solid 1px #ccc;
+  padding: 20px;
+}
+
+.mat-card {
+  max-width: 600px;
+  margin: auto;
+  cursor: pointer;
+  margin-bottom: 20px !important;
+  border-radius: 50px !important;
+  box-shadow: 0px 2px 8px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
+}
+
+.mat-card-avatar {
+  height: 150px !important;
+  width: 150px !important;
+  border-radius: 20% !important;
+}
+
+.mat-card:hover {
+  box-shadow: -1px 6px 20px 0px rgba(0, 0, 0, 0.3) !important;
+}
+
+button:focus {
+  outline: none !important;
+}
+
+.cardNew {
+  margin-bottom: 60px !important;
+}
+
+.cardNew .mat-card-header {
+  flex-direction: column !important;
+  text-align: center;
+}
+
+.cardNew .mat-card-avatar {
+  height: auto !important;
+  width: auto !important;
+  border-radius: 20% !important;
+  margin: auto !important;
+}
+
+.cardNew .mat-card-title {
+  margin-top: 20px !important;
+  font-size: 16px;
+}
+
+.mat-card:focus {
+  outline: none;
+}
+
+*:focus {
+  outline: none;
+}
+
+.ol-attribution {
+  font-size: 11px;
+}
+
+.orderSelect {
+  width: 250px;
+}
+
+.orderAsc {
+  cursor: pointer;
+  height: 30px;
+}
+
+.searchbox {
+  width: 350px;
+}
+
+.ngx-pagination {
+  padding-left: 0px !important;
+}
+
+.ngx-pagination .current,
+.btn-info {
+  background: $primary !important;
+  border: transparent !important;
+  border-radius: 20px !important;
+}
+
+.ngx-pagination .current:hover {
+  background: $primary !important;
+  border-radius: 20px !important;
+  border: transparent !important;
+}
+
+.ngx-pagination a:hover,
+.ngx-pagination button:hover {
+  border-radius: 20px !important;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #000;
+}
+
+.cc-window.cc-floating {
+  border: 1px solid #e95420;
+}
+
+.cc-btn:hover {
+  color: #fff !important;
+}
+
+.mat-checkbox-layout {
+  white-space: normal !important;
+}
+
+.owl-dt-container-buttons,
+.owl-dt-container-info .owl-dt-container-info-active {
+  color: $primary;
+}
+
+.owl-dt-calendar-table .owl-dt-calendar-cell-selected {
+  background-color: $primary;
+}
+
+/* On screens that are 960px or less */
+@media screen and (max-width: 960px) {
+  .userContainer {
+    margin-bottom: 50px;
+  }
+}
+
+/* On screens that are 600px or less */
+@media screen and (max-width: 600px) {
+  .mat-card {
+    width: auto !important;
+  }
+
+  .mat-horizontal-content-container {
+    padding: 0px !important;
+  }
+}
+
+/* On screens that are 330px or less */
+@media screen and (max-width: 330px) {
+  .logo-img {
+    width: 150px !important;
+  }
+}
+
+b {
+  font-weight: bold;
+}
+
+#socials a {
+  padding-right: 25px;
+}

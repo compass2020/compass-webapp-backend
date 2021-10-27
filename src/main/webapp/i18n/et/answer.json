@@ -1,0 +1,24 @@
+{
+  "compassApp": {
+    "answer": {
+      "home": {
+        "title": "Answers",
+        "createLabel": "Lisa uus Answer",
+        "createOrEditLabel": "Lisa või muuda Answer",
+        "notFound": "No Answers found"
+      },
+      "created": "Uus Answer on loodud identifikaatoriga {{ param }}",
+      "updated": "Answer identifikaatoriga {{ param }} on muudetud",
+      "deleted": "Answer identifikaatoriga {{ param }} on kustutatud",
+      "delete": {
+        "question": "Kas olete kindel, et soovite kustutada Answer {{ id }}?"
+      },
+      "detail": {
+        "title": "Answer"
+      },
+      "text": "Text",
+      "correct": "Correct",
+      "question": "Question"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "compassApp": {
+    "sharedCourse": {
+      "home": {
+        "title": "Shared Courses",
+        "createLabel": "Create a new Shared Course",
+        "createOrEditLabel": "Create or edit a Shared Course",
+        "notFound": "No Shared Courses found"
+      },
+      "created": "A new Shared Course is created with identifier {{ param }}",
+      "updated": "A Shared Course is updated with identifier {{ param }}",
+      "deleted": "A Shared Course is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Shared Course {{ id }}?"
+      },
+      "detail": {
+        "title": "Shared Course"
+      },
+      "name": "Name",
+      "qrCode": "Qr Code",
+      "gameModus": "Game Modus",
+      "timeStampShared": "Time Stamp Shared",
+      "visible": "Visible",
+      "resultCourse": "Result Course",
+      "course": "Course"
+    }
+  }
+}

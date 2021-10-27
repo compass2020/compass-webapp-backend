@@ -1,0 +1,156 @@
+{
+  "global": {
+    "title": "COMPASS Orienteering Game",
+    "browsehappy": "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/?locale=en\">upgrade your browser</a> to improve your experience.",
+    "menu": {
+      "home": "Home",
+      "test": "Test",
+      "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
+      "entities": {
+        "main": "Entities",
+        "course": "Course",
+        "controlpoint": "Controlpoint",
+        "question": "Question",
+        "category": "Category",
+        "answer": "Answer",
+        "orienteeringMap": "Orienteering Map",
+        "sharedCourse": "Shared Course",
+        "resultCourse": "Result Course",
+        "resultControlpoint": "Result Controlpoint",
+        "resultAdditionalInfo": "Result Additional Info",
+        "resultQuestion": "Result Question",
+        "resultAnswer": "Result Answer",
+        "controlpointInfo": "Controlpoint Info",
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
+        "sharedCourseQrCode": "Shared Course Qr Code"
+      },
+      "account": {
+        "main": "Сметка",
+        "settings": "Поставки",
+        "password": "Лозинка",
+        "sessions": "Сесии",
+        "login": "Најави се",
+        "logout": "Одјави се",
+        "register": "регистар"
+      },
+      "admin": {
+        "main": "Administration",
+        "userManagement": "User management",
+        "tracker": "User tracker",
+        "metrics": "Metrics",
+        "health": "Health",
+        "configuration": "Configuration",
+        "logs": "Logs",
+        "audits": "Audits",
+        "apidocs": "API",
+        "database": "Database",
+        "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
+      },
+      "language": "Јазик",
+      "manage-questions": "Manage Questions"
+    },
+    "form": {
+      "username.label": "Username",
+      "username.placeholder": "Your username",
+      "currentpassword.label": "Current password",
+      "currentpassword.placeholder": "Current password",
+      "newpassword.label": "New password",
+      "newpassword.placeholder": "New password",
+      "confirmpassword.label": "New password confirmation",
+      "confirmpassword.placeholder": "Confirm the new password",
+      "email.label": "Email",
+      "email.placeholder": "Your email"
+    },
+    "messages": {
+      "info": {
+        "authenticated": {
+          "prefix": "Ако сакаш",
+          "link": "Најави се",
+          "suffix": ", можете да ги испробате стандардните сметки: <br/> - Администратор (најава = \"admin\" и лозинка = \"admin\") <br/> - Корисник (најава = \"user\" и лозинка = \"user\")."
+        },
+        "register": {
+          "noaccount": "Сè уште немате сметка?",
+          "link": "Регистрирајте нова сметка"
+        }
+      },
+      "error": {
+        "dontmatch": "Лозинката и нејзината потврда не се совпаѓаат!"
+      },
+      "validate": {
+        "newpassword": {
+          "required": "Потребна е вашата лозинка.",
+          "minlength": "Вашата лозинка се бара да има најмалку 4 карактери.",
+          "maxlength": "Вашата лозинка не може да биде подолга од 50 карактери.",
+          "strength": "Јачина на лозинка:"
+        },
+        "confirmpassword": {
+          "required": "Потребна е вашата лозинка за потврда.",
+          "minlength": "Вашата лозинка за потврда е потребно да содржи најмалку 4 карактери.",
+          "maxlength": "Вашата лозинка за потврда не може да биде подолга од 30 карактери."
+        },
+        "email": {
+          "required": "Вашата е-пошта е задолжителна.",
+          "invalid": "Вашата е-пошта е неважечка.",
+          "minlength": "Вашата е-пошта се бара да содржи најмалку 5 карактери.",
+          "maxlength": "Вашата е-пошта не може да биде подолга од 50 карактери."
+        }
+      }
+    },
+    "field": {
+      "id": "ID"
+    },
+    "ribbon": {
+      "dev": "Development"
+    },
+    "item-count": "Showing {{first}} - {{second}} of {{total}} items."
+  },
+  "entity": {
+    "action": {
+      "addblob": "Add blob",
+      "addimage": "Add image",
+      "back": "Back",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "edit": "Edit",
+      "open": "Open",
+      "save": "Save",
+      "view": "View"
+    },
+    "detail": {
+      "field": "Field",
+      "value": "Value"
+    },
+    "delete": {
+      "title": "Confirm delete operation"
+    },
+    "validation": {
+      "required": "This field is required.",
+      "minlength": "This field is required to be at least {{ min }} characters.",
+      "maxlength": "This field cannot be longer than {{ max }} characters.",
+      "min": "This field should be at least {{ min }}.",
+      "max": "This field cannot be more than {{ max }}.",
+      "minbytes": "This field should be at least {{ min }} bytes.",
+      "maxbytes": "This field cannot be more than {{ max }} bytes.",
+      "pattern": "This field should follow pattern for {{ pattern }}.",
+      "number": "This field should be a number.",
+      "datetimelocal": "This field should be a date and time.",
+      "patternLogin": "This field can only contain letters, digits and e-mail addresses."
+    }
+  },
+  "error": {
+    "internalServerError": "Internal server error",
+    "server.not.reachable": "Server not reachable",
+    "url.not.found": "Not found",
+    "NotNull": "Field {{ fieldName }} cannot be empty!",
+    "Size": "Field {{ fieldName }} does not meet min/max size requirements!",
+    "userexists": "Login name already used!",
+    "emailexists": "Email is already in use!",
+    "idexists": "A new {{ entityName }} cannot already have an ID",
+    "idnull": "Invalid ID",
+    "file": {
+      "could.not.extract": "Could not extract file",
+      "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
+    }
+  },
+  "footer": "This is your footer"
+}

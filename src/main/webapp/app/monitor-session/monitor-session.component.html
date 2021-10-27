@@ -1,0 +1,71 @@
+<h4 style="text-align: center;">
+  <span
+    *ngIf="this.positions?.length > 1"
+    jhiTranslate="my-courses.peopleOnCourse"
+    [translateValues]="{ nrOfPeople: this.positions?.length }"
+    >Currently {{ this.positions?.length }} people on the course</span
+  >
+  <span *ngIf="this.positions?.length === 1" jhiTranslate="my-courses.onePersonOnCourse"
+    >Currently {{ this.positions?.length }} person on the course</span
+  >
+  <span *ngIf="this.positions?.length === 0" jhiTranslate="my-courses.noPersonOnCourse"
+    >Currently {{ this.positions?.length }} person on the course</span
+  >
+</h4>
+<div class="legendDiv" fxLayout="column" fxLayoutAlign="space-between stretch">
+  <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="20">
+    <img src="/content/images/assets/active.png" />
+    <span jhiTranslate="my-courses.locationNew">location is new</span>
+  </div>
+  <div fxLayout="row wrap" fxLayoutAlign="center center">
+    <img src="/content/images/assets/inactive.png" />
+    <span jhiTranslate="my-courses.locationOld">location is a bit old</span>
+  </div>
+</div>
+
+<div fxLayout="row wrap" fxLayout.sm="column" fxLayout.lt-sm="column" fxLayoutAlign="space-around center" fxLayoutGap="20px">
+  <div fxFlex="60" fxFlexFill id="fullscreen"><div id="map"></div></div>
+  <div fxFlex="35">
+    <button
+      mat-button
+      mat-raised-button
+      color="primary"
+      id="updatePositions"
+      jhiTranslate="my-courses.updatePositions"
+      (click)="this.fetchPositions()"
+    ></button
+    ><br />
+
+    <mat-form-field>
+      <mat-label jhiTranslate="my-courses.messageTo">Message to: </mat-label>
+      <mat-select [(value)]="this.receiver">
+        <mat-option [value]="'all'" selected><span jhiTranslate="my-courses.messageToAll"></span></mat-option>
+        <mat-option *ngFor="let position of positions" [value]="position.uuid">
+          {{ position.nickname }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button
+      mat-button
+      mat-raised-button
+      color="primary"
+      id="sendButton"
+      jhiTranslate="my-courses.sendMessage"
+      (click)="this.sendMessage()"
+    ></button>
+    <br />
+
+    <mat-form-field style="width: 100%;">
+      <mat-label jhiTranslate="my-courses.message">Message </mat-label>
+      <input
+        matInput
+        type="text"
+        id="messageField"
+        [maxLength]="100"
+        class="form-control"
+        [(ngModel)]="this.message"
+        (keyup.enter)="this.sendMessage()"
+      />
+    </mat-form-field>
+  </div>
+</div>

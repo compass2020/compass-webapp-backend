@@ -1,0 +1,70 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-result-answer-heading" jhiTranslate="compassApp.resultAnswer.home.createOrEditLabel">Create or edit a Result Answer</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultAnswer.text" for="field_text">Text</label>
+                    <input type="text" class="form-control" name="text" id="field_text"
+                           formControlName="text"/>
+                    <div *ngIf="editForm.get('text')!.invalid && (editForm.get('text')!.dirty || editForm.get('text')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('text')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultAnswer.correct" for="field_correct">Correct</label>
+                    <input type="checkbox" class="form-control" name="correct" id="field_correct"
+                           formControlName="correct"/>
+                    <div *ngIf="editForm.get('correct')!.invalid && (editForm.get('correct')!.dirty || editForm.get('correct')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('correct')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultAnswer.answeredCorrectly" for="field_answeredCorrectly">Answered Correctly</label>
+                    <input type="checkbox" class="form-control" name="answeredCorrectly" id="field_answeredCorrectly"
+                           formControlName="answeredCorrectly"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultAnswer.resultQuestion" for="field_resultQuestion">Result Question</label>
+                    <select class="form-control" id="field_resultQuestion" name="resultQuestion" formControlName="resultQuestion">
+                        <option *ngIf="!editForm.get('resultQuestion')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="resultQuestionOption.id === editForm.get('resultQuestion')!.value?.id ? editForm.get('resultQuestion')!.value : resultQuestionOption" *ngFor="let resultQuestionOption of resultquestions; trackBy: trackById">{{ resultQuestionOption.id }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('resultQuestion')!.invalid && (editForm.get('resultQuestion')!.dirty || editForm.get('resultQuestion')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('resultQuestion')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

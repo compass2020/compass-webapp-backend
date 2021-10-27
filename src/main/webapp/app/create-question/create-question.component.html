@@ -1,0 +1,168 @@
+<div *ngIf="this.question !== undefined" class="create_question_wrapper" fxFlex fxLayout="column" fxLayoutGap="10px">
+  <div fxflex>
+    <div fxLayout="row wrap" fxLayoutAlign="space-around start" fxLayoutGap="20px">
+      <div>
+        <label class="heading" jhiTranslate="create-course.whatType">What type of question is it?</label>
+        <mat-radio-group class="radio-group" [(ngModel)]="this.selectedQuestionType">
+          <mat-radio-button
+            (change)="typeChanged($event)"
+            color="primary"
+            *ngFor="let questionType of getAllQuestionTypes()"
+            value="{{ questionType }}"
+            ><span jhiTranslate="{{ 'compassApp.QuestionType.' + questionType }}"></span>
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <mat-label jhiTranslate="create-course.whatCategory">Choose the category</mat-label>
+          <mat-select [(value)]="this.selectedCategoryIndex">
+            <mat-option *ngFor="let category of categories; let i = index" value="{{ i }}">{{ category.text }}</mat-option>
+          </mat-select> </mat-form-field
+        ><br />
+        <mat-form-field>
+          <mat-label jhiTranslate="create-course.whatDifficulty">Choose the difficulty</mat-label>
+          <mat-select [(value)]="this.selectedQuestionDifficulty" (selectionChange)="typeChanged($event)">
+            <mat-option *ngFor="let questionDifficulty of getAllQuestionDifficulties()" value="{{ questionDifficulty }}">
+              <span jhiTranslate="{{ 'compassApp.Difficulty.' + questionDifficulty }}"></span
+            ></mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <!-- <div fxflex>
+    <mat-slide-toggle [labelPosition]="'after'" class="example-margin" color="primary" [(ngModel)]="this.questionIsPublic">
+      <span *ngIf="!this.questionIsPublic" jhiTranslate="create-course.privateQuestion"></span>
+      <span *ngIf="this.questionIsPublic" jhiTranslate="create-course.publicQuestion"></span>
+    </mat-slide-toggle>
+  </div> -->
+  <div fxflex>
+    <mat-form-field style="width: 100%;">
+      <mat-label jhiTranslate="create-course.questionText">Question Text </mat-label>
+      <input
+        matInput
+        [maxLength]="255"
+        [(ngModel)]="this.question.text"
+        placeholder="{{ 'create-course.questionPlaceholder' | translate }}"
+      />
+    </mat-form-field>
+  </div>
+  <div fxflex>
+    <div *ngIf="this.selectedQuestionType === questionTypes.SINGLE">
+      <div class="tab-content" fxLayout="column" fxLayoutGap="10px">
+        <div fxflex cdkDropList class="answer-list" (cdkDropListDropped)="drop($event)">
+          <div fxLayout="row" fxLayoutAlign="space-between center" class="answer header">
+            <mat-label fxflex jhiTranslate="create-course.answersToQuestion">Answers to this question</mat-label>
+            <button mat-button mat-raised-button fxflex color="primary" (click)="addAnswer()">
+              <fa-icon icon="plus"></fa-icon>
+            </button>
+            <mat-label fxflex jhiTranslate="create-course.correct">correct?</mat-label>
+          </div>
+          <div
+            fxLayout="row"
+            fxLayoutAlign="space-around center"
+            class="answer"
+            *ngFor="let answer of question.answers; let i = index"
+            cdkDrag
+          >
+            <mat-form-field fxflex style="width: 80%;">
+              <mat-label jhiTranslate="create-course.answerText">Text of answer</mat-label>
+              <input matInput [maxLength]="255" [(ngModel)]="answer.text" placeholder="{{ 'create-course.answerText' | translate }}" />
+            </mat-form-field>
+
+            <mat-radio-button
+              fxflex
+              name="radiobuttons"
+              color="primary"
+              ([checked])="(answer.correct)"
+              (change)="singleChoiceChanged($event, i)"
+            ></mat-radio-button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="this.selectedQuestionType === this.questionTypes.MULTIPLE">
+      <div class="tab-content" fxLayout="column" fxLayoutGap="20px">
+        <div fxflex cdkDropList class="answer-list" (cdkDropListDropped)="drop($event)">
+          <div fxLayout="row" fxLayoutAlign="space-between center" class="answer header">
+            <mat-label fxflex jhiTranslate="create-course.answersToQuestion">Answers to this question</mat-label>
+            <button mat-button mat-raised-button fxflex color="primary" (click)="addAnswer()">
+              <fa-icon icon="plus"></fa-icon>
+            </button>
+            <mat-label fxflex jhiTranslate="create-course.correct">Correct?</mat-label>
+          </div>
+          <div
+            fxLayout="row"
+            fxLayoutAlign="space-around center"
+            class="answer"
+            *ngFor="let answer of question.answers; let i = index"
+            cdkDrag
+          >
+            <mat-form-field fxflex style="width: 80%;">
+              <mat-label jhiTranslate="create-course.answerText">Text of answer</mat-label>
+              <input matInput [maxLength]="255" [(ngModel)]="answer.text" placeholder="{{ 'create-course.answerText' | translate }}" />
+            </mat-form-field>
+            <mat-checkbox
+              *ngIf="answer !== undefined"
+              fxflex
+              [checked]="answer.correct"
+              color="primary"
+              (change)="checkboxChanged($event, i)"
+            ></mat-checkbox>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="this.selectedQuestionType === this.questionTypes.INPUT">
+      <div class="tab-content" fxLayout="column" fxLayoutGap="20px">
+        <div fxflex class="answer-list">
+          <div fxLayout="row" fxLayoutAlign="space-between center" class="answer header">
+            <mat-label fxflex jhiTranslate="create-course.answersToQuestion">Answers to this question</mat-label>
+            <button mat-button mat-raised-button fxflex color="primary" (click)="addAnswer()">
+              <fa-icon icon="plus"></fa-icon>
+            </button>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-around center" class="answer" *ngFor="let answer of question.answers; let i = index">
+            <mat-form-field fxflex style="width: 80%;">
+              <mat-label jhiTranslate="create-course.answerText">Text of answer</mat-label>
+              <input matInput [maxLength]="255" [(ngModel)]="answer.text" placeholder="{{ 'create-course.answerText' | translate }}" />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div *ngIf="this.selectedQuestionType === this.questionTypes.INPUT">
+      <div class="tab-content" fxLayout="column" fxLayoutGap="20px">
+        <div fxflex>
+          <div fxLayout="row" fxLayoutAlign="space-around center" class="single">
+            <mat-form-field fxflex style="width: 100%;">
+              <mat-label jhiTranslate="create-course.answerTextSingle">Please tell me the answer of this fabulous question!</mat-label>
+              <input
+                matInput
+                [(ngModel)]="this.question.answers[0].text"
+                placeholder="{{ 'create-course.answerPlaceholder' | translate }}"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+
+  <div fxflex style="text-align: center;">
+    <button
+      [disabled]="this.selectedQuestionType === undefined || this.question.text === ''"
+      mat-raised-button
+      color="primary"
+      (click)="saveQuestion()"
+      jhiTranslate="create-course.saveQuestion"
+    >
+      Save this question!
+    </button>
+  </div>
+</div>

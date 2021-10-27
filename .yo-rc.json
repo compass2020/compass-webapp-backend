@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "at.univie.compass",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "6.10.5",
+    "applicationType": "monolith",
+    "baseName": "compass",
+    "packageName": "at.univie.compass",
+    "packageFolder": "at/univie/compass",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "caffeine",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ZjBkMzY0YjQ1ZDBiNTliOTNlOTBjZDU3Y2MxNTE3MTcxNzFjM2FjMmIxOTI4NTMyMmM0MWEwOTc2ODRmYzRmMGUwNzY4OWM2YWUxY2RjNTc4YWE4NzQ3YTAwMzU3ZDI4ZGY3NDBkMmIyM2FkNzIxOWI3NDU4ZDIxMTk0MGExOTI=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "united",
+    "clientThemeVariant": "primary",
+    "creationTimestamp": 1590656276256,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": ["en", "bg", "et", "de", "ro"],
+    "blueprints": []
+  }
+}

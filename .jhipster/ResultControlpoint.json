@@ -1,0 +1,70 @@
+{
+  "name": "ResultControlpoint",
+  "fields": [
+    {
+      "fieldName": "sequence",
+      "fieldType": "Integer",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "timeReached",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "latitude",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "longitude",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "skipAllowed",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "reached",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "borgScale",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "forceSkipped",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "resultQuestion",
+      "otherEntityRelationshipName": "resultControlpoint",
+      "relationshipValidateRules": "required",
+      "relationshipName": "resultQuestion",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "resultCourse",
+      "otherEntityRelationshipName": "resultControlpoint",
+      "relationshipValidateRules": "required",
+      "relationshipName": "resultCourse",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200624064854",
+  "entityTableName": "result_controlpoint",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

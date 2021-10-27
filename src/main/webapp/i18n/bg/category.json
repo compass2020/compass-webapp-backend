@@ -1,0 +1,24 @@
+{
+  "compassApp": {
+    "category": {
+      "home": {
+        "title": "Categories",
+        "createLabel": "Създайте нов Category",
+        "createOrEditLabel": "Създайте или редактирайте Category",
+        "notFound": "Categories не са намерени"
+      },
+      "created": "Създаден е нов Category с идентификатор {{ param }}",
+      "updated": "Category с идентификатор {{ param }} e oбновен",
+      "deleted": "Category с идентификатор {{ param }} е изтрит",
+      "delete": {
+        "question": "Наистина ли искате да изтриете Category {{ id }}?"
+      },
+      "detail": {
+        "title": "Category"
+      },
+      "text": "Text",
+      "question": "Question",
+      "resultQuestion": "Result Question"
+    }
+  }
+}

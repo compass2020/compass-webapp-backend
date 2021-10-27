@@ -1,0 +1,14 @@
+{
+  "cookieConsent": {
+    "content": {
+      "message": "[bg] This website uses cookies to ensure you get the best experience on our website.",
+      "dismiss": "[bg] Got it!",
+      "deny": "[bg] Decline",
+      "link": "[bg] Learn more",
+      "href": "[bg] https://cookiesandyou.com",
+      "policy": "[bg] Cookie Policy",
+      "header": "[bg] Cookies used on the website!",
+      "allow": "[bg] Allow cookies"
+    }
+  }
+}

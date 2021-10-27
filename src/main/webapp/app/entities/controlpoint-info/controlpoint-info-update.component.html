@@ -1,0 +1,108 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-controlpoint-info-heading" jhiTranslate="compassApp.controlpointInfo.home.createOrEditLabel">Create or edit a Controlpoint Info</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.controlpointInfo.image" for="field_image">Image</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('imageContentType')!.value + ';base64,' + editForm.get('image')!.value" style="max-height: 100px;" *ngIf="editForm.get('image')!.value" alt="controlpointInfo image"/>
+                        <div *ngIf="editForm.get('image')!.value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{ editForm.get('imageContentType')!.value }}, {{ byteSize(editForm.get('image')!.value) }}</span>
+                            <button type="button" (click)="clearInputImage('image', 'imageContentType', 'file_image')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_image" (change)="setFileData($event, 'image', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="image" id="field_image"
+                           formControlName="image"/>
+                    <input type="hidden" class="form-control" name="imageContentType" id="field_imageContentType"
+                           formControlName="imageContentType" />
+                    <div *ngIf="editForm.get('image')!.invalid && (editForm.get('image')!.dirty || editForm.get('image')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('image')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.controlpointInfo.col" for="field_col">Col</label>
+                    <select class="form-control" name="col" formControlName="col" id="field_col">
+                        <option value="C">{{ 'compassApp.ControlpointInfoColumn.C' | translate }}</option>
+                        <option value="D">{{ 'compassApp.ControlpointInfoColumn.D' | translate }}</option>
+                        <option value="E">{{ 'compassApp.ControlpointInfoColumn.E' | translate }}</option>
+                        <option value="F">{{ 'compassApp.ControlpointInfoColumn.F' | translate }}</option>
+                        <option value="G">{{ 'compassApp.ControlpointInfoColumn.G' | translate }}</option>
+                        <option value="H">{{ 'compassApp.ControlpointInfoColumn.H' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('col')!.invalid && (editForm.get('col')!.dirty || editForm.get('col')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('col')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.controlpointInfo.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           formControlName="description"/>
+                    <div *ngIf="editForm.get('description')!.invalid && (editForm.get('description')!.dirty || editForm.get('description')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('description')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.controlpointInfo.messageKey" for="field_messageKey">Message Key</label>
+                    <input type="text" class="form-control" name="messageKey" id="field_messageKey"
+                           formControlName="messageKey"/>
+                    <div *ngIf="editForm.get('messageKey')!.invalid && (editForm.get('messageKey')!.dirty || editForm.get('messageKey')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('messageKey')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.controlpointInfo.sort" for="field_sort">Sort</label>
+                    <input type="number" class="form-control" name="sort" id="field_sort"
+                           formControlName="sort"/>
+                    <div *ngIf="editForm.get('sort')!.invalid && (editForm.get('sort')!.dirty || editForm.get('sort')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('sort')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('sort')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

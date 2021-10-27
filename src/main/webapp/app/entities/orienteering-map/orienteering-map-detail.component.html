@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="orienteeringMap">
+            <h2><span jhiTranslate="compassApp.orienteeringMap.detail.title">Orienteering Map</span> {{ orienteeringMap.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="compassApp.orienteeringMap.mapOverlayImage">Map Overlay Image</span></dt>
+                <dd>
+                    <div *ngIf="orienteeringMap.mapOverlayImage">
+                        <a (click)="openFile(orienteeringMap.mapOverlayImageContentType, orienteeringMap.mapOverlayImage)">
+                            <img [src]="'data:' + orienteeringMap.mapOverlayImageContentType + ';base64,' + orienteeringMap.mapOverlayImage" style="max-width: 100%;" alt="orienteeringMap image"/>
+                        </a>
+                        {{ orienteeringMap.mapOverlayImageContentType }}, {{ byteSize(orienteeringMap.mapOverlayImage) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="compassApp.orienteeringMap.mapOverlayKml">Map Overlay Kml</span></dt>
+                <dd>
+                    <div *ngIf="orienteeringMap.mapOverlayKml">
+                        <a (click)="openFile(orienteeringMap.mapOverlayKmlContentType, orienteeringMap.mapOverlayKml)">
+                            <img [src]="'data:' + orienteeringMap.mapOverlayKmlContentType + ';base64,' + orienteeringMap.mapOverlayKml" style="max-width: 100%;" alt="orienteeringMap image"/>
+                        </a>
+                        {{ orienteeringMap.mapOverlayKmlContentType }}, {{ byteSize(orienteeringMap.mapOverlayKml) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="compassApp.orienteeringMap.imageScaleX">Image Scale X</span></dt>
+                <dd>
+                    <span>{{ orienteeringMap.imageScaleX }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.orienteeringMap.imageScaleY">Image Scale Y</span></dt>
+                <dd>
+                    <span>{{ orienteeringMap.imageScaleY }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.orienteeringMap.imageCenterX">Image Center X</span></dt>
+                <dd>
+                    <span>{{ orienteeringMap.imageCenterX }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.orienteeringMap.imageCenterY">Image Center Y</span></dt>
+                <dd>
+                    <span>{{ orienteeringMap.imageCenterY }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.orienteeringMap.imageRotation">Image Rotation</span></dt>
+                <dd>
+                    <span>{{ orienteeringMap.imageRotation }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.orienteeringMap.declination">Declination</span></dt>
+                <dd>
+                    <span>{{ orienteeringMap.declination }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/orienteering-map', orienteeringMap.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

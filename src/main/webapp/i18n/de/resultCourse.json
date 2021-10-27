@@ -1,0 +1,31 @@
+{
+  "compassApp": {
+    "resultCourse": {
+      "home": {
+        "title": "Result Courses",
+        "createLabel": "Result Course erstellen",
+        "createOrEditLabel": "Result Course erstellen oder bearbeiten",
+        "notFound": "No Result Courses found"
+      },
+      "created": "Result Course erstellt mit ID {{ param }}",
+      "updated": "Result Course aktualisiert mit ID {{ param }}",
+      "deleted": "Result Course gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Result Course {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Result Course"
+      },
+      "nickName": "Nick Name",
+      "timeStampFinished": "Time Stamp Finished",
+      "timeStampStarted": "Time Stamp Started",
+      "totalDurationInMillis": "Total Duration In Millis",
+      "viewCode": "View Code",
+      "showPositionCounter": "Show Position Counter",
+      "switchAppCounter": "Switch App Counter",
+      "resultAdditionalinfo": "Result Additionalinfo",
+      "resultControlpoint": "Result Controlpoint",
+      "sharedCourse": "Shared Course"
+    }
+  }
+}

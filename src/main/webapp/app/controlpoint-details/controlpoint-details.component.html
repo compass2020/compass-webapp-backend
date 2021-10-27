@@ -1,0 +1,414 @@
+<div *ngIf="this.course.controlpoints?.length">
+  <mat-horizontal-stepper [@.disabled]="true" [linear]="false" #controlpointStepper>
+    <mat-step *ngFor="let controlpoint of this.course.controlpoints; let i = index">
+      <ng-template *ngIf="i == 0" matStepLabel><span jhiTranslate="create-course.start">Start</span></ng-template>
+      <ng-template *ngIf="i != 0 && i != this.course.controlpoints.length - 1" matStepLabel># {{ i }}</ng-template>
+      <ng-template *ngIf="i == this.course.controlpoints.length - 1" matStepLabel
+        ><span jhiTranslate="create-course.finish">Finish</span></ng-template
+      >
+
+      <h5 class="headerMarginTop" jhiTranslate="create-course.basicControlpointInformation">Basic Controlpoint Information</h5>
+      <div fxLayout="row wrap" fxLayout.sm="column" fxLayout.lt-sm="column" fxLayoutAlign="space-between stretch">
+        <mat-list class="tab-content" fxFlex="45">
+          <mat-list-item>
+            <div
+              fxLayout="row wrap"
+              fxLayoutAlign="space-around stretch"
+              fxLayoutGap="20px"
+              fxLayout.lt-sm="column"
+              fxLayoutGap.lt-sm="0px"
+            >
+              <div><span jhiTranslate="create-course.coordinates">Coordinates:</span></div>
+              <div>
+                <span jhiTranslate="create-course.latitude" style="margin-right: 5px;">Latitude: </span>
+                {{ controlpoint.latitude | number: '1.3-3' }}
+              </div>
+              <div>
+                <span jhiTranslate="create-course.longitude" style="margin-right: 5px;">Longitude: </span>
+                {{ controlpoint.longitude | number: '1.3-3' }}
+              </div>
+            </div></mat-list-item
+          >
+          <mat-divider></mat-divider>
+          <mat-list-item>
+            <div fxLayout="row wrap" fxLayoutAlign="space-around stretch" fxLayoutGap="20px">
+              <div><span jhiTranslate="create-course.altitude">Altitude:</span></div>
+              <div>{{ controlpoint.elevation | number: '1.0-0' }} m</div>
+            </div></mat-list-item
+          >
+          <mat-divider></mat-divider>
+
+          <mat-list-item style="margin-top: 30px;">
+            <mat-label style="margin-right: 20px;" jhiTranslate="create-course.radius">Radius [m]: </mat-label>
+            <mat-slider
+              color="primary"
+              thumbLabel
+              min="10"
+              max="50"
+              step="1"
+              [value]="controlpoint.radius"
+              (change)="radiusValueChange($event, i)"
+            ></mat-slider>
+          </mat-list-item>
+          <mat-divider> </mat-divider>
+          <mat-list-item style="margin-top: 30px;">
+            <mat-form-field style="width: 80%;">
+              <mat-label jhiTranslate="create-course.description">Description </mat-label>
+              <input matInput type="text" [maxLength]="255" class="form-control" [(ngModel)]="controlpoint.description" />
+            </mat-form-field>
+          </mat-list-item>
+
+          <div class="descriptionTableWrapper" *ngIf="this.expertMode">
+            <table
+              *ngIf="this !== undefined && this.selectedCPInfos.length > 0 && this.selectedCPInfos !== undefined"
+              class="controlDescriptionTable"
+            >
+              <tr>
+                <td>A</td>
+                <td>B</td>
+                <td>C</td>
+                <td>D</td>
+                <td>E</td>
+                <td>F</td>
+                <td>G</td>
+                <td>H</td>
+              </tr>
+              <tr>
+                <td *ngIf="i === 0"><img src="/content/images/assets/start.png" /></td>
+                <td *ngIf="i !== 0 && i !== this.course.controlpoints.length - 1">{{ i }}</td>
+                <td *ngIf="i !== 0 && i === this.course.controlpoints.length - 1"><img src="/content/images/assets/finish.png" /></td>
+
+                <td>{{ controlpoint.controlCode }}</td>
+
+                <ng-container *ngFor="let x of [].constructor(6); let j = index">
+                  <td>
+                    <img *ngIf="this.selectedCPInfos[i][j] !== ''" src="{{ this.selectedCPInfos[i][j] }}" />
+                  </td>
+                </ng-container>
+              </tr>
+            </table>
+          </div>
+          <div class="infoBigContainer" *ngIf="this.expertMode">
+            <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title jhiTranslate="controlpointInfo.description.col_c"></mat-panel-title>
+                  <mat-panel-description class="right-aligned">
+                    Column C
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="infoContainer" fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="0px">
+                  <div *ngFor="let info of this.allCPInfos">
+                    <img
+                      *ngIf="info.col === 'C'"
+                      id="cp{{ i }}_info{{ info.id }}"
+                      [src]="'data:' + info.imageContentType + ';base64,' + info.image"
+                      width="40px"
+                      height="40px"
+                      [matTooltip]="(info.messageKey | translate) !== '' ? (info.messageKey | translate) : info.description"
+                      matTooltipClass="info-tooltip"
+                      matTooltipPosition="above"
+                      (click)="this.toggleInfo(info, i)"
+                    />
+                  </div>
+                </div>
+              </mat-expansion-panel>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title jhiTranslate="controlpointInfo.description.col_d"></mat-panel-title>
+                  <mat-panel-description class="right-aligned"> Column D</mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="infoContainer" fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="0px">
+                  <div *ngFor="let info of this.allCPInfos">
+                    <img
+                      *ngIf="info.col === 'D'"
+                      id="cp{{ i }}_info{{ info.id }}"
+                      [src]="'data:' + info.imageContentType + ';base64,' + info.image"
+                      width="40px"
+                      height="40px"
+                      [matTooltip]="(info.messageKey | translate) !== '' ? (info.messageKey | translate) : info.description"
+                      matTooltipClass="info-tooltip"
+                      matTooltipPosition="above"
+                      (click)="this.toggleInfo(info, i)"
+                    />
+                  </div>
+                </div>
+              </mat-expansion-panel>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title jhiTranslate="controlpointInfo.description.col_e"></mat-panel-title>
+                  <mat-panel-description class="right-aligned">
+                    Column E
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="infoContainer" fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="0px">
+                  <div *ngFor="let info of this.allCPInfos">
+                    <img
+                      *ngIf="info.col === 'E'"
+                      id="cp{{ i }}_info{{ info.id }}"
+                      [src]="'data:' + info.imageContentType + ';base64,' + info.image"
+                      width="40px"
+                      height="40px"
+                      [matTooltip]="(info.messageKey | translate) !== '' ? (info.messageKey | translate) : info.description"
+                      matTooltipClass="info-tooltip"
+                      matTooltipPosition="above"
+                      (click)="this.toggleInfo(info, i)"
+                    />
+                  </div>
+                </div>
+              </mat-expansion-panel>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title jhiTranslate="controlpointInfo.description.col_f"></mat-panel-title>
+                  <mat-panel-description class="right-aligned">Column F </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="infoContainer" fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="0px">
+                  <div *ngFor="let info of this.allCPInfos">
+                    <img
+                      *ngIf="info.col === 'F'"
+                      id="cp{{ i }}_info{{ info.id }}"
+                      [src]="'data:' + info.imageContentType + ';base64,' + info.image"
+                      width="40px"
+                      height="40px"
+                      [matTooltip]="(info.messageKey | translate) !== '' ? (info.messageKey | translate) : info.description"
+                      matTooltipClass="info-tooltip"
+                      matTooltipPosition="above"
+                      (click)="this.toggleInfo(info, i)"
+                    />
+                  </div>
+                </div>
+              </mat-expansion-panel>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title jhiTranslate="controlpointInfo.description.col_g"></mat-panel-title>
+                  <mat-panel-description class="right-aligned">
+                    Column G
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="infoContainer" fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="0px">
+                  <div *ngFor="let info of this.allCPInfos">
+                    <img
+                      *ngIf="info.col === 'G'"
+                      id="cp{{ i }}_info{{ info.id }}"
+                      [src]="'data:' + info.imageContentType + ';base64,' + info.image"
+                      width="40px"
+                      height="40px"
+                      [matTooltip]="(info.messageKey | translate) !== '' ? (info.messageKey | translate) : info.description"
+                      matTooltipClass="info-tooltip"
+                      matTooltipPosition="above"
+                      (click)="this.toggleInfo(info, i)"
+                    />
+                  </div>
+                </div>
+              </mat-expansion-panel>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title jhiTranslate="controlpointInfo.description.col_h"></mat-panel-title>
+                  <mat-panel-description class="right-aligned">
+                    Column H
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="infoContainer" fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="0px">
+                  <div *ngFor="let info of this.allCPInfos">
+                    <img
+                      *ngIf="info.col === 'H'"
+                      id="cp{{ i }}_info{{ info.id }}"
+                      [src]="'data:' + info.imageContentType + ';base64,' + info.image"
+                      width="40px"
+                      height="40px"
+                      [matTooltip]="(info.messageKey | translate) !== '' ? (info.messageKey | translate) : info.description"
+                      matTooltipClass="info-tooltip"
+                      matTooltipPosition="above"
+                      (click)="this.toggleInfo(info, i)"
+                    />
+                  </div>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+          <mat-divider> </mat-divider>
+          <mat-list-item>
+            <mat-checkbox
+              [hidden]="controlpoint.team || i < 2 || i == this.course.controlpoints.length - 1"
+              [checked]="controlpoint.skippable"
+              (change)="skipValueChange($event, i)"
+              color="primary"
+              ><span jhiTranslate="create-course.isSkippable"></span></mat-checkbox
+          ></mat-list-item>
+        </mat-list>
+        <div name="detailMap" id="map_cp{{ i }}" fxFlex="45" class="map_cp"></div>
+      </div>
+      <h5 class="headerMarginTop" jhiTranslate="create-course.questionsForControlpoint">Questions for this Controlpoint</h5>
+      <div class="tab-content">
+        <mat-tab-group dynamicHeight [(selectedIndex)]="this.matTabSelectedIndizes[i]">
+          <mat-tab label="{{ 'create-course.questionnaire' | translate }}">
+            <div class="margin16" fxLayout="row wrap" fxLayout.sm="column" fxLayout.lt-sm="column" fxLayoutAlign="space-between stretch">
+              <div fxFlex="34">
+                <h6 jhiTranslate="create-course.filterQuestions"></h6>
+
+                <div style="margin-bottom: 30px;" fxLayout="row wrap" fxLayoutAlign="space-around center">
+                  <a
+                    href="#"
+                    *ngFor="let category of categories; let j = index"
+                    class="btn filterCategoryButton"
+                    [ngClass]="{
+                      'btn-primary': category.text === this.categoryFilter,
+                      'btn-secondary': category.text !== this.categoryFilter
+                    }"
+                    (click)="$event.preventDefault(); filterCategoryButtonClicked(j)"
+                  >
+                    {{ category.text }}
+                  </a>
+                </div>
+                <div style="margin-bottom: 30px;" fxLayout="row wrap" fxLayoutAlign="space-around center">
+                  <a
+                    href="#"
+                    *ngFor="let difficulty of getAllQuestionDifficulties(); let j = index"
+                    class="btn filterCategoryButton"
+                    [ngClass]="{
+                      'btn-primary': difficulty === this.difficultyFilter,
+                      'btn-secondary': difficulty !== this.difficultyFilter
+                    }"
+                    (click)="$event.preventDefault(); filterDifficultyButtonClicked(difficulty)"
+                  >
+                    {{ difficulty }}
+                  </a>
+                </div>
+                <div style="margin-bottom: 20px;" fxLayout="row wrap" fxLayoutAlign="space-around center">
+                  <mat-checkbox
+                    *ngFor="let questionType of getAllQuestionTypes(); let j = index"
+                    (change)="filterQuestionTypeChanged(questionType)"
+                    color="primary"
+                    [checked]="true"
+                    >{{ questionType }}</mat-checkbox
+                  >
+                </div>
+                <!-- <h6 style="margin-bottom: 0px;" jhiTranslate="create-course.search">Search</h6> -->
+                <mat-form-field style="width: 80%;">
+                  <mat-label jhiTranslate="create-course.questionContains">Question contains ... </mat-label>
+                  <input matInput type="text" class="form-control" id="searchbox" (input)="onSearchChange()" />
+                </mat-form-field>
+              </div>
+
+              <div fxFlex="60">
+                <ng-container cdkDropListGroup>
+                  <div cdkDropListGroup>
+                    <h5 jhiTranslate="create-course.questionsForControlpoint">Questions for this Controlpoint</h5>
+                    <mat-accordion
+                      class="dropPanel"
+                      cdkDropList
+                      id="controlpointQuestionContainer"
+                      #selectedQuestionsList="cdkDropList"
+                      [cdkDropListData]="controlpoint.questions"
+                      (cdkDropListDropped)="dropQuestion($event, i)"
+                    >
+                      <div *ngIf="controlpoint.questions.length === 0" class="centeredContent">
+                        <span jhiTranslate="create-course.droppanelText" style="line-height: 48px;"></span>
+                      </div>
+
+                      <mat-expansion-panel *ngFor="let question of controlpoint.questions; let j = index" cdkDrag>
+                        <mat-expansion-panel-header
+                          ><fa-icon icon="times" class="width10" (click)="removeQuestion(i, j)"></fa-icon>
+                          <mat-panel-title class="shortenText width65"> Q: {{ question.text }} </mat-panel-title>
+                          <mat-panel-description class="shortenText width25">
+                            {{ question.category.text }} - {{ question.difficulty }} -
+                            {{ question.type }}
+                          </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <mat-label class="questionText">Q: {{ question.text }}</mat-label>
+                        <mat-list class="listWithHeightAuto" *ngFor="let answer of question.answers">
+                          <mat-list-item>
+                            <mat-label [ngClass]="{ correctAnswer: answer.correct }">A: {{ answer.text }}</mat-label>
+                          </mat-list-item>
+                        </mat-list>
+                      </mat-expansion-panel>
+                    </mat-accordion>
+
+                    <h5 *ngIf="this.questionsCreatedByMe?.length" jhiTranslate="create-course.allQuestions">
+                      Questions created by me
+                    </h5>
+
+                    <mat-accordion
+                      *ngIf="this.questionsCreatedByMe?.length"
+                      class="dropPanel"
+                      cdkDropList
+                      id="allQuestionsContainer"
+                      #allQuestionsList="cdkDropList"
+                      [cdkDropListData]="this.questionsCreatedByMe"
+                    >
+                      <mat-expansion-panel
+                        *ngFor="let question of myFilteredAndSearchedQuestions"
+                        cdkDrag
+                        [ngStyle]="question.alreadyAssigned && { background: '#efb73e' }"
+                      >
+                        <mat-expansion-panel-header>
+                          <mat-panel-title class="shortenText width70"> Q: {{ question.text }} </mat-panel-title>
+                          <mat-panel-description class="shortenText width30">
+                            {{ question.category.text }} - {{ question.difficulty }} -
+                            {{ question.type }}
+                          </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <mat-label class="questionText">Q: {{ question.text }}</mat-label>
+                        <mat-list class="listWithHeightAuto" *ngFor="let answer of question.answers">
+                          <mat-list-item>
+                            <mat-label [ngClass]="{ correctAnswer: answer.correct }">A: {{ answer.text }}</mat-label>
+                          </mat-list-item>
+                        </mat-list>
+                      </mat-expansion-panel>
+                    </mat-accordion>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="{{ 'create-course.createOwnQuestion' | translate }}">
+            <div class="margin16">
+              <jhi-create-question
+                [categories]="categories"
+                (successfullyCreated)="successfullyCreatedQuestion($event)"
+              ></jhi-create-question>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+
+      <div class="stepper-nav-buttons">
+        <button
+          *ngIf="i === 0"
+          mat-button
+          mat-raised-button
+          color="primary"
+          (click)="backToDefineCourse()"
+          jhiTranslate="create-course.backToCourseDefinition"
+        >
+          Go Back to course definition
+        </button>
+        <button *ngIf="i !== 0" mat-button mat-raised-button color="primary" matStepperPreviousjhiTranslate="create-course.back">
+          Go Back
+        </button>
+        <button
+          *ngIf="i !== this.course.controlpoints.length - 1"
+          mat-button
+          mat-raised-button
+          color="primary"
+          matStepperNext
+          jhiTranslate="create-course.next"
+        >
+          Next
+        </button>
+        <button
+          *ngIf="i === this.course.controlpoints.length - 1"
+          mat-button
+          mat-raised-button
+          color="primary"
+          (click)="continueToLastStep()"
+          jhiTranslate="create-course.continueToFinalStep"
+        >
+          Continue to final step
+        </button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

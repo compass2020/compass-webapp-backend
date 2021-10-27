@@ -1,0 +1,128 @@
+<div
+  fxLayout="row wrap"
+  fxLayoutAlign="space-around start"
+  fxLayoutGap="20px"
+  fxLayout.lt-lg="column"
+  fxLayoutAlign.lt-lg="center center"
+  fxLayoutGap.lt-lg="50px"
+>
+  <div>
+    <mat-card style="margin-top: 40px;" class="cardNew" (click)="toggleMultiple()" [ngStyle]="this.selectMany && { background: '#efb73e' }">
+      <mat-card-header>
+        <div mat-card-avatar style="margin-right: 50px;">
+          <fa-icon icon="poll" [fixedWidth]="true" size="4x" [styles]="{ color: '#e95420' }"></fa-icon>
+        </div>
+        <mat-card-title jhiTranslate="results.selectMultiple">Select multiple sessions of one course</mat-card-title>
+      </mat-card-header>
+    </mat-card>
+
+    <mat-card class="cardNew" *ngIf="this.selectMany && this.selectedCourse !== undefined" (click)="showSelectedSessions()">
+      <mat-card-header>
+        <div mat-card-avatar style="margin-right: 50px;">
+          <fa-icon icon="poll" [fixedWidth]="true" size="4x" [styles]="{ color: '#e95420' }"></fa-icon>
+        </div>
+        <mat-card-title jhiTranslate="results.showSelected">Show the selected sessions</mat-card-title>
+      </mat-card-header>
+    </mat-card>
+    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="20px">
+      <div>
+        <mat-form-field class="orderSelect">
+          <mat-label jhiTranslate="searchAndOrder.orderBy">Order by</mat-label>
+          <mat-select [(value)]="this.orderBy" (selectionChange)="this.orderData()">
+            <mat-option value="date" jhiTranslate="searchAndOrder.date">Date</mat-option>
+            <mat-option value="courseName" jhiTranslate="searchAndOrder.nameOfCourse">Name of Course</mat-option>
+            <mat-option value="sessionName" jhiTranslate="searchAndOrder.nameOfSession">Name of Session</mat-option>
+            <mat-option value="athletes" jhiTranslate="searchAndOrder.nrOfAthletes">Number of Athletes</mat-option>
+            <mat-option value="gameMode" jhiTranslate="my-courses.gameMode">Game Mode</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <fa-icon
+          *ngIf="!this.orderAsc"
+          icon="angle-down"
+          [fixedWidth]="true"
+          size="2x"
+          [styles]="{ color: '#e95420' }"
+          class="orderAsc"
+          (click)="this.orderAsc = true; this.orderData()"
+        ></fa-icon>
+        <fa-icon
+          *ngIf="this.orderAsc"
+          icon="angle-up"
+          [fixedWidth]="true"
+          size="2x"
+          [styles]="{ color: '#e95420' }"
+          class="orderAsc"
+          (click)="this.orderAsc = false; this.orderData()"
+        ></fa-icon>
+      </div>
+      <mat-form-field>
+        <mat-label jhiTranslate="searchAndOrder.itemsPerPage">Items per page</mat-label>
+        <mat-select [(value)]="this.itemsPerPage">
+          <mat-option value="3">3</mat-option>
+          <mat-option value="5">5</mat-option>
+          <mat-option value="10">10</mat-option>
+          <mat-option value="20">20</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+      <mat-form-field class="searchbox">
+        <mat-label jhiTranslate="searchAndOrder.searchFor">Search for ... </mat-label>
+        <input matInput type="text" id="searchbox" (input)="onSearchChange()" />
+      </mat-form-field>
+    </div>
+  </div>
+  <div>
+    <h2 style="text-align: center; margin-bottom: 20px;">Choose sessions to show results</h2>
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+    <ng-container *ngIf="!this.selectMany || this.selectedCourse !== undefined">
+      <ng-container
+        *ngFor="let session of this.displayedSessions | paginate: { itemsPerPage: itemsPerPage, currentPage: this.page }; let i = index"
+      >
+        <mat-card
+          *ngIf="session.sharedCourse.resultCourses.length > 0"
+          (click)="sessionClick(session.sharedCourse)"
+          [ngStyle]="session.selected && { background: '#efb73e' }"
+        >
+          <mat-card-header fxLayout.lt-sm="row wrap" fxLayoutAlign.lt-sm="center stretch">
+            <img
+              mat-card-avatar
+              src="{{
+                'data:' + session.sharedCourse.course.mapFinalSmallContentType + ';base64,' + session.sharedCourse.course.mapFinalSmall
+              }}"
+            />
+            <mat-card-title
+              >{{ session.sharedCourse.name }}<br /><span jhiTranslate="results.course"></span>&nbsp;{{ session.sharedCourse.course.name }}
+            </mat-card-title>
+            <mat-card-subtitle
+              ><span jhiTranslate="results.date"></span>&nbsp;{{
+                session.sharedCourse.timeStampShared | date: 'EEEE':'':this.jhiTranslateLanguage.currentLang
+              }}
+              {{ session.sharedCourse.timeStampShared | date: 'short':'':this.jhiTranslateLanguage.currentLang }}<br />
+              <span jhiTranslate="results.gameMode"></span>&nbsp;{{ session.sharedCourse.gameModus }} <br />
+              <span jhiTranslate="results.nrOfAthletes"></span>&nbsp;{{ session.sharedCourse.resultCourses.length }}</mat-card-subtitle
+            >
+          </mat-card-header>
+          <mat-card-content> </mat-card-content>
+        </mat-card>
+      </ng-container>
+    </ng-container>
+    <ng-container *ngIf="this.selectMany && this.selectedCourse === undefined">
+      <mat-card *ngFor="let course of this.courses; let i = index" (click)="selectCourse(course)">
+        <mat-card-header>
+          <img mat-card-avatar src="{{ 'data:' + course.mapFinalSmallContentType + ';base64,' + course.mapFinalSmall }}" />
+          <mat-card-title>{{ course.name }}</mat-card-title>
+          <mat-card-subtitle
+            ><span jhiTranslate="create-course.courseHas"></span>&nbsp;{{ course.controlpoints.length }}&nbsp;<span
+              jhiTranslate="create-course.controlpoints"
+            ></span
+          ></mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content> </mat-card-content>
+      </mat-card>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+<div
+  fxLayout="row wrap"
+  fxLayoutAlign="space-around start"
+  fxLayoutGap="20px"
+  fxLayout.lt-lg="column"
+  fxLayoutAlign.lt-lg="center center"
+  fxLayoutGap.lt-lg="50px"
+>
+  <div fxflex>
+    <h2 style="text-align: center; margin-bottom: 20px;" jhiTranslate="create-course.createOwnQuestion"></h2>
+    <jhi-create-question [categories]="categories" (successfullyCreated)="successfullyCreatedQuestion($event)"></jhi-create-question>
+  </div>
+  <div fxflex class="questions-container">
+    <div fxLayout="row wrap" fxLayout.lt-lg="column" fxLayoutAlign="center center" fxLayoutGap="20px">
+      <div>
+        <mat-form-field class="orderSelect">
+          <mat-label jhiTranslate="searchAndOrder.orderBy">Order by</mat-label>
+          <mat-select [(value)]="this.orderBy" (selectionChange)="this.orderData()">
+            <mat-option value="date" jhiTranslate="searchAndOrder.date">Date</mat-option>
+            <mat-option value="type" jhiTranslate="searchAndOrder.questionType"></mat-option>
+            <mat-option value="text" jhiTranslate="searchAndOrder.text"></mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <fa-icon
+          *ngIf="!this.orderAsc"
+          icon="angle-down"
+          [fixedWidth]="true"
+          size="2x"
+          [styles]="{ color: '#e95420' }"
+          style="height: 30px;"
+          (click)="this.orderAsc = true; this.orderData()"
+        ></fa-icon>
+        <fa-icon
+          *ngIf="this.orderAsc"
+          icon="angle-up"
+          [fixedWidth]="true"
+          size="2x"
+          [styles]="{ color: '#e95420' }"
+          style="height: 30px;"
+          (click)="this.orderAsc = false; this.orderData()"
+        ></fa-icon>
+      </div>
+      <mat-form-field>
+        <mat-label jhiTranslate="searchAndOrder.itemsPerPage">Items per page</mat-label>
+        <mat-select [(value)]="this.itemsPerPage">
+          <mat-option value="3">3</mat-option>
+          <mat-option value="5">5</mat-option>
+          <mat-option value="10">10</mat-option>
+          <mat-option value="20">20</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+      <mat-form-field class="searchbox">
+        <mat-label jhiTranslate="searchAndOrder.searchFor">Search for ... </mat-label>
+        <input matInput type="text" id="searchbox" (input)="onSearchChange()" />
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+    <mat-accordion>
+      <mat-expansion-panel
+        *ngFor="let question of questions | paginate: { itemsPerPage: this.itemsPerPage, currentPage: this.page }; let i = index"
+      >
+        <mat-expansion-panel-header>
+          <fa-icon icon="times" style="width: 10%;" (click)="removeQuestion(question)"></fa-icon>
+          <mat-panel-title class="shortenText" style="width: 55%;"> Q: {{ question.text }} </mat-panel-title>
+          <mat-panel-description class="shortenText" style="width: 35%;">
+            {{ question.category.text }} - {{ question.difficulty }} -
+            {{ question.type }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-label class="questionText">Q: {{ question.text }}</mat-label>
+        <mat-list class="listWithHeightAuto" *ngFor="let answer of question.answers">
+          <mat-list-item>
+            <mat-label [ngClass]="{ correctAnswer: answer.correct }">A: {{ answer.text }}</mat-label>
+          </mat-list-item>
+        </mat-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
+
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p jhiTranslate="my-courses.reallyDeleteQuestion"></p>
+    <button
+      mat-button
+      mat-raised-button
+      color="primary"
+      (click)="confirm()"
+      style="margin-right: 20px;"
+      jhiTranslate="my-courses.yes"
+    ></button>
+    <button mat-button mat-raised-button color="accent" (click)="decline()" jhiTranslate="my-courses.no"></button>
+  </div>
+</ng-template>

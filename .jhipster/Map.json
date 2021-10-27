@@ -1,0 +1,60 @@
+{
+  "name": "Map",
+  "fields": [
+    {
+      "fieldName": "mapOrigin",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "mapFinal",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "mapKmlOverlay",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "scaleX",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "scaleY",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "centerX",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "centerY",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "rotation",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "course",
+      "otherEntityRelationshipName": "map",
+      "relationshipName": "course",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200610093701",
+  "entityTableName": "map",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql, mariadb"/>
+    <property name="clobType" value="longvarchar" dbms="h2"/>
+    <property name="clobType" value="clob" dbms="mysql, oracle, mssql, mariadb, postgresql"/>
+    <property name="uuidType" value="uuid" dbms="h2, postgresql"/>
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200528095742_added_entity_Course.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200528095842_added_entity_Controlpoint.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200528095942_added_entity_Question.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200528100042_added_entity_Category.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200528100142_added_entity_Answer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200617085408_added_entity_OrienteeringMap.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200618125255_added_entity_SharedCourse.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200624064754_added_entity_ResultCourse.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200624064854_added_entity_ResultControlpoint.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200702080706_added_entity_ResultAdditionalInfo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200813110014_added_entity_ResultQuestion.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200813110114_added_entity_ResultAnswer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201008150647_added_entity_ControlpointInfo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210114124019_added_entity_SharedCourseQrCode.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20200528095842_added_entity_constraints_Controlpoint.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200528095942_added_entity_constraints_Question.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200528100142_added_entity_constraints_Answer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200528095742_added_entity_constraints_Course.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200618125255_added_entity_constraints_SharedCourse.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200624064754_added_entity_constraints_ResultCourse.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200624064854_added_entity_constraints_ResultControlpoint.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200813110014_added_entity_constraints_ResultQuestion.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200813110114_added_entity_constraints_ResultAnswer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210114124019_added_entity_constraints_SharedCourseQrCode.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+    <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
+</databaseChangeLog>

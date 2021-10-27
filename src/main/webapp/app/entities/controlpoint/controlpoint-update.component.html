@@ -1,0 +1,178 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-controlpoint-heading" jhiTranslate="compassApp.controlpoint.home.createOrEditLabel">Create or edit a Controlpoint</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.controlpoint.sequence" for="field_sequence">Sequence</label>
+                    <input type="number" class="form-control" name="sequence" id="field_sequence"
+                           formControlName="sequence"/>
+                    <div *ngIf="editForm.get('sequence')!.invalid && (editForm.get('sequence')!.dirty || editForm.get('sequence')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('sequence')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('sequence')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.controlpoint.controlCode" for="field_controlCode">Control Code</label>
+                    <input type="number" class="form-control" name="controlCode" id="field_controlCode"
+                           formControlName="controlCode"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.controlpoint.latitude" for="field_latitude">Latitude</label>
+                    <input type="number" class="form-control" name="latitude" id="field_latitude"
+                           formControlName="latitude"/>
+                    <div *ngIf="editForm.get('latitude')!.invalid && (editForm.get('latitude')!.dirty || editForm.get('latitude')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('latitude')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('latitude')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.controlpoint.longitude" for="field_longitude">Longitude</label>
+                    <input type="number" class="form-control" name="longitude" id="field_longitude"
+                           formControlName="longitude"/>
+                    <div *ngIf="editForm.get('longitude')!.invalid && (editForm.get('longitude')!.dirty || editForm.get('longitude')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('longitude')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('longitude')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.controlpoint.elevation" for="field_elevation">Elevation</label>
+                    <input type="number" class="form-control" name="elevation" id="field_elevation"
+                           formControlName="elevation"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.controlpoint.radius" for="field_radius">Radius</label>
+                    <input type="number" class="form-control" name="radius" id="field_radius"
+                           formControlName="radius"/>
+                    <div *ngIf="editForm.get('radius')!.invalid && (editForm.get('radius')!.dirty || editForm.get('radius')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('radius')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('radius')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.controlpoint.skippable" for="field_skippable">Skippable</label>
+                    <input type="checkbox" class="form-control" name="skippable" id="field_skippable"
+                           formControlName="skippable"/>
+                    <div *ngIf="editForm.get('skippable')!.invalid && (editForm.get('skippable')!.dirty || editForm.get('skippable')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('skippable')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.controlpoint.team" for="field_team">Team</label>
+                    <input type="checkbox" class="form-control" name="team" id="field_team"
+                           formControlName="team"/>
+                    <div *ngIf="editForm.get('team')!.invalid && (editForm.get('team')!.dirty || editForm.get('team')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('team')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.controlpoint.qrCode" for="field_qrCode">Qr Code</label>
+                    <input type="text" class="form-control" name="qrCode" id="field_qrCode"
+                           formControlName="qrCode"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.controlpoint.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           formControlName="description"/>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="compassApp.controlpoint.question" for="field_questions">Question</label>
+                    <select class="form-control" id="field_questions" multiple name="questions" formControlName="questions">
+                        <option [ngValue]="getSelected(editForm.get('questions')!.value, questionOption)" *ngFor="let questionOption of questions; trackBy: trackById">{{ questionOption.id }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('questions')!.invalid && (editForm.get('questions')!.dirty || editForm.get('questions')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('questions')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="compassApp.controlpoint.controlpointInfo" for="field_controlpointInfos">Controlpoint Info</label>
+                    <select class="form-control" id="field_controlpointInfos" multiple name="controlpointInfos" formControlName="controlpointInfos">
+                        <option [ngValue]="getSelected(editForm.get('controlpointInfos')!.value, controlpointInfoOption)" *ngFor="let controlpointInfoOption of controlpointinfos; trackBy: trackById">{{ controlpointInfoOption.id }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('controlpointInfos')!.invalid && (editForm.get('controlpointInfos')!.dirty || editForm.get('controlpointInfos')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('controlpointInfos')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.controlpoint.course" for="field_course">Course</label>
+                    <select class="form-control" id="field_course" name="course" formControlName="course">
+                        <option *ngIf="!editForm.get('course')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="courseOption.id === editForm.get('course')!.value?.id ? editForm.get('course')!.value : courseOption" *ngFor="let courseOption of courses; trackBy: trackById">{{ courseOption.id }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('course')!.invalid && (editForm.get('course')!.dirty || editForm.get('course')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('course')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

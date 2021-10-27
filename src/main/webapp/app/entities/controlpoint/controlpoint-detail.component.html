@@ -1,0 +1,84 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="controlpoint">
+            <h2><span jhiTranslate="compassApp.controlpoint.detail.title">Controlpoint</span> {{ controlpoint.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="compassApp.controlpoint.sequence">Sequence</span></dt>
+                <dd>
+                    <span>{{ controlpoint.sequence }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.controlpoint.controlCode">Control Code</span></dt>
+                <dd>
+                    <span>{{ controlpoint.controlCode }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.controlpoint.latitude">Latitude</span></dt>
+                <dd>
+                    <span>{{ controlpoint.latitude }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.controlpoint.longitude">Longitude</span></dt>
+                <dd>
+                    <span>{{ controlpoint.longitude }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.controlpoint.elevation">Elevation</span></dt>
+                <dd>
+                    <span>{{ controlpoint.elevation }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.controlpoint.radius">Radius</span></dt>
+                <dd>
+                    <span>{{ controlpoint.radius }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.controlpoint.skippable">Skippable</span></dt>
+                <dd>
+                    <span>{{ controlpoint.skippable }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.controlpoint.team">Team</span></dt>
+                <dd>
+                    <span>{{ controlpoint.team }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.controlpoint.qrCode">Qr Code</span></dt>
+                <dd>
+                    <span>{{ controlpoint.qrCode }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.controlpoint.description">Description</span></dt>
+                <dd>
+                    <span>{{ controlpoint.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.controlpoint.question">Question</span></dt>
+                <dd>
+                    <span *ngFor="let question of controlpoint.questions; let last = last">
+                        <a [routerLink]="['/question', question?.id, 'view']">{{ question.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.controlpoint.controlpointInfo">Controlpoint Info</span></dt>
+                <dd>
+                    <span *ngFor="let controlpointInfo of controlpoint.controlpointInfos; let last = last">
+                        <a [routerLink]="['/controlpoint-info', controlpointInfo?.id, 'view']">{{ controlpointInfo.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.controlpoint.course">Course</span></dt>
+                <dd>
+                    <div *ngIf="controlpoint.course">
+                        <a [routerLink]="['/course', controlpoint.course?.id, 'view']">{{ controlpoint.course?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/controlpoint', controlpoint.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

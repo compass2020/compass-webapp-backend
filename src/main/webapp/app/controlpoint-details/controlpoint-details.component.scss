@@ -1,0 +1,211 @@
+@import '~bootswatch/dist/united/variables';
+
+.smallmargin {
+  margin: 5px;
+}
+
+.backToMap {
+  margin-right: 50px;
+}
+
+.headerMarginTop {
+  margin-top: 20px;
+}
+
+.map_cp {
+  height: 300px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.tab-content {
+  margin: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.stepper-nav-buttons {
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+  border-radius: 10px 10px 0px 0px;
+  border: solid 1px #ccc;
+  border-bottom: none;
+  margin-top: 50px;
+}
+
+.stepper-nav-buttons button {
+  float: none;
+  margin: 10px;
+}
+
+.margin16 {
+  margin: 16px;
+}
+
+.mat-slider {
+  width: 300px;
+}
+
+.correctAnswer {
+  color: $orange;
+}
+
+.dropPanel {
+  border: solid 1px #ccc;
+  min-height: 48px;
+  background: white;
+  border-radius: 4px;
+  margin-bottom: 50px;
+  display: block;
+}
+
+::ng-deep .mat-accordion {
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.width50 {
+  max-width: 50%;
+}
+
+.width70 {
+  max-width: 70%;
+}
+.width65 {
+  max-width: 65%;
+}
+
+.width30 {
+  max-width: 30%;
+}
+
+.width25 {
+  max-width: 25%;
+}
+
+.width10 {
+  max-width: 10%;
+}
+
+.shortenText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.questionText {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.listWithHeightAuto .mat-list-item {
+  height: auto;
+}
+
+.filterCategoryButton {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.createOwnQuestion {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.hideDiv {
+  display: none !important;
+}
+
+.centeredContent {
+  height: 48px;
+  text-align: center;
+  background-color: #eee;
+}
+
+.skipSequenceSelect {
+  width: 250px;
+}
+
+.infoContainer,
+.infoBigContainer {
+  padding: 16px;
+}
+
+.infoContainer div:hover {
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.6);
+}
+
+.infoContainer img {
+  border: 3px solid transparent;
+}
+
+::ng-deep .info-tooltip {
+  font-size: 14px;
+}
+
+mat-panel-description.right-aligned {
+  flex-grow: 0;
+}
+
+::ng-deep .mat-expansion-panel:not([class*='mat-elevation-z']) {
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.7), 0px 2px 2px 0px rgba(0, 0, 0, 0.5), 0px 1px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.descriptionTableWrapper {
+  width: 100%;
+  text-align: center;
+}
+
+.controlDescriptionTable,
+.controlDescriptionTable th,
+.controlDescriptionTable td {
+  border: 3px solid #bf1377;
+  min-width: 43px;
+  height: 43px;
+  padding: 0px;
+}
+
+.controlDescriptionTable {
+  table-layout: fixed;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.controlDescriptionTable td img {
+  width: 40px;
+  height: 40px;
+}
+
+.mat-list-base .mat-list-item,
+.mat-list-base .mat-list-option {
+  height: 48px;
+}
+
+/* On screens that are 600px or less */
+@media screen and (max-width: 600px) {
+  .mat-list-base .mat-list-item,
+  .mat-list-base .mat-list-option {
+    height: auto !important;
+  }
+}
+
+/* On screens that are 500px or less */
+@media screen and (max-width: 500px) {
+  .controlDescriptionTable td img {
+    width: 25px;
+    height: 25px;
+  }
+
+  .controlDescriptionTable,
+  .controlDescriptionTable th,
+  .controlDescriptionTable td {
+    min-width: 30px;
+    height: 30px;
+  }
+}

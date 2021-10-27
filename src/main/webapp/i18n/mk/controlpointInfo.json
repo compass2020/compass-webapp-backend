@@ -1,0 +1,26 @@
+{
+  "compassApp": {
+    "controlpointInfo": {
+      "home": {
+        "title": "Controlpoint Infos",
+        "createLabel": "Create a new Controlpoint Info",
+        "createOrEditLabel": "Create or edit a Controlpoint Info",
+        "notFound": "No Controlpoint Infos found"
+      },
+      "created": "A new Controlpoint Info is created with identifier {{ param }}",
+      "updated": "A Controlpoint Info is updated with identifier {{ param }}",
+      "deleted": "A Controlpoint Info is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Controlpoint Info {{ id }}?"
+      },
+      "detail": {
+        "title": "Controlpoint Info"
+      },
+      "image": "Image",
+      "col": "Col",
+      "description": "Description",
+      "messageKey": "Message Key",
+      "controlpoint": "Controlpoint"
+    }
+  }
+}

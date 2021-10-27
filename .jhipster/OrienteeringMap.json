@@ -1,0 +1,59 @@
+{
+  "name": "OrienteeringMap",
+  "fields": [
+    {
+      "fieldName": "mapOverlayImage",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "mapOverlayKml",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    },
+    {
+      "fieldName": "imageScaleX",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "imageScaleY",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "imageCenterX",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "imageCenterY",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "imageRotation",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "declination",
+      "fieldType": "Double"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "course",
+      "otherEntityRelationshipName": "orienteeringMap",
+      "relationshipName": "course",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200617085408",
+  "entityTableName": "orienteering_map",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,34 @@
+{
+  "compassApp": {
+    "sharedCourse": {
+      "home": {
+        "title": "Shared Courses",
+        "createLabel": "Creeare o nouă entitate Shared Course",
+        "createOrEditLabel": "Creeare sau editare Shared Course",
+        "notFound": "No Shared Courses found"
+      },
+      "created": "A fost creată o nouă entitate Shared Course cu identificatorul {{ param }}",
+      "updated": "Shared Course cu identificatorul {{ param }} a fost actualizată",
+      "deleted": "Shared Course cu identificatorul {{ param }} a fost ștearsă",
+      "delete": {
+        "question": "Sunteți sigur că doriți să ștergeți Shared Course {{ id }}?"
+      },
+      "detail": {
+        "title": "Shared Course"
+      },
+      "name": "Name",
+      "qrCode": "Qr Code",
+      "gameModus": "Game Modus",
+      "timeStampShared": "Time Stamp Shared",
+      "visible": "Visible",
+      "timeStampStart": "Time Stamp Start",
+      "timeStampEnd": "Time Stamp End",
+      "numberOfCustomQrCodes": "Number Of Custom Qr Codes",
+      "showCourseBeforeStart": "Show Course Before Start",
+      "showPositionAllowed": "Show Position Allowed",
+      "resultCourse": "Result Course",
+      "sharedCourseQrCode": "Shared Course Qr Code",
+      "course": "Course"
+    }
+  }
+}

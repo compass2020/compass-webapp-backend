@@ -1,0 +1,99 @@
+.infoText {
+  margin-bottom: 20px;
+}
+
+#fullscreen {
+  background-color: #fff;
+}
+
+.map {
+  width: 100%;
+  height: 500px;
+  cursor: crosshair;
+}
+
+.rightBox {
+  margin-top: 20px;
+}
+
+#imgMap {
+  cursor: crosshair;
+  width: 0px;
+}
+
+.imgAligningMap {
+  width: 50% !important;
+  height: 500px;
+  float: left;
+}
+
+.ol-popup {
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  bottom: 12px;
+  left: -50px;
+  min-width: 220px;
+}
+.ol-popup:after,
+.ol-popup:before {
+  top: 100%;
+  border: solid transparent;
+  content: ' ';
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.ol-popup:after {
+  border-top-color: white;
+  border-width: 10px;
+  left: 48px;
+  margin-left: -10px;
+}
+.ol-popup:before {
+  border-top-color: #cccccc;
+  border-width: 11px;
+  left: 48px;
+  margin-left: -11px;
+}
+.ol-popup-closer {
+  text-decoration: none;
+  position: absolute;
+  top: 2px;
+  color: #3f51b5;
+  right: 8px;
+}
+.ol-popup-closer:after {
+  content: '✖';
+}
+
+.hidden {
+  display: none;
+}
+
+::ng-deep .mat-horizontal-stepper-header-container {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.popUpSlider {
+  margin-top: 20px;
+  display: block;
+}
+
+::ng-deep .ol-geocoder .gcd-txt-control,
+::ng-deep .ol-geocoder.gcd-txt-container {
+  height: 2em !important;
+}
+
+::ng-deep .ol-geocoder ul.gcd-txt-result {
+  top: 2.2em !important;
+}
+
+::ng-deep .ol-geocoder .gcd-txt-reset {
+  line-height: 180%;
+}

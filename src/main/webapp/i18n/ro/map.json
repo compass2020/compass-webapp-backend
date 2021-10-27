@@ -1,0 +1,30 @@
+{
+  "compassApp": {
+    "map": {
+      "home": {
+        "title": "Maps",
+        "createLabel": "Creeare o nouă entitate Map",
+        "createOrEditLabel": "Creeare sau editare Map",
+        "notFound": "No Maps found"
+      },
+      "created": "A fost creată o nouă entitate Map cu identificatorul {{ param }}",
+      "updated": "Map cu identificatorul {{ param }} a fost actualizată",
+      "deleted": "Map cu identificatorul {{ param }} a fost ștearsă",
+      "delete": {
+        "question": "Sunteți sigur că doriți să ștergeți Map {{ id }}?"
+      },
+      "detail": {
+        "title": "Map"
+      },
+      "mapOrigin": "Map Origin",
+      "mapFinal": "Map Final",
+      "mapKmlOverlay": "Map Kml Overlay",
+      "scaleX": "Scale X",
+      "scaleY": "Scale Y",
+      "centerX": "Center X",
+      "centerY": "Center Y",
+      "rotation": "Rotation",
+      "course": "Course"
+    }
+  }
+}

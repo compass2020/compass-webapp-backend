@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-result-additional-info-heading" jhiTranslate="compassApp.resultAdditionalInfo.home.createOrEditLabel">Create or edit a Result Additional Info</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultAdditionalInfo.gpxTrack" for="field_gpxTrack">Gpx Track</label>
+                    <div>
+                        <div *ngIf="editForm.get('gpxTrack')!.value" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(editForm.get('gpxTrackContentType')!.value, editForm.get('gpxTrack')!.value)" jhiTranslate="entity.action.open">open</a><br>
+                            <span class="pull-left">{{ editForm.get('gpxTrackContentType')!.value }}, {{ byteSize(editForm.get('gpxTrack')!.value) }}</span>
+                            <button type="button" (click)="editForm.patchValue({gpxTrack: null});editForm.patchValue({gpxTrackContentType: null});"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_gpxTrack" (change)="setFileData($event, 'gpxTrack', false)" jhiTranslate="entity.action.addblob"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="gpxTrack" id="field_gpxTrack"
+                           formControlName="gpxTrack"/>
+                    <input type="hidden" class="form-control" name="gpxTrackContentType" id="field_gpxTrackContentType"
+                           formControlName="gpxTrackContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultAdditionalInfo.heartRate" for="field_heartRate">Heart Rate</label>
+                    <div>
+                        <div *ngIf="editForm.get('heartRate')!.value" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(editForm.get('heartRateContentType')!.value, editForm.get('heartRate')!.value)" jhiTranslate="entity.action.open">open</a><br>
+                            <span class="pull-left">{{ editForm.get('heartRateContentType')!.value }}, {{ byteSize(editForm.get('heartRate')!.value) }}</span>
+                            <button type="button" (click)="editForm.patchValue({heartRate: null});editForm.patchValue({heartRateContentType: null});"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_heartRate" (change)="setFileData($event, 'heartRate', false)" jhiTranslate="entity.action.addblob"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="heartRate" id="field_heartRate"
+                           formControlName="heartRate"/>
+                    <input type="hidden" class="form-control" name="heartRateContentType" id="field_heartRateContentType"
+                           formControlName="heartRateContentType" />
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

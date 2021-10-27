@@ -1,0 +1,10 @@
+{
+  "compassApp": {
+    "GameModus": {
+      "null": "",
+      "QRCODE": "QRCODE",
+      "GPS": "GPS",
+      "NFC": "NFC"
+    }
+  }
+}

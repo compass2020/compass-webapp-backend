@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="sharedCourseQrCode">
+            <h2><span jhiTranslate="compassApp.sharedCourseQrCode.detail.title">Shared Course Qr Code</span> {{ sharedCourseQrCode.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="compassApp.sharedCourseQrCode.device">Device</span></dt>
+                <dd>
+                    <span>{{ sharedCourseQrCode.device }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.sharedCourseQrCode.qrCode">Qr Code</span></dt>
+                <dd>
+                    <span>{{ sharedCourseQrCode.qrCode }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.sharedCourseQrCode.scanned">Scanned</span></dt>
+                <dd>
+                    <span>{{ sharedCourseQrCode.scanned }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.sharedCourseQrCode.timeStampScanned">Time Stamp Scanned</span></dt>
+                <dd>
+                    <span>{{ sharedCourseQrCode.timeStampScanned }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.sharedCourseQrCode.sharedCourse">Shared Course</span></dt>
+                <dd>
+                    <div *ngIf="sharedCourseQrCode.sharedCourse">
+                        <a [routerLink]="['/shared-course', sharedCourseQrCode.sharedCourse?.id, 'view']">{{ sharedCourseQrCode.sharedCourse?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/shared-course-qr-code', sharedCourseQrCode.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

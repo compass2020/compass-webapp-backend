@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="resultAnswer">
+            <h2><span jhiTranslate="compassApp.resultAnswer.detail.title">Result Answer</span> {{ resultAnswer.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="compassApp.resultAnswer.text">Text</span></dt>
+                <dd>
+                    <span>{{ resultAnswer.text }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.resultAnswer.correct">Correct</span></dt>
+                <dd>
+                    <span>{{ resultAnswer.correct }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.resultAnswer.answeredCorrectly">Answered Correctly</span></dt>
+                <dd>
+                    <span>{{ resultAnswer.answeredCorrectly }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.resultAnswer.resultQuestion">Result Question</span></dt>
+                <dd>
+                    <div *ngIf="resultAnswer.resultQuestion">
+                        <a [routerLink]="['/result-question', resultAnswer.resultQuestion?.id, 'view']">{{ resultAnswer.resultQuestion?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/result-answer', resultAnswer.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

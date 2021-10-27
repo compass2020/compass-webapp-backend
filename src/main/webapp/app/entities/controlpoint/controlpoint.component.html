@@ -1,0 +1,97 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="compassApp.controlpoint.home.title">Controlpoints</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-controlpoint" [routerLink]="['/controlpoint/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="compassApp.controlpoint.home.createLabel">
+            Create a new Controlpoint
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="controlpoints?.length === 0">
+        <span jhiTranslate="compassApp.controlpoint.home.notFound">No controlpoints found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="controlpoints && controlpoints.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.controlpoint.sequence">Sequence</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.controlpoint.controlCode">Control Code</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.controlpoint.latitude">Latitude</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.controlpoint.longitude">Longitude</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.controlpoint.elevation">Elevation</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.controlpoint.radius">Radius</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.controlpoint.skippable">Skippable</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.controlpoint.team">Team</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.controlpoint.qrCode">Qr Code</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.controlpoint.description">Description</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.controlpoint.question">Question</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.controlpoint.controlpointInfo">Controlpoint Info</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.controlpoint.course">Course</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let controlpoint of controlpoints ;trackBy: trackId">
+                    <td><a [routerLink]="['/controlpoint', controlpoint.id, 'view']">{{ controlpoint.id }}</a></td>
+                    <td>{{ controlpoint.sequence }}</td>
+                    <td>{{ controlpoint.controlCode }}</td>
+                    <td>{{ controlpoint.latitude }}</td>
+                    <td>{{ controlpoint.longitude }}</td>
+                    <td>{{ controlpoint.elevation }}</td>
+                    <td>{{ controlpoint.radius }}</td>
+                    <td>{{ controlpoint.skippable }}</td>
+                    <td>{{ controlpoint.team }}</td>
+                    <td>{{ controlpoint.qrCode }}</td>
+                    <td>{{ controlpoint.description }}</td>
+                    <td>
+                        <span *ngFor="let question of controlpoint.questions; let last = last">
+                            <a class="form-control-static" [routerLink]="['/question', question?.id, 'view']">{{ question.id }}</a>{{ last ? '' : ', ' }}
+                        </span>
+                    </td>
+                    <td>
+                        <span *ngFor="let controlpointInfo of controlpoint.controlpointInfos; let last = last">
+                            <a class="form-control-static" [routerLink]="['/controlpoint-info', controlpointInfo?.id, 'view']">{{ controlpointInfo.id }}</a>{{ last ? '' : ', ' }}
+                        </span>
+                    </td>
+                    <td>
+                        <div *ngIf="controlpoint.course">
+                            <a [routerLink]="['/course', controlpoint.course?.id, 'view']" >{{ controlpoint.course?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/controlpoint', controlpoint.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/controlpoint', controlpoint.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(controlpoint)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

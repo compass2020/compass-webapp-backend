@@ -1,0 +1,72 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="sharedCourse">
+            <h2><span jhiTranslate="compassApp.sharedCourse.detail.title">Shared Course</span> {{ sharedCourse.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="compassApp.sharedCourse.name">Name</span></dt>
+                <dd>
+                    <span>{{ sharedCourse.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.sharedCourse.qrCode">Qr Code</span></dt>
+                <dd>
+                    <span>{{ sharedCourse.qrCode }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.sharedCourse.gameModus">Game Modus</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'compassApp.GameModus.' + sharedCourse.gameModus }}">{{ sharedCourse.gameModus }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.sharedCourse.timeStampShared">Time Stamp Shared</span></dt>
+                <dd>
+                    <span>{{ sharedCourse.timeStampShared }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.sharedCourse.visible">Visible</span></dt>
+                <dd>
+                    <span>{{ sharedCourse.visible }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.sharedCourse.timeStampStart">Time Stamp Start</span></dt>
+                <dd>
+                    <span>{{ sharedCourse.timeStampStart }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.sharedCourse.timeStampEnd">Time Stamp End</span></dt>
+                <dd>
+                    <span>{{ sharedCourse.timeStampEnd }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.sharedCourse.numberOfCustomQrCodes">Number Of Custom Qr Codes</span></dt>
+                <dd>
+                    <span>{{ sharedCourse.numberOfCustomQrCodes }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.sharedCourse.showCourseBeforeStart">Show Course Before Start</span></dt>
+                <dd>
+                    <span>{{ sharedCourse.showCourseBeforeStart }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.sharedCourse.showPositionAllowed">Show Position Allowed</span></dt>
+                <dd>
+                    <span>{{ sharedCourse.showPositionAllowed }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.sharedCourse.course">Course</span></dt>
+                <dd>
+                    <div *ngIf="sharedCourse.course">
+                        <a [routerLink]="['/course', sharedCourse.course?.id, 'view']">{{ sharedCourse.course?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/shared-course', sharedCourse.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

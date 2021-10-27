@@ -1,0 +1,25 @@
+{
+  "compassApp": {
+    "resultAnswer": {
+      "home": {
+        "title": "Result Answers",
+        "createLabel": "Creeare o nouă entitate Result Answer",
+        "createOrEditLabel": "Creeare sau editare Result Answer",
+        "notFound": "No Result Answers found"
+      },
+      "created": "A fost creată o nouă entitate Result Answer cu identificatorul {{ param }}",
+      "updated": "Result Answer cu identificatorul {{ param }} a fost actualizată",
+      "deleted": "Result Answer cu identificatorul {{ param }} a fost ștearsă",
+      "delete": {
+        "question": "Sunteți sigur că doriți să ștergeți Result Answer {{ id }}?"
+      },
+      "detail": {
+        "title": "Result Answer"
+      },
+      "text": "Text",
+      "correct": "Correct",
+      "answeredCorrectly": "Answered Correctly",
+      "resultQuestion": "Result Question"
+    }
+  }
+}

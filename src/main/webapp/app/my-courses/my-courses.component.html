@@ -1,0 +1,144 @@
+<h2 style="text-align: center; margin-bottom: 20px;" jhiTranslate="my-courses.title">My Courses</h2>
+<div
+  fxLayout="row wrap"
+  fxLayoutAlign="space-around start"
+  fxLayoutGap="20px"
+  fxLayout.lt-lg="column"
+  fxLayoutAlign.lt-lg="center center"
+  fxLayoutGap.lt-lg="50px"
+>
+  <div>
+    <mat-card style="margin-top: 40px;" class="cardNew" routerLink="/create-course">
+      <mat-card-header>
+        <div mat-card-avatar style="margin-right: 50px;">
+          <fa-icon icon="plus-circle" [fixedWidth]="true" size="4x" [styles]="{ color: '#e95420' }"></fa-icon>
+        </div>
+        <mat-card-title jhiTranslate="dashboard.createCourse">Create a new course</mat-card-title>
+      </mat-card-header>
+    </mat-card>
+    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="20px">
+      <div>
+        <mat-form-field class="orderSelect">
+          <mat-label jhiTranslate="searchAndOrder.orderBy">Order by</mat-label>
+          <mat-select [(value)]="this.orderBy" (selectionChange)="this.orderData()">
+            <mat-option value="date" jhiTranslate="searchAndOrder.date">Date</mat-option>
+            <mat-option value="name" jhiTranslate="searchAndOrder.nameOfCourse">Name of Course</mat-option>
+            <mat-option value="controlpoints" jhiTranslate="searchAndOrder.nrOfComtrolpoints">Number of Controlpoints</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <fa-icon
+          *ngIf="!this.orderAsc"
+          icon="angle-down"
+          [fixedWidth]="true"
+          size="2x"
+          [styles]="{ color: '#e95420' }"
+          style="height: 30px;"
+          (click)="this.orderAsc = true; this.orderData()"
+        ></fa-icon>
+        <fa-icon
+          *ngIf="this.orderAsc"
+          icon="angle-up"
+          [fixedWidth]="true"
+          size="2x"
+          [styles]="{ color: '#e95420' }"
+          style="height: 30px;"
+          (click)="this.orderAsc = false; this.orderData()"
+        ></fa-icon>
+      </div>
+      <mat-form-field>
+        <mat-label jhiTranslate="searchAndOrder.itemsPerPage">Items per page</mat-label>
+        <mat-select [(value)]="this.itemsPerPage">
+          <mat-option value="3">3</mat-option>
+          <mat-option value="5">5</mat-option>
+          <mat-option value="10">10</mat-option>
+          <mat-option value="20">20</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+      <mat-form-field class="searchbox">
+        <mat-label jhiTranslate="searchAndOrder.searchFor">Search for ... </mat-label>
+        <input matInput type="text" id="searchbox" (input)="onSearchChange()" />
+      </mat-form-field>
+    </div>
+  </div>
+  <div>
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+    <mat-card
+      class="cardBox"
+      *ngFor="let course of courses | paginate: { itemsPerPage: this.itemsPerPage, currentPage: this.page }; let i = index"
+    >
+      <mat-card-header fxLayout="row" fxLayout.lt-sm="row wrap" fxLayoutAlign="space-between stretch" fxLayoutAlign.lt-sm="center stretch">
+        <img mat-card-avatar src="{{ 'data:' + course.mapFinalSmallContentType + ';base64,' + course.mapFinalSmall }}" />
+        <mat-card-title>{{ course.name }}</mat-card-title>
+
+        <mat-card-subtitle
+          ><span jhiTranslate="create-course.courseHas"></span>&nbsp;{{ course.controlpoints.length }}&nbsp;<span
+            jhiTranslate="create-course.controlpoints"
+          ></span>
+          <br />
+          <span
+            style="display: inline-block; margin-right: 20px; margin-bottom: 0px;"
+            class="infoText"
+            jhiTranslate="create-course.courseLength"
+          ></span>
+          <span style="display: inline-block; margin-bottom: 0px;">{{ course.length | metersPipe }}</span>
+          <br />
+          <div fxLayout="row " fxLayoutAlign="start stretch" fxLayoutGap="10px">
+            <fa-icon icon="angle-up" [fixedWidth]="true" size="2x" [styles]="{ color: '#e95420' }" class="orderAsc"></fa-icon>
+            <span style="line-height: 25px; margin-bottom: 0px; height: 30px;">{{ course.altitudeUp | metersPipe }}</span>
+            <fa-icon icon="angle-down" [fixedWidth]="true" size="2x" [styles]="{ color: '#e95420' }" class="orderAsc"></fa-icon>
+            <span style="line-height: 25px; margin-bottom: 0px; height: 30px;">{{ course.altitudeDown | metersPipe }}</span>
+          </div>
+        </mat-card-subtitle>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </mat-card-header>
+      <mat-card-content>
+        <button
+          mat-button
+          mat-raised-button
+          color="primary"
+          routerLink="/shareQR/{{ course.id }}"
+          jhiTranslate="my-courses.createNewSession"
+        >
+          Create Session
+        </button>
+      </mat-card-content>
+      <mat-menu #menu="matMenu" xPosition="before">
+        <button mat-menu-item *ngIf="course.shared" (click)="viewCourse(course.id)">
+          <mat-icon>preview</mat-icon>
+          <span jhiTranslate="my-courses.view">view</span>
+        </button>
+        <button mat-menu-item *ngIf="!course.shared" (click)="viewCourse(course.id)">
+          <mat-icon>edit</mat-icon>
+          <span jhiTranslate="my-courses.edit">edit</span>
+        </button>
+        <button mat-menu-item *ngIf="!course.shared" (click)="deleteCourse(course.id)">
+          <mat-icon>delete</mat-icon>
+          <span jhiTranslate="my-courses.delete">view</span>
+        </button>
+        <button mat-menu-item (click)="duplicateCourse(i)">
+          <mat-icon>content_copy</mat-icon>
+          <span jhiTranslate="my-courses.duplicate">duplicate</span>
+        </button>
+        <button mat-menu-item routerLink="/printQRs/{{ course.id }}">
+          <mat-icon>qr_code</mat-icon>
+          <span jhiTranslate="my-courses.showQR"> print QR-Codes</span>
+        </button>
+        <button mat-menu-item routerLink="/printMap/{{ course.id }}">
+          <mat-icon>print</mat-icon>
+          <span jhiTranslate="my-courses.printMap"> print map</span>
+        </button>
+        <button mat-menu-item routerLink="/shareQR/{{ course.id }}">
+          <mat-icon>directions_run</mat-icon>
+          <span jhiTranslate="my-courses.share">Sessions</span>
+        </button>
+      </mat-menu>
+    </mat-card>
+  </div>
+</div>

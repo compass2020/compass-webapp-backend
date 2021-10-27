@@ -1,0 +1,73 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="compassApp.question.home.title">Questions</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-question" [routerLink]="['/question/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="compassApp.question.home.createLabel">
+            Create a new Question
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="questions?.length === 0">
+        <span jhiTranslate="compassApp.question.home.notFound">No questions found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="questions && questions.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.question.text">Text</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.question.type">Type</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.question.difficulty">Difficulty</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.question.personal">Personal</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.question.category">Category</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let question of questions ;trackBy: trackId">
+                    <td><a [routerLink]="['/question', question.id, 'view']">{{ question.id }}</a></td>
+                    <td>{{ question.text }}</td>
+                    <td jhiTranslate="{{ 'compassApp.QuestionType.' + question.type }}">{{ question.type }}</td>
+                    <td jhiTranslate="{{ 'compassApp.Difficulty.' + question.difficulty }}">{{ question.difficulty }}</td>
+                    <td>{{ question.personal }}</td>
+                    <td>
+                        <div *ngIf="question.category">
+                            <a [routerLink]="['/category', question.category?.id, 'view']" >{{ question.category?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/question', question.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/question', question.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(question)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+{
+  "name": "ResultAdditionalInfo",
+  "fields": [
+    {
+      "fieldName": "gpxTrack",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    },
+    {
+      "fieldName": "heartRate",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "resultCourse",
+      "otherEntityRelationshipName": "resultAdditionalinfo",
+      "relationshipValidateRules": "required",
+      "relationshipName": "resultCourse",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200702080706",
+  "entityTableName": "result_additional_info",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

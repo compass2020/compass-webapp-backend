@@ -1,0 +1,28 @@
+{
+  "compassApp": {
+    "resultQuestion": {
+      "home": {
+        "title": "Result Questions",
+        "createLabel": "Създайте нов Result Question",
+        "createOrEditLabel": "Създайте или редактирайте Result Question",
+        "notFound": "Result Questions не са намерени"
+      },
+      "created": "Създаден е нов Result Question с идентификатор {{ param }}",
+      "updated": "Result Question с идентификатор {{ param }} e oбновен",
+      "deleted": "Result Question с идентификатор {{ param }} е изтрит",
+      "delete": {
+        "question": "Наистина ли искате да изтриете Result Question {{ id }}?"
+      },
+      "detail": {
+        "title": "Result Question"
+      },
+      "text": "Text",
+      "type": "Type",
+      "difficulty": "Difficulty",
+      "answeredCorrectly": "Answered Correctly",
+      "resultAnswer": "Result Answer",
+      "category": "Category",
+      "resultControlpoint": "Result Controlpoint"
+    }
+  }
+}

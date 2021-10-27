@@ -1,0 +1,30 @@
+{
+  "compassApp": {
+    "resultControlpoint": {
+      "home": {
+        "title": "Result Controlpoints",
+        "createLabel": "Create a new Result Controlpoint",
+        "createOrEditLabel": "Create or edit a Result Controlpoint",
+        "notFound": "No Result Controlpoints found"
+      },
+      "created": "A new Result Controlpoint is created with identifier {{ param }}",
+      "updated": "A Result Controlpoint is updated with identifier {{ param }}",
+      "deleted": "A Result Controlpoint is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Result Controlpoint {{ id }}?"
+      },
+      "detail": {
+        "title": "Result Controlpoint"
+      },
+      "sequence": "Sequence",
+      "timeReached": "Time Reached",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "skipAllowed": "Skip Allowed",
+      "reached": "Reached",
+      "borgScale": "Borg Scale",
+      "resultQuestion": "Result Question",
+      "resultCourse": "Result Course"
+    }
+  }
+}

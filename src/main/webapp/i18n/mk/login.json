@@ -1,0 +1,19 @@
+{
+  "login": {
+    "title": "Најави се",
+    "form": {
+      "password": "Лозинка",
+      "password.placeholder": "Вашата лозинка",
+      "rememberme": "Запомни ме",
+      "button": "Најави се"
+    },
+    "messages": {
+      "error": {
+        "authentication": "<strong> Не успеав да се најавам! </strong> Проверете ги ингеренциите и обидете се повторно."
+      }
+    },
+    "password": {
+      "forgot": "Дали ја заборавивте вашата лозинка?"
+    }
+  }
+}

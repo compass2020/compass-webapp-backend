@@ -1,0 +1,44 @@
+{
+  "name": "ResultAnswer",
+  "fields": [
+    {
+      "fieldName": "text",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "correct",
+      "fieldType": "Boolean",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "answeredCorrectly",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "resultQuestion",
+      "otherEntityRelationshipName": "resultAnswer",
+      "relationshipValidateRules": "required",
+      "relationshipName": "resultQuestion",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200813110114",
+  "entityTableName": "result_answer",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

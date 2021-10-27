@@ -1,0 +1,24 @@
+{
+  "compassApp": {
+    "category": {
+      "home": {
+        "title": "Categories",
+        "createLabel": "Category erstellen",
+        "createOrEditLabel": "Category erstellen oder bearbeiten",
+        "notFound": "No Categories found"
+      },
+      "created": "Category erstellt mit ID {{ param }}",
+      "updated": "Category aktualisiert mit ID {{ param }}",
+      "deleted": "Category gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Category {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Category"
+      },
+      "text": "Text",
+      "question": "Question",
+      "resultQuestion": "Result Question"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "compassApp": {
+    "answer": {
+      "home": {
+        "title": "Answers",
+        "createLabel": "Answer erstellen",
+        "createOrEditLabel": "Answer erstellen oder bearbeiten",
+        "notFound": "No Answers found"
+      },
+      "created": "Answer erstellt mit ID {{ param }}",
+      "updated": "Answer aktualisiert mit ID {{ param }}",
+      "deleted": "Answer gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Answer {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Answer"
+      },
+      "text": "Text",
+      "correct": "Correct",
+      "question": "Question"
+    }
+  }
+}

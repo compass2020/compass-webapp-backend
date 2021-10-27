@@ -1,0 +1,31 @@
+{
+  "compassApp": {
+    "resultControlpoint": {
+      "home": {
+        "title": "Result Controlpoints",
+        "createLabel": "Lisa uus Result Controlpoint",
+        "createOrEditLabel": "Lisa või muuda Result Controlpoint",
+        "notFound": "No Result Controlpoints found"
+      },
+      "created": "Uus Result Controlpoint on loodud identifikaatoriga {{ param }}",
+      "updated": "Result Controlpoint identifikaatoriga {{ param }} on muudetud",
+      "deleted": "Result Controlpoint identifikaatoriga {{ param }} on kustutatud",
+      "delete": {
+        "question": "Kas olete kindel, et soovite kustutada Result Controlpoint {{ id }}?"
+      },
+      "detail": {
+        "title": "Result Controlpoint"
+      },
+      "sequence": "Sequence",
+      "timeReached": "Time Reached",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "skipAllowed": "Skip Allowed",
+      "reached": "Reached",
+      "borgScale": "Borg Scale",
+      "forceSkipped": "Force Skipped",
+      "resultQuestion": "Result Question",
+      "resultCourse": "Result Course"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="resultCourse">
+            <h2><span jhiTranslate="compassApp.resultCourse.detail.title">Result Course</span> {{ resultCourse.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="compassApp.resultCourse.nickName">Nick Name</span></dt>
+                <dd>
+                    <span>{{ resultCourse.nickName }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.resultCourse.timeStampFinished">Time Stamp Finished</span></dt>
+                <dd>
+                    <span>{{ resultCourse.timeStampFinished }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.resultCourse.timeStampStarted">Time Stamp Started</span></dt>
+                <dd>
+                    <span>{{ resultCourse.timeStampStarted }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.resultCourse.totalDurationInMillis">Total Duration In Millis</span></dt>
+                <dd>
+                    <span>{{ resultCourse.totalDurationInMillis }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.resultCourse.viewCode">View Code</span></dt>
+                <dd>
+                    <span>{{ resultCourse.viewCode }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.resultCourse.showPositionCounter">Show Position Counter</span></dt>
+                <dd>
+                    <span>{{ resultCourse.showPositionCounter }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.resultCourse.switchAppCounter">Switch App Counter</span></dt>
+                <dd>
+                    <span>{{ resultCourse.switchAppCounter }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.resultCourse.resultAdditionalinfo">Result Additionalinfo</span></dt>
+                <dd>
+                    <div *ngIf="resultCourse.resultAdditionalinfo">
+                        <a [routerLink]="['/result-additional-info', resultCourse.resultAdditionalinfo?.id, 'view']">{{ resultCourse.resultAdditionalinfo?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="compassApp.resultCourse.sharedCourse">Shared Course</span></dt>
+                <dd>
+                    <div *ngIf="resultCourse.sharedCourse">
+                        <a [routerLink]="['/shared-course', resultCourse.sharedCourse?.id, 'view']">{{ resultCourse.sharedCourse?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/result-course', resultCourse.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

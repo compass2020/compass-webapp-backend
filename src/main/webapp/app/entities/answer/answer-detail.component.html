@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="answer">
+            <h2><span jhiTranslate="compassApp.answer.detail.title">Answer</span> {{ answer.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="compassApp.answer.text">Text</span></dt>
+                <dd>
+                    <span>{{ answer.text }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.answer.correct">Correct</span></dt>
+                <dd>
+                    <span>{{ answer.correct }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.answer.question">Question</span></dt>
+                <dd>
+                    <div *ngIf="answer.question">
+                        <a [routerLink]="['/question', answer.question?.id, 'view']">{{ answer.question?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/answer', answer.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

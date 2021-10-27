@@ -1,0 +1,206 @@
+<div fxLayout="row wrap" fxLayoutAlign="space-around start" fxLayoutGap="20px">
+  <div>
+    <mat-card class="cardNew">
+      <mat-card-header>
+        <div mat-card-avatar style="margin-right: 50px;">
+          <fa-icon icon="plus-circle" [fixedWidth]="true" size="4x" [styles]="{ color: '#e95420' }"></fa-icon>
+        </div>
+        <!--  <img mat-card-avatar src="{{ this.courseImg }}" /> -->
+        <mat-card-title jhiTranslate="my-courses.createNewSession"></mat-card-title>
+      </mat-card-header>
+      <mat-card-content style="text-align: center; margin-top: 20px;">
+        <mat-radio-group
+          aria-labelledby="radio-group-label"
+          fxLayoutAlign="space-between stretch"
+          class="radio-group"
+          [(ngModel)]="selectedMode"
+        >
+          <mat-radio-button
+            fxFlex
+            [disabled]="this.radiosDisabled"
+            class="radio-button"
+            color="primary"
+            *ngFor="let gameMode of getAllGameModes()"
+            value="{{ gameMode }}"
+            >{{ gameMode }}</mat-radio-button
+          >
+        </mat-radio-group>
+        <mat-label
+          *ngIf="selectedMode?.valueOf() === 'QRCODE'"
+          jhiTranslate="my-courses.qrCodeMode"
+          style="margin-bottom: 10px; display: block;"
+        >
+        </mat-label>
+        <mat-label *ngIf="selectedMode?.valueOf() === 'GPS'" jhiTranslate="my-courses.GpsMode" style="margin-bottom: 10px; display: block;">
+        </mat-label
+        ><br />
+        <mat-divider></mat-divider>
+        <mat-checkbox [(ngModel)]="this.showCourseBeforeStart" color="primary" class="paddingTop"
+          ><span jhiTranslate="my-courses.showCourseBeforeStart"></span
+        ></mat-checkbox>
+        <mat-divider></mat-divider>
+        <mat-checkbox [(ngModel)]="this.showPositionAllowed" color="primary" class="paddingTop"
+          ><span jhiTranslate="my-courses.showPositionAllowed"></span
+        ></mat-checkbox>
+        <mat-divider></mat-divider>
+
+        <mat-checkbox [(ngModel)]="this.oneTimeQRCodes" color="primary" class="paddingTop"
+          ><span jhiTranslate="my-courses.oneTimeQRCodes"></span
+        ></mat-checkbox>
+        <div style="width: 250px; margin: auto; text-align: center;">
+          <ng-number-picker
+            class="qrCodePicker"
+            *ngIf="this.oneTimeQRCodes"
+            [(value)]="this.amountOfOneTimeCodes"
+            [step]="5"
+            [min]="1"
+            [max]="200"
+          ></ng-number-picker>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <mat-checkbox [(ngModel)]="this.activeDateRange" color="primary" class="paddingTop"
+          ><span jhiTranslate="my-courses.sessionDateRange"></span
+        ></mat-checkbox>
+
+        <!-- <span jhiTranslate="my-courses.sessionDateRange" class="paddingTop"></span> -->
+        <input
+          *ngIf="this.activeDateRange"
+          class="dateTimeRangePicker"
+          [owlDateTime]="dt1"
+          [min]="this.dateTimeNow"
+          [(ngModel)]="timeRange"
+          [selectMode]="'range'"
+          [owlDateTimeTrigger]="dt1"
+          placeholder="Date Time" />
+        <owl-date-time #dt1></owl-date-time>
+
+        <mat-divider *ngIf="this.activeDateRange"></mat-divider>
+
+        <mat-form-field style="width: 80%; margin-top: 20px;">
+          <mat-label jhiTranslate="my-courses.nameOfSession"></mat-label>
+          <input matInput [maxLength]="255" type="text" class="form-control" [(ngModel)]="this.sessionName" />
+        </mat-form-field>
+        <button
+          *ngIf="this.selectedMode !== undefined"
+          mat-button
+          mat-raised-button
+          color="primary"
+          id="shareButton"
+          (click)="generateQR()"
+          jhiTranslate="my-courses.generate"
+        ></button
+      ></mat-card-content>
+    </mat-card>
+  </div>
+  <div>
+    <h2 *ngIf="this.course && this.sharedCourses?.length > 0" style="text-align: center; margin-top: 50px; margin-bottom: 20px;">
+      <span jhiTranslate="my-courses.previousSessions"></span>&nbsp;"{{ this.course.name }}"
+    </h2>
+    <ng-container *ngFor="let sharedCourse of this.sharedCourses; let i = index">
+      <mat-card class="card" *ngIf="sharedCourse.visible">
+        <mat-card-header
+          fxLayout="row"
+          fxLayout.lt-sm="row wrap"
+          fxLayoutAlign="space-between stretch"
+          fxLayoutAlign.lt-sm="center stretch"
+        >
+          <img mat-card-avatar src="{{ this.courseImg }}" />
+          <mat-card-title>{{ sharedCourse.name }}</mat-card-title>
+          <mat-card-subtitle>
+            <span jhiTranslate="my-courses.sessionFrom"></span>&nbsp;{{
+              sharedCourse.timeStampShared | date: 'short':'':this.jhiTranslateLanguage.currentLang
+            }}<br />
+            <span jhiTranslate="my-courses.gameMode"></span>:&nbsp;{{ sharedCourse.gameModus }} <br />
+            <mat-checkbox class="disabledCheckbox" [ngModel]="sharedCourse.showCourseBeforeStart" color="primary" [disabled]="true"
+              ><span jhiTranslate="my-courses.showCourseBeforeStartShort"></span></mat-checkbox
+            ><br />
+            <mat-checkbox class="disabledCheckbox" [ngModel]="this.sharedCourse.showPositionAllowed" color="primary" [disabled]="true"
+              ><span jhiTranslate="my-courses.showPositionAllowed"></span></mat-checkbox
+            ><br />
+            <ng-container *ngIf="sharedCourse.numberOfCustomQrCodes > 0"
+              ><span jhiTranslate="my-courses.numberOfCustomQrCodes"></span>:&nbsp; {{ sharedCourse.numberOfCustomQrCodes }}<br
+            /></ng-container>
+            <ng-container *ngIf="!(sharedCourse.timeStampStart === null || sharedCourse.timeStampStart === undefined)"
+              ><span jhiTranslate="my-courses.activeTimerange"></span>:&nbsp;{{
+                sharedCourse.timeStampStart | date: 'short':'':this.jhiTranslateLanguage.currentLang
+              }}&nbsp;-&nbsp;{{ sharedCourse.timeStampEnd | date: 'short':'':this.jhiTranslateLanguage.currentLang }}<br
+            /></ng-container>
+            <span jhiTranslate="my-courses.nrOfAthletes"></span>:&nbsp;{{ sharedCourse.resultCourses.length }}
+          </mat-card-subtitle>
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+        </mat-card-header>
+        <mat-card-content style="text-align: center;">
+          <button
+            mat-button
+            mat-raised-button
+            color="primary"
+            id="reshareButton"
+            (click)="reshare(i)"
+            jhiTranslate="my-courses.reshare"
+          ></button>
+          <button
+            *ngIf="sharedCourse.numberOfCustomQrCodes > 0"
+            mat-button
+            mat-raised-button
+            color="primary"
+            id="printOneTimeCodesButton"
+            routerLink="/printShareQRs/{{ sharedCourse.id }}"
+            jhiTranslate="my-courses.printOneTimeQRCodes"
+          ></button>
+          <button
+            mat-button
+            mat-raised-button
+            color="primary"
+            id="monitorButton"
+            [routerLink]="['/monitorSession', sharedCourse.id, this.courseID]"
+            jhiTranslate="my-courses.monitor"
+          ></button>
+        </mat-card-content>
+        <mat-menu #menu="matMenu" xPosition="before">
+          <button mat-menu-item (click)="reshare(i)">
+            <mat-icon>sharealt</mat-icon>
+            <span jhiTranslate="my-courses.reshare">share again</span>
+          </button>
+          <button mat-menu-item [routerLink]="['/monitorSession', sharedCourse.id, this.courseID]">
+            <mat-icon>tv</mat-icon>
+            <span jhiTranslate="my-courses.monitor">monitor session</span>
+          </button>
+          <button *ngIf="sharedCourse.numberOfCustomQrCodes > 0" mat-menu-item routerLink="/printShareQRs/{{ sharedCourse.id }}">
+            <mat-icon>qr_code</mat-icon>
+            <span jhiTranslate="my-courses.printOneTimeQRCodes">print one-time qr codes</span>
+          </button>
+          <button mat-menu-item routerLink="/printQRs/{{ this.courseID }}">
+            <mat-icon>qr_code</mat-icon>
+            <span jhiTranslate="my-courses.showQR">print map</span>
+          </button>
+          <button mat-menu-item routerLink="/printMap/{{ this.courseID }}">
+            <mat-icon>print</mat-icon>
+            <span jhiTranslate="my-courses.printMap">print map</span>
+          </button>
+          <button *ngIf="sharedCourse.resultCourses.length === 0" mat-menu-item (click)="remove(i)">
+            <mat-icon>delete</mat-icon>
+            <span jhiTranslate="my-courses.removeSession">remove session</span>
+          </button>
+        </mat-menu></mat-card
+      ></ng-container
+    >
+  </div>
+</div>
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p jhiTranslate="my-courses.reallyCreateNewSession"></p>
+    <button
+      mat-button
+      mat-raised-button
+      color="primary"
+      (click)="confirm()"
+      style="margin-right: 20px;"
+      jhiTranslate="my-courses.yes"
+    ></button>
+    <button mat-button mat-raised-button color="accent" (click)="decline()" jhiTranslate="my-courses.no"></button>
+  </div>
+</ng-template>

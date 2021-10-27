@@ -1,0 +1,68 @@
+{
+  "name": "ResultQuestion",
+  "fields": [
+    {
+      "fieldName": "text",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "QuestionType",
+      "fieldValues": "SINGLE,MULTIPLE,INPUT",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "difficulty",
+      "fieldType": "Difficulty",
+      "fieldValues": "EASY,MEDIUM,HARD",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "answeredCorrectly",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "resultAnswer",
+      "otherEntityRelationshipName": "resultQuestion",
+      "relationshipName": "resultAnswer"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "category",
+      "otherEntityRelationshipName": "resultQuestion",
+      "relationshipValidateRules": "required",
+      "relationshipName": "category",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "resultControlpoint",
+      "otherEntityRelationshipName": "resultQuestion",
+      "relationshipValidateRules": "required",
+      "relationshipName": "resultControlpoint",
+      "otherEntityField": "id",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200813110014",
+  "entityTableName": "result_question",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

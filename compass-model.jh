@@ -1,0 +1,155 @@
+entity Course {
+	name String required
+	shared Boolean required
+	mapFinalSmall ImageBlob
+	location String
+	altitudeUp Double
+	altitudeDown Double
+	length Double
+}
+
+entity OrienteeringMap {
+    mapOverlayImage ImageBlob
+	mapOverlayKml Blob
+	imageScaleX Double
+	imageScaleY Double
+	imageCenterX Double
+	imageCenterY Double
+	imageRotation Double
+	declination Double
+}
+
+entity Controlpoint {
+	sequence Integer required
+	controlCode Integer
+	latitude Double required
+    longitude Double required
+    elevation Double
+    radius Integer required
+    skippable Boolean required
+    team Boolean required
+    qrCode String
+    description String
+}
+
+entity ControlpointInfo {
+	image ImageBlob required
+	col ControlpointInfoColumn required
+	description String required
+	messageKey String required
+	sort Integer required
+}
+
+enum ControlpointInfoColumn {
+	C, D, E, F, G, H
+}
+
+entity Question {
+	text String required
+	type QuestionType required
+	difficulty Difficulty required
+	personal Boolean required
+}
+
+enum QuestionType {
+	SINGLE, MULTIPLE, INPUT
+}
+
+enum Difficulty {
+	EASY, MEDIUM, HARD
+}
+
+entity Category {
+	text String required
+}
+
+entity Answer {
+	text String required
+    correct Boolean required
+}
+
+entity ResultQuestion {
+	text String required
+	type QuestionType required
+	difficulty Difficulty required
+    answeredCorrectly Boolean
+}
+
+entity ResultAnswer {
+	text String required
+    correct Boolean required
+    answeredCorrectly Boolean
+}
+
+entity SharedCourse {
+	name String
+	qrCode String
+	gameModus GameModus required
+	timeStampShared ZonedDateTime
+	visible Boolean
+    timeStampStart ZonedDateTime
+    timeStampEnd ZonedDateTime
+    numberOfCustomQrCodes Integer
+    showCourseBeforeStart Boolean
+    showPositionAllowed Boolean
+}
+
+entity SharedCourseQrCode {
+    device String
+    qrCode String
+    scanned Boolean
+    timeStampScanned ZonedDateTime
+}
+
+enum GameModus {
+	QRCODE, GPS, NFC
+}
+
+entity ResultCourse {
+	nickName String
+	timeStampFinished ZonedDateTime
+	timeStampStarted ZonedDateTime
+	totalDurationInMillis Long
+	viewCode String
+	showPositionCounter Integer
+	switchAppCounter Integer
+}
+
+entity ResultAdditionalInfo {
+	gpxTrack Blob
+	heartRate Blob
+}
+
+entity ResultControlpoint {
+	sequence Integer required
+	timeReached ZonedDateTime
+	latitude Double
+    longitude Double
+    skipAllowed Boolean
+    reached Boolean
+    borgScale Integer
+    forceSkipped Boolean
+}
+
+relationship OneToOne {
+	Course{orienteeringMap} to OrienteeringMap{course}
+	ResultCourse{resultAdditionalinfo} to ResultAdditionalInfo{resultCourse required}
+}
+
+relationship OneToMany {
+	Course{controlpoint} to Controlpoint{course required}
+	Question{answer} to Answer{question required}
+	ResultQuestion{resultAnswer} to ResultAnswer{resultQuestion required}
+	Category{question} to Question{category required}
+	Category{resultQuestion} to ResultQuestion{category required}
+	Course{sharedCourse} to SharedCourse{course required}
+	SharedCourse{resultCourse} to ResultCourse{sharedCourse required}
+	ResultCourse{resultControlpoint} to ResultControlpoint{resultCourse required}
+	SharedCourse{sharedCourseQrCode} to SharedCourseQrCode{sharedCourse required}
+}
+
+relationship ManyToMany {
+	Controlpoint{question required} to Question{controlpoint required}
+	Controlpoint{controlpointInfo required} to ControlpointInfo{controlpoint required}
+	ResultControlpoint{resultQuestion required} to ResultQuestion{resultControlpoint required}
+}

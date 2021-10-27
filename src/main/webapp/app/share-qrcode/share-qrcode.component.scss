@@ -1,0 +1,93 @@
+.radio-group {
+  display: flex;
+  flex-direction: row;
+  margin: 15px 0;
+}
+
+.radio-button {
+  margin: 5px;
+}
+
+.card,
+.cardNew {
+  max-width: 600px;
+  margin: auto;
+  margin-bottom: 20px;
+  border-radius: 50px;
+}
+
+.cardNew {
+  cursor: default;
+  font-size: 20px;
+}
+
+::ng-deep .card .mat-card-avatar {
+  height: 150px !important;
+  width: 150px !important;
+  border-radius: 20% !important;
+}
+
+::ng-deep .mat-card-title {
+  margin-top: 15px !important;
+}
+
+::ng-deep .mat-card-subtitle {
+  font-size: 16px;
+}
+
+::ng-deep .cardNew .mat-card-avatar {
+  height: auto !important;
+  width: auto !important;
+  border-radius: 20% !important;
+}
+
+::ng-deep .cardNew .mat-card-title {
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+}
+
+::ng-deep .mat-radio-label {
+  width: auto !important;
+}
+
+#removeButton {
+  margin-left: 20px;
+}
+
+#monitorButton {
+  margin-left: 20px;
+}
+
+#printOneTimeCodesButton {
+  margin-left: 20px;
+}
+
+::ng-deep .mat-checkbox-inner-container {
+  margin-right: 20px !important;
+}
+
+::ng-deep .mat-checkbox {
+  text-align: left;
+}
+
+.dateTimeRangePicker {
+  border: 2px solid #e95420;
+  border-radius: 5px;
+  width: 80%;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+::ng-deep .qrCodePicker input {
+  text-align: center;
+}
+
+.paddingTop {
+  padding-top: 15px;
+  display: block;
+}
+
+::ng-deep .disabledCheckbox label {
+  margin-bottom: 0px;
+}

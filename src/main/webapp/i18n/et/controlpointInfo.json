@@ -1,0 +1,27 @@
+{
+  "compassApp": {
+    "controlpointInfo": {
+      "home": {
+        "title": "Controlpoint Infos",
+        "createLabel": "Lisa uus Controlpoint Info",
+        "createOrEditLabel": "Lisa või muuda Controlpoint Info",
+        "notFound": "No Controlpoint Infos found"
+      },
+      "created": "Uus Controlpoint Info on loodud identifikaatoriga {{ param }}",
+      "updated": "Controlpoint Info identifikaatoriga {{ param }} on muudetud",
+      "deleted": "Controlpoint Info identifikaatoriga {{ param }} on kustutatud",
+      "delete": {
+        "question": "Kas olete kindel, et soovite kustutada Controlpoint Info {{ id }}?"
+      },
+      "detail": {
+        "title": "Controlpoint Info"
+      },
+      "image": "Image",
+      "col": "Col",
+      "description": "Description",
+      "messageKey": "Message Key",
+      "sort": "Sort",
+      "controlpoint": "Controlpoint"
+    }
+  }
+}

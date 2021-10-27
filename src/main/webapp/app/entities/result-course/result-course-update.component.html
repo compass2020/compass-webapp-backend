@@ -1,0 +1,92 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-result-course-heading" jhiTranslate="compassApp.resultCourse.home.createOrEditLabel">Create or edit a Result Course</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultCourse.nickName" for="field_nickName">Nick Name</label>
+                    <input type="text" class="form-control" name="nickName" id="field_nickName"
+                           formControlName="nickName"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultCourse.timeStampFinished" for="field_timeStampFinished">Time Stamp Finished</label>
+                    <div class="d-flex">
+                        <input id="field_timeStampFinished" type="datetime-local" class="form-control" name="timeStampFinished" formControlName="timeStampFinished" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultCourse.timeStampStarted" for="field_timeStampStarted">Time Stamp Started</label>
+                    <div class="d-flex">
+                        <input id="field_timeStampStarted" type="datetime-local" class="form-control" name="timeStampStarted" formControlName="timeStampStarted" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultCourse.totalDurationInMillis" for="field_totalDurationInMillis">Total Duration In Millis</label>
+                    <input type="number" class="form-control" name="totalDurationInMillis" id="field_totalDurationInMillis"
+                           formControlName="totalDurationInMillis"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultCourse.viewCode" for="field_viewCode">View Code</label>
+                    <input type="text" class="form-control" name="viewCode" id="field_viewCode"
+                           formControlName="viewCode"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultCourse.showPositionCounter" for="field_showPositionCounter">Show Position Counter</label>
+                    <input type="number" class="form-control" name="showPositionCounter" id="field_showPositionCounter"
+                           formControlName="showPositionCounter"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultCourse.switchAppCounter" for="field_switchAppCounter">Switch App Counter</label>
+                    <input type="number" class="form-control" name="switchAppCounter" id="field_switchAppCounter"
+                           formControlName="switchAppCounter"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultCourse.resultAdditionalinfo" for="field_resultAdditionalinfo">Result Additionalinfo</label>
+                    <select class="form-control" id="field_resultAdditionalinfo" name="resultAdditionalinfo" formControlName="resultAdditionalinfo">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="resultAdditionalInfoOption.id === editForm.get('resultAdditionalinfo')!.value?.id ? editForm.get('resultAdditionalinfo')!.value : resultAdditionalInfoOption" *ngFor="let resultAdditionalInfoOption of resultadditionalinfos; trackBy: trackById">{{ resultAdditionalInfoOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultCourse.sharedCourse" for="field_sharedCourse">Shared Course</label>
+                    <select class="form-control" id="field_sharedCourse" name="sharedCourse" formControlName="sharedCourse">
+                        <option *ngIf="!editForm.get('sharedCourse')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="sharedCourseOption.id === editForm.get('sharedCourse')!.value?.id ? editForm.get('sharedCourse')!.value : sharedCourseOption" *ngFor="let sharedCourseOption of sharedcourses; trackBy: trackById">{{ sharedCourseOption.id }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('sharedCourse')!.invalid && (editForm.get('sharedCourse')!.dirty || editForm.get('sharedCourse')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('sharedCourse')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+{
+  "compassApp": {
+    "map": {
+      "home": {
+        "title": "Maps",
+        "createLabel": "Lisa uus Map",
+        "createOrEditLabel": "Lisa või muuda Map",
+        "notFound": "No Maps found"
+      },
+      "created": "Uus Map on loodud identifikaatoriga {{ param }}",
+      "updated": "Map identifikaatoriga {{ param }} on muudetud",
+      "deleted": "Map identifikaatoriga {{ param }} on kustutatud",
+      "delete": {
+        "question": "Kas olete kindel, et soovite kustutada Map {{ id }}?"
+      },
+      "detail": {
+        "title": "Map"
+      },
+      "mapOrigin": "Map Origin",
+      "mapFinal": "Map Final",
+      "mapKmlOverlay": "Map Kml Overlay",
+      "scaleX": "Scale X",
+      "scaleY": "Scale Y",
+      "centerX": "Center X",
+      "centerY": "Center Y",
+      "rotation": "Rotation",
+      "course": "Course"
+    }
+  }
+}

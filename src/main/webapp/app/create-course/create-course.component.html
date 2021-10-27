@@ -1,0 +1,88 @@
+<div class="component_wrapper">
+  <jhi-alert></jhi-alert>
+  <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+    <mat-slide-toggle [labelPosition]="'after'" class="expertToggle" color="primary" [(ngModel)]="this.expertMode">
+      <span jhiTranslate="create-course.expertMode"></span>
+    </mat-slide-toggle>
+  </div>
+  <mat-horizontal-stepper [@.disabled]="true" [linear]="false" #stepper (selectionChange)="onStepperChange($event)">
+    <mat-step>
+      <ng-template matStepLabel><span jhiTranslate="create-course.defineCourse">Define the Course</span></ng-template>
+      <div class="stepWrapper">
+        <jhi-map
+          [course]="this.course"
+          (courseChange)="this.course = $event; this.arrangeControlpointInfos()"
+          (downloadFinished)="this.save()"
+          [expertMode]="this.expertMode"
+        ></jhi-map>
+        <div class="stepper-nav-buttons">
+          <button mat-button mat-raised-button color="primary" matStepperNext jhiTranslate="create-course.next">Next</button>
+        </div>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel><span jhiTranslate="create-course.controlpointDetails">Controlpoint-Details</span></ng-template>
+      <div class="stepWrapper">
+        <jhi-controlpoint-details
+          (courseChange)="this.course = $event; this.arrangeControlpointInfos()"
+          [globalStepper]="stepper"
+          [allCPInfos]="this.allCPInfos"
+          [selectedCPInfos]="this.selectedCPInfos"
+          [expertMode]="this.expertMode"
+          [course]="this.course"
+        ></jhi-controlpoint-details>
+      </div>
+    </mat-step>
+    <mat-step
+      ><ng-template matStepLabel><span jhiTranslate="create-course.finalStep">Final Step</span></ng-template>
+      <div class="stepWrapper">
+        <h3 jhiTranslate="create-course.courseName">Name of this course</h3>
+        <mat-form-field style="width: 500px; margin-right: 50px;">
+          <input matInput [maxLength]="255" [(ngModel)]="this.course.name" />
+        </mat-form-field>
+        <button
+          #saveButton
+          mat-raised-button
+          mat-button
+          color="primary"
+          [disabled]="this.course.shared"
+          (click)="saveCourseToDB($event)"
+          jhiTranslate="create-course.saveCourse"
+        >
+          Save this Course
+        </button>
+
+        <table *ngIf="this.course !== undefined && this.expertMode" class="controlDescriptionTable">
+          <tr>
+            <td colspan="8">{{ this.course.name }}</td>
+          </tr>
+          <tr>
+            <td colspan="3">{{ this.course.controlpoints?.length }}</td>
+            <td colspan="3">{{ this.course.length | metersPipe }}</td>
+            <td colspan="2">{{ this.course.altitudeUp | metersPipe }}</td>
+          </tr>
+          <tr *ngFor="let controlpoint of this.course.controlpoints; let i = index">
+            <td *ngIf="i === 0"><img src="/content/images/assets/start.png" /></td>
+            <td *ngIf="i !== 0 && i !== this.course.controlpoints.length - 1">{{ i }}</td>
+            <td *ngIf="i === this.course.controlpoints.length - 1"><img src="/content/images/assets/finish.png" /></td>
+
+            <td>{{ controlpoint.controlCode }}</td>
+
+            <ng-container *ngFor="let x of [].constructor(6); let j = index">
+              <td>
+                <img
+                  *ngIf="this?.selectedCPInfos != undefined && this.selectedCPInfos[i][j] !== ''"
+                  src="{{ this.selectedCPInfos[i][j] }}"
+                />
+              </td>
+            </ng-container>
+          </tr>
+        </table>
+
+        <div class="stepper-nav-buttons">
+          <button mat-button mat-raised-button color="primary" matStepperPrevious jhiTranslate="create-course.back">Go Back</button>
+        </div>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

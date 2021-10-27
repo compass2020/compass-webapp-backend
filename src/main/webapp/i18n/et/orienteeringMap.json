@@ -1,0 +1,30 @@
+{
+  "compassApp": {
+    "orienteeringMap": {
+      "home": {
+        "title": "Orienteering Maps",
+        "createLabel": "Lisa uus Orienteering Map",
+        "createOrEditLabel": "Lisa või muuda Orienteering Map",
+        "notFound": "No Orienteering Maps found"
+      },
+      "created": "Uus Orienteering Map on loodud identifikaatoriga {{ param }}",
+      "updated": "Orienteering Map identifikaatoriga {{ param }} on muudetud",
+      "deleted": "Orienteering Map identifikaatoriga {{ param }} on kustutatud",
+      "delete": {
+        "question": "Kas olete kindel, et soovite kustutada Orienteering Map {{ id }}?"
+      },
+      "detail": {
+        "title": "Orienteering Map"
+      },
+      "mapOverlayImage": "Map Overlay Image",
+      "mapOverlayKml": "Map Overlay Kml",
+      "imageScaleX": "Image Scale X",
+      "imageScaleY": "Image Scale Y",
+      "imageCenterX": "Image Center X",
+      "imageCenterY": "Image Center Y",
+      "imageRotation": "Image Rotation",
+      "declination": "Declination",
+      "course": "Course"
+    }
+  }
+}

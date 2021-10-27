@@ -1,0 +1,31 @@
+{
+  "compassApp": {
+    "course": {
+      "home": {
+        "title": "Courses",
+        "createLabel": "Creeare o nouă entitate Course",
+        "createOrEditLabel": "Creeare sau editare Course",
+        "notFound": "No Courses found"
+      },
+      "created": "A fost creată o nouă entitate Course cu identificatorul {{ param }}",
+      "updated": "Course cu identificatorul {{ param }} a fost actualizată",
+      "deleted": "Course cu identificatorul {{ param }} a fost ștearsă",
+      "delete": {
+        "question": "Sunteți sigur că doriți să ștergeți Course {{ id }}?"
+      },
+      "detail": {
+        "title": "Course"
+      },
+      "name": "Name",
+      "shared": "Shared",
+      "mapFinalSmall": "Map Final Small",
+      "location": "Location",
+      "altitudeUp": "Altitude Up",
+      "altitudeDown": "Altitude Down",
+      "length": "Length",
+      "orienteeringMap": "Orienteering Map",
+      "controlpoint": "Controlpoint",
+      "sharedCourse": "Shared Course"
+    }
+  }
+}

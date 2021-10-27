@@ -1,0 +1,39 @@
+<div class="footer sticky-bottom" style="background-color: #fff; width: calc(100% - 30px); text-align: center;">
+  <div>
+    <div
+      style="overflow-y: hidden; overflow-x: auto; padding-left: 10px; padding-top: 10px;"
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+      fxLayoutGap="10px"
+    >
+      <div>
+        <img style="height: 58px; margin-right: 30px;" src="/content/images/uniVieLogo.png" />
+        <img style="width: 210px; height: 46px; margin-bottom: 10px;" src="/content/images/erasmus_plus.png" />
+      </div>
+      <div>
+        <a routerLink="privacy">
+          <fa-icon icon="lock" style="padding-right: 10px;"></fa-icon>
+          <span jhiTranslate="menu.privacy"></span>
+        </a>
+      </div>
+      <div id="socials">
+        <a
+          href="https://www.youtube.com/watch?v=1hvqsfPHO5E&list=PLJ61timOT1z3U-wEpNdV9sq96yqRCXP57&ab_channel=COMPASSOrienteering"
+          target="_blank"
+          ><fa-icon [icon]="['fab', 'youtube']" size="2x"></fa-icon
+        ></a>
+        <a href="mailto:compass.sport@univie.ac.at"><fa-icon icon="envelope" size="2x"></fa-icon></a>
+        <a href="https://www.facebook.com/compassorienteering" target="_blank"
+          ><fa-icon [icon]="['fab', 'facebook']" size="2x"></fa-icon
+        ></a>
+        <a href="https://www.instagram.com/compass.orienteering/" target="_blank"
+          ><fa-icon [icon]="['fab', 'instagram']" size="2x"></fa-icon
+        ></a>
+      </div>
+      <!-- <span
+        style="margin-top: 10px; margin-bottom: 0px; width: 1200px; text-align: left; white-space: nowrap; padding-right: 20px;"
+        jhiTranslate="eu-disclaimer"
+      ></span> -->
+    </div>
+  </div>
+</div>

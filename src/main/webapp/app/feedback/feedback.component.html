@@ -1,0 +1,350 @@
+<mat-tab-group animationDuration="0ms" mat-stretch-tabs>
+  <mat-tab label="{{ 'results.summary' | translate }}">
+    <div class="roundBorderBox" style="margin-top: 30px; overflow-x: auto;">
+      <table class="table table-hover">
+        <thead>
+          <tr class="table-heading">
+            <th><span jhiTranslate="results.ranking"></span></th>
+            <th><span jhiTranslate="results.nickname"></span></th>
+            <th><span jhiTranslate="results.totalTime"></span></th>
+            <th *ngIf="maxQuestionCount > 0"><span jhiTranslate="results.correctAnswers">Correct Answers</span></th>
+            <td *ngIf="maxSectorCount - minSectorCount > 0"><span jhiTranslate="results.skippedBORG"></span></td>
+            <th *ngIf="this.maxCPsForceSkipped > 0">
+              <span jhiTranslate="results.forceSkipCounter"></span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let run of sortedRunsByTime; let i = index"
+            [style.background-color]="'rgba(233, 84, 32, ' + run.nrOfForceSkips / (run.sectorTimes.length + 1) + ')'"
+          >
+            <td height="49px">{{ i + 1 }}</td>
+            <td>{{ run.name }}</td>
+            <td>{{ run.totalTime | date: 'H:mm:ss':'UTC' }}</td>
+            <td *ngIf="maxQuestionCount > 0">{{ run.correctAnswers }}/{{ run.nrOfQuestions }}</td>
+            <td *ngIf="maxSectorCount - minSectorCount > 0">{{ run.nrOfBorgSkipped | number: '1.0-0' }}</td>
+            <td *ngIf="this.maxCPsForceSkipped > 0">
+              <span matTooltip="{{ run.forceSkippedTooltip }}" matTooltipClass="question-tooltip" matTooltipPosition="after"
+                >{{ run.nrOfForceSkips | number: '1.0-0' }} / {{ run.sectorTimes.length + 1 | number: '1.0-0' }}</span
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-tab>
+  <mat-tab label="{{ 'results.all' | translate }}">
+    <div class="roundBorderBox" style="margin-top: 30px; overflow-x: auto;">
+      <table matSort (matSortChange)="sortData($event)" class="table table-hover">
+        <thead>
+          <tr class="table-heading">
+            <th
+              matTooltip="{{ this.translate.instant('results.checkBoxToLoadGPS') }}"
+              matTooltipClass="question-tooltip"
+              matTooltipPosition="above"
+            >
+              <div class="coloredCircleOuter" fxLayout="row" fxLayoutAlign="center center">
+                <mat-icon style="color: #fff;">info</mat-icon>
+              </div>
+            </th>
+            <th>
+              <div class="coloredCircleOuter" fxLayout="row" fxLayoutAlign="space-between center">
+                <mat-icon
+                  fxFlex
+                  style="color: #fff;"
+                  matTooltip="{{ this.translate.instant('results.showInChart') }}"
+                  matTooltipClass="question-tooltip"
+                  matTooltipPosition="above"
+                  >timeline</mat-icon
+                >
+                <mat-icon
+                  fxFlex
+                  style="color: #fff;"
+                  matTooltip="{{ this.translate.instant('results.showSpeedline') }}"
+                  matTooltipClass="question-tooltip"
+                  matTooltipPosition="above"
+                  >av_timer</mat-icon
+                >
+                <fa-icon
+                  icon="download"
+                  fxFlex
+                  style="color: #fff;"
+                  matTooltip="{{ this.translate.instant('results.downloadFiles') }}"
+                  matTooltipClass="question-tooltip"
+                  matTooltipPosition="above"
+                ></fa-icon>
+                <div fxFlex class="coloredCircle" style="box-sizing: border-box; border: #fff 3px solid;"></div>
+              </div>
+            </th>
+            <th mat-sort-header="name" disableClear><span jhiTranslate="results.nickname"></span></th>
+            <th mat-sort-header="startTime" disableClear><span jhiTranslate="results.startTime"></span></th>
+            <th mat-sort-header="totalTime" disableClear><span jhiTranslate="results.totalTime"></span></th>
+            <th mat-sort-header="distance" *ngIf="this.expertMode" disableClear><span jhiTranslate="results.distance"></span></th>
+            <!-- <th mat-sort-header="avgSpeed" *ngIf="this.expertMode" disableClear><span jhiTranslate="results.avgSpeed">Average speed</span></th>-->
+            <th mat-sort-header="avgSpeed" *ngIf="this.expertMode" disableClear><span jhiTranslate="results.pace"></span></th>
+            <th mat-sort-header="altUp" *ngIf="this.expertMode" disableClear>
+              <fa-icon icon="angle-up" [fixedWidth]="true" size="2x" [styles]="{ color: '#fff' }"></fa-icon>
+            </th>
+            <th mat-sort-header="altDown" *ngIf="this.expertMode" disableClear>
+              <fa-icon icon="angle-down" [fixedWidth]="true" size="2x" [styles]="{ color: '#fff' }"></fa-icon>
+            </th>
+            <th mat-sort-header="showPositionCounter" disableClear><span jhiTranslate="results.showPositionCounter"></span></th>
+            <th mat-sort-header="switchAppCounter" disableClear><span jhiTranslate="results.switchAppCounter"></span></th>
+            <th *ngIf="this.maxCPsForceSkipped > 0" mat-sort-header="forceSkipCounter" disableClear>
+              <span jhiTranslate="results.forceSkipCounter"></span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let run of sortedRuns; let i = index"
+            [style.background-color]="'rgba(233, 84, 32, ' + run.nrOfForceSkips / (run.sectorTimes.length + 1) + ')'"
+          >
+            <td><mat-checkbox color="primary" [checked]="run.isActive" (change)="toggleView($event, run.id)"></mat-checkbox></td>
+            <td>
+              <div
+                class="coloredCircleOuter"
+                [style.visibility]="run.gpxJSON ? 'visible' : 'hidden'"
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+              >
+                <mat-icon
+                  fxFlex
+                  class="clickableIcon"
+                  [style.color]="run.activeChart ? '#E95420' : '#000'"
+                  (click)="showDataInChart(run.id)"
+                  >timeline</mat-icon
+                >
+                <mat-icon
+                  fxFlex
+                  class="clickableIcon"
+                  [style.color]="run.activeSpeedLine ? '#E95420' : '#000'"
+                  (click)="activateFlowLine(run.id)"
+                  >av_timer</mat-icon
+                >
+                <fa-icon
+                  icon="download"
+                  fxFlex
+                  class="clickableIcon"
+                  (click)="downloadGPX(run)"
+                  [style.visibility]="run.hasGPX || run.hasHeartRate ? 'visible' : 'hidden'"
+                ></fa-icon>
+                <div
+                  fxFlex
+                  class="coloredCircle"
+                  [ngStyle]="run.colorIndex !== -1 && { background: this.colorCodes[run.colorIndex] }"
+                ></div>
+              </div>
+            </td>
+            <td>{{ run.name }}</td>
+            <td>{{ run.startTime | date: 'short':'':this.jhiTranslateLanguage.currentLang }}</td>
+            <td>{{ run.totalTime | date: 'H:mm:ss':'UTC' }}</td>
+            <ng-container *ngIf="run.hasGPX && this.expertMode">
+              <td>{{ run.distance | metersPipe }}</td>
+              <td>{{ run.avgSpeed | minuteSeconds }}</td>
+              <td>{{ run.altUp | number: '1.0-0' }} m</td>
+              <td>{{ run.altDown * -1 | number: '1.0-0' }} m</td></ng-container
+            >
+            <ng-container *ngIf="this.expertMode && !run.hasGPX"
+              ><td colspan="4">
+                <span *ngIf="run.fetchedGPX" jhiTranslate="results.noDataAvailable"></span
+                ><span *ngIf="!run.fetchedGPX" jhiTranslate="results.fetchToViewData"></span></td
+            ></ng-container>
+
+            <td *ngIf="run.showPositionCounter">{{ run.showPositionCounter | number: '1.0-0' }}</td>
+            <td *ngIf="!run.showPositionCounter"><span jhiTranslate="results.never"></span></td>
+            <td *ngIf="run.switchAppCounter">{{ run.switchAppCounter | number: '1.0-0' }}</td>
+            <td *ngIf="!run.switchAppCounter"><span jhiTranslate="results.never"></span></td>
+            <td *ngIf="this.maxCPsForceSkipped > 0">
+              <span matTooltip="{{ run.forceSkippedTooltip }}" matTooltipClass="question-tooltip" matTooltipPosition="after"
+                >{{ run.nrOfForceSkips | number: '1.0-0' }} / {{ run.sectorTimes.length + 1 | number: '1.0-0' }}</span
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div></mat-tab
+  >
+  <mat-tab label="{{ 'menu.manage-questions' | translate }}" *ngIf="this.maxQuestionCount > 0">
+    <div class="roundBorderBox" style="margin-top: 30px; overflow-x: auto;">
+      <table matSort (matSortChange)="sortData($event)" class="table table-hover">
+        <thead>
+          <tr class="table-heading">
+            <th
+              matTooltip="{{ this.translate.instant('results.checkBoxToLoadGPS') }}"
+              matTooltipClass="question-tooltip"
+              matTooltipPosition="above"
+            >
+              <div class="coloredCircleOuter" fxLayout="row" fxLayoutAlign="center center">
+                <mat-icon style="color: #fff;">info</mat-icon>
+              </div>
+            </th>
+            <th>
+              <div class="coloredCircleOuter" fxLayout="row" fxLayoutAlign="space-between center">
+                <mat-icon fxFlex style="color: #fff;">timeline</mat-icon>
+                <mat-icon fxFlex style="color: #fff;">av_timer</mat-icon>
+                <div fxFlex class="coloredCircle" style="box-sizing: border-box; border: #fff 3px solid;"></div>
+              </div>
+            </th>
+            <th mat-sort-header="name" disableClear><span jhiTranslate="results.nickname">Player's Name</span></th>
+            <ng-container *ngFor="let questionText of questionTexts; let i = index">
+              <th
+                matTooltip="{{ questionText }}"
+                matTooltipClass="question-tooltip"
+                matTooltipPosition="above"
+                mat-sort-header="question{{ i }}"
+                disableClear
+              >
+                <span jhiTranslate="results.question"></span>&nbsp;{{ i + 1 }}
+              </th>
+            </ng-container>
+            <th mat-sort-header="correctAnswers" disableClear><span jhiTranslate="results.correctAnswers">Correct Answers</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let run of sortedRuns; let i = index">
+            <td><mat-checkbox color="primary" [checked]="run.isActive" (change)="toggleView($event, run.id)"></mat-checkbox></td>
+            <td>
+              <div
+                class="coloredCircleOuter"
+                [style.visibility]="run.gpxJSON ? 'visible' : 'hidden'"
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+              >
+                <mat-icon
+                  fxFlex
+                  class="clickableIcon"
+                  [style.color]="run.activeChart ? '#E95420' : '#000'"
+                  (click)="showDataInChart(run.id)"
+                  >timeline</mat-icon
+                >
+                <mat-icon
+                  fxFlex
+                  class="clickableIcon"
+                  [style.color]="run.activeSpeedLine ? '#E95420' : '#000'"
+                  (click)="activateFlowLine(run.id)"
+                  >av_timer</mat-icon
+                >
+                <div
+                  fxFlex
+                  class="coloredCircle"
+                  [ngStyle]="run.colorIndex !== -1 && { background: this.colorCodes[run.colorIndex] }"
+                ></div>
+              </div>
+            </td>
+            <td>{{ run.name }}</td>
+
+            <ng-container *ngFor="let answer of run.answers">
+              <ng-container *ngIf="answer !== null">
+                <td *ngIf="answer"><fa-icon icon="check" style="color: green;"></fa-icon></td>
+                <td *ngIf="!answer"><fa-icon icon="times" style="color: red;"></fa-icon></td>
+              </ng-container>
+              <ng-container *ngIf="answer === null">
+                <td><fa-icon icon="minus" style="color: orange;"></fa-icon></td>
+              </ng-container>
+            </ng-container>
+            <td>{{ run.correctAnswers }}/{{ run.nrOfQuestions }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div></mat-tab
+  >
+  <mat-tab label="{{ 'results.sectorTimes' | translate }}">
+    <div class="roundBorderBox" style="margin-top: 30px; overflow-x: auto;">
+      <table matSort (matSortChange)="sortData($event)" class="table table-hover">
+        <thead>
+          <tr class="table-heading">
+            <th
+              matTooltip="{{ this.translate.instant('results.checkBoxToLoadGPS') }}"
+              matTooltipClass="question-tooltip"
+              matTooltipPosition="above"
+            >
+              <div class="coloredCircleOuter" fxLayout="row" fxLayoutAlign="center center">
+                <mat-icon style="color: #fff;">info</mat-icon>
+              </div>
+            </th>
+            <th>
+              <div class="coloredCircleOuter" fxLayout="row" fxLayoutAlign="space-between center">
+                <mat-icon fxFlex style="color: #fff;">timeline</mat-icon>
+                <mat-icon fxFlex style="color: #fff;">av_timer</mat-icon>
+                <div fxFlex class="coloredCircle" style="box-sizing: border-box; border: #fff 3px solid;"></div>
+              </div>
+            </th>
+            <th mat-sort-header="name" disableClear><span jhiTranslate="results.nickname">Player's Name</span></th>
+            <ng-container *ngFor="let item of [].constructor(this.maxSectorCount); let i = index">
+              <th mat-sort-header="sectorTime{{ i }}" *ngIf="this.expertMode" disableClear>
+                <span jhiTranslate="results.sector"></span>&nbsp;{{ i + 1 }}
+              </th>
+            </ng-container>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let run of sortedRuns; let i = index"
+            [style.background-color]="'rgba(233, 84, 32, ' + run.nrOfForceSkips / (run.sectorTimes.length + 1) + ')'"
+          >
+            <td><mat-checkbox color="primary" [checked]="run.isActive" (change)="toggleView($event, run.id)"></mat-checkbox></td>
+            <td>
+              <div
+                class="coloredCircleOuter"
+                [style.visibility]="run.gpxJSON ? 'visible' : 'hidden'"
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
+              >
+                <mat-icon
+                  fxFlex
+                  class="clickableIcon"
+                  [style.color]="run.activeChart ? '#E95420' : '#000'"
+                  (click)="showDataInChart(run.id)"
+                  >timeline</mat-icon
+                >
+                <mat-icon
+                  fxFlex
+                  class="clickableIcon"
+                  [style.color]="run.activeSpeedLine ? '#E95420' : '#000'"
+                  (click)="activateFlowLine(run.id)"
+                  >av_timer</mat-icon
+                >
+                <div
+                  fxFlex
+                  class="coloredCircle"
+                  [ngStyle]="run.colorIndex !== -1 && { background: this.colorCodes[run.colorIndex] }"
+                ></div>
+              </div>
+            </td>
+            <td>{{ run.name }}</td>
+
+            <ng-container *ngFor="let sectorTime of run.sectorTimes; let j = index">
+              <td *ngIf="this.expertMode && !run.sectorWasSkipped[j] && !run.lastSectorWasSkipped[j]">
+                {{ sectorTime | date: 'mm:ss':'UTC' }}
+              </td>
+              <td *ngIf="this.expertMode && !run.sectorWasSkipped[j] && run.lastSectorWasSkipped[j]" colspan="2">
+                {{ sectorTime | date: 'mm:ss':'UTC' }}
+              </td>
+            </ng-container>
+            <ng-container *ngFor="let item of [].constructor(this.maxSectorCount - run.sectorTimes.length)">
+              <td *ngIf="this.expertMode"></td>
+            </ng-container>
+          </tr>
+        </tbody>
+      </table></div
+  ></mat-tab>
+</mat-tab-group>
+
+<div
+  fxLayout="row wrap"
+  fxLayout.lt-md="column"
+  fxLayoutAlign="space-around stretch"
+  fxLayoutAlign.lt-md="center center"
+  fxLayoutGap.lt-md="20px"
+  style="margin-bottom: 20px;"
+>
+  <div fxFlex="60" fxFlexFill id="fullscreen">
+    <div id="feedbackmap"></div>
+  </div>
+
+  <div fxFlex="40" fxFlexFill [style.display]="this.expertMode ? 'block' : 'none'">
+    <div id="chart"></div>
+  </div>
+</div>

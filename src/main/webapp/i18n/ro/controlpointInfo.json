@@ -1,0 +1,27 @@
+{
+  "compassApp": {
+    "controlpointInfo": {
+      "home": {
+        "title": "Controlpoint Infos",
+        "createLabel": "Creeare o nouă entitate Controlpoint Info",
+        "createOrEditLabel": "Creeare sau editare Controlpoint Info",
+        "notFound": "No Controlpoint Infos found"
+      },
+      "created": "A fost creată o nouă entitate Controlpoint Info cu identificatorul {{ param }}",
+      "updated": "Controlpoint Info cu identificatorul {{ param }} a fost actualizată",
+      "deleted": "Controlpoint Info cu identificatorul {{ param }} a fost ștearsă",
+      "delete": {
+        "question": "Sunteți sigur că doriți să ștergeți Controlpoint Info {{ id }}?"
+      },
+      "detail": {
+        "title": "Controlpoint Info"
+      },
+      "image": "Image",
+      "col": "Col",
+      "description": "Description",
+      "messageKey": "Message Key",
+      "sort": "Sort",
+      "controlpoint": "Controlpoint"
+    }
+  }
+}

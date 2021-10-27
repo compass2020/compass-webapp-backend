@@ -1,0 +1,9 @@
+id;name;qr_code;game_modus;time_stamp_shared;course_id;created_by;created_date;last_modified_by;last_modified_date;visible;time_stamp_start;time_stamp_end;number_of_custom_qr_codes;show_course_before_start;show_position_allowed
+1;name1;1;QRCODE;2020-06-24T12:00:00;1;admin;2020-08-05T09:11:27;admin;2020-08-05T09:11:27;true;NULL;NULL;1;true;true
+2;name2;2;GPS;2020-07-02T12:00:00;2;admin;2020-08-05T09:11:27;admin;2020-08-05T09:11:27;true;NULL;NULL;NULL;true;true
+3;name3;3;GPS;2020-07-02T12:00:00;2;admin;2020-08-05T09:11:27;admin;2020-08-05T09:11:27;true;NULL;NULL;NULL;true;true
+4;name4;4;QRCODE;2020-07-15T09:05:33.122;3;admin;2020-08-05T09:11:27;admin;2020-08-05T09:11:27;true;NULL;NULL;NULL;true;true
+5;name5;5;GPS;2020-07-15T09:06:36.235;3;admin;2020-08-05T09:11:27;admin;2020-08-05T09:11:27;true;NULL;NULL;NULL;true;true
+6;name6;01ead72a-5e01-1404-9e1a-78a8d8c65d55;GPS;2020-08-05T11:11:27;3;admin;2020-08-05T11:11:27;admin;2020-08-05T11:11:27;true;NULL;NULL;NULL;true;true
+7;name7;01eadbb5-4c06-1f7b-b957-cc40cb147b9b;GPS;2020-08-11T06:23:47;3;admin;2020-08-11T06:23:47;admin;2020-08-11T06:23:47;true;NULL;NULL;NULL;true;true
+8;name8;01eaf370-06a5-13b0-8c4f-970468e41a4d;GPS;2020-09-10T11:29:01;4;admin;2020-09-10T11:29:01;admin;2020-09-10T11:29:01;true;NULL;NULL;NULL;false;false

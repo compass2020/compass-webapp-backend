@@ -1,0 +1,112 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-shared-course-heading" jhiTranslate="compassApp.sharedCourse.home.createOrEditLabel">Create or edit a Shared Course</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.sharedCourse.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.sharedCourse.qrCode" for="field_qrCode">Qr Code</label>
+                    <input type="text" class="form-control" name="qrCode" id="field_qrCode"
+                           formControlName="qrCode"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.sharedCourse.gameModus" for="field_gameModus">Game Modus</label>
+                    <select class="form-control" name="gameModus" formControlName="gameModus" id="field_gameModus">
+                        <option value="QRCODE">{{ 'compassApp.GameModus.QRCODE' | translate }}</option>
+                        <option value="GPS">{{ 'compassApp.GameModus.GPS' | translate }}</option>
+                        <option value="NFC">{{ 'compassApp.GameModus.NFC' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('gameModus')!.invalid && (editForm.get('gameModus')!.dirty || editForm.get('gameModus')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('gameModus')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.sharedCourse.timeStampShared" for="field_timeStampShared">Time Stamp Shared</label>
+                    <div class="d-flex">
+                        <input id="field_timeStampShared" type="datetime-local" class="form-control" name="timeStampShared" formControlName="timeStampShared" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.sharedCourse.visible" for="field_visible">Visible</label>
+                    <input type="checkbox" class="form-control" name="visible" id="field_visible"
+                           formControlName="visible"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.sharedCourse.timeStampStart" for="field_timeStampStart">Time Stamp Start</label>
+                    <div class="d-flex">
+                        <input id="field_timeStampStart" type="datetime-local" class="form-control" name="timeStampStart" formControlName="timeStampStart" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.sharedCourse.timeStampEnd" for="field_timeStampEnd">Time Stamp End</label>
+                    <div class="d-flex">
+                        <input id="field_timeStampEnd" type="datetime-local" class="form-control" name="timeStampEnd" formControlName="timeStampEnd" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.sharedCourse.numberOfCustomQrCodes" for="field_numberOfCustomQrCodes">Number Of Custom Qr Codes</label>
+                    <input type="number" class="form-control" name="numberOfCustomQrCodes" id="field_numberOfCustomQrCodes"
+                           formControlName="numberOfCustomQrCodes"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.sharedCourse.showCourseBeforeStart" for="field_showCourseBeforeStart">Show Course Before Start</label>
+                    <input type="checkbox" class="form-control" name="showCourseBeforeStart" id="field_showCourseBeforeStart"
+                           formControlName="showCourseBeforeStart"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.sharedCourse.showPositionAllowed" for="field_showPositionAllowed">Show Position Allowed</label>
+                    <input type="checkbox" class="form-control" name="showPositionAllowed" id="field_showPositionAllowed"
+                           formControlName="showPositionAllowed"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.sharedCourse.course" for="field_course">Course</label>
+                    <select class="form-control" id="field_course" name="course" formControlName="course">
+                        <option *ngIf="!editForm.get('course')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="courseOption.id === editForm.get('course')!.value?.id ? editForm.get('course')!.value : courseOption" *ngFor="let courseOption of courses; trackBy: trackById">{{ courseOption.id }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('course')!.invalid && (editForm.get('course')!.dirty || editForm.get('course')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('course')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

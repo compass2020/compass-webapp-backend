@@ -1,0 +1,74 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="compassApp.controlpointInfo.home.title">Controlpoint Infos</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-controlpoint-info" [routerLink]="['/controlpoint-info/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="compassApp.controlpointInfo.home.createLabel">
+            Create a new Controlpoint Info
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="controlpointInfos?.length === 0">
+        <span jhiTranslate="compassApp.controlpointInfo.home.notFound">No controlpointInfos found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="controlpointInfos && controlpointInfos.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.controlpointInfo.image">Image</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.controlpointInfo.col">Col</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.controlpointInfo.description">Description</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.controlpointInfo.messageKey">Message Key</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.controlpointInfo.sort">Sort</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let controlpointInfo of controlpointInfos ;trackBy: trackId">
+                    <td><a [routerLink]="['/controlpoint-info', controlpointInfo.id, 'view']">{{ controlpointInfo.id }}</a></td>
+                    <td>
+                        <a *ngIf="controlpointInfo.image" (click)="openFile(controlpointInfo.imageContentType, controlpointInfo.image)">
+                            <img [src]="'data:' + controlpointInfo.imageContentType + ';base64,' + controlpointInfo.image" style="max-height: 30px;" alt="controlpointInfo image"/>
+                        </a>
+                        <span *ngIf="controlpointInfo.image">{{ controlpointInfo.imageContentType }}, {{ byteSize(controlpointInfo.image) }}</span>
+                    </td>
+                    <td jhiTranslate="{{ 'compassApp.ControlpointInfoColumn.' + controlpointInfo.col }}">{{ controlpointInfo.col }}</td>
+                    <td>{{ controlpointInfo.description }}</td>
+                    <td>{{ controlpointInfo.messageKey }}</td>
+                    <td>{{ controlpointInfo.sort }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/controlpoint-info', controlpointInfo.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/controlpoint-info', controlpointInfo.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(controlpointInfo)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

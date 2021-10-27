@@ -1,0 +1,24 @@
+{
+  "compassApp": {
+    "answer": {
+      "home": {
+        "title": "Answers",
+        "createLabel": "Създайте нов Answer",
+        "createOrEditLabel": "Създайте или редактирайте Answer",
+        "notFound": "Answers не са намерени"
+      },
+      "created": "Създаден е нов Answer с идентификатор {{ param }}",
+      "updated": "Answer с идентификатор {{ param }} e oбновен",
+      "deleted": "Answer с идентификатор {{ param }} е изтрит",
+      "delete": {
+        "question": "Наистина ли искате да изтриете Answer {{ id }}?"
+      },
+      "detail": {
+        "title": "Answer"
+      },
+      "text": "Text",
+      "correct": "Correct",
+      "question": "Question"
+    }
+  }
+}

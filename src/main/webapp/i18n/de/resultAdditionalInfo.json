@@ -1,0 +1,24 @@
+{
+  "compassApp": {
+    "resultAdditionalInfo": {
+      "home": {
+        "title": "Result Additional Infos",
+        "createLabel": "Result Additional Info erstellen",
+        "createOrEditLabel": "Result Additional Info erstellen oder bearbeiten",
+        "notFound": "No Result Additional Infos found"
+      },
+      "created": "Result Additional Info erstellt mit ID {{ param }}",
+      "updated": "Result Additional Info aktualisiert mit ID {{ param }}",
+      "deleted": "Result Additional Info gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Result Additional Info {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Result Additional Info"
+      },
+      "gpxTrack": "Gpx Track",
+      "heartRate": "Heart Rate",
+      "resultCourse": "Result Course"
+    }
+  }
+}

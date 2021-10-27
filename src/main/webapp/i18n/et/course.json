@@ -1,0 +1,31 @@
+{
+  "compassApp": {
+    "course": {
+      "home": {
+        "title": "Courses",
+        "createLabel": "Lisa uus Course",
+        "createOrEditLabel": "Lisa või muuda Course",
+        "notFound": "No Courses found"
+      },
+      "created": "Uus Course on loodud identifikaatoriga {{ param }}",
+      "updated": "Course identifikaatoriga {{ param }} on muudetud",
+      "deleted": "Course identifikaatoriga {{ param }} on kustutatud",
+      "delete": {
+        "question": "Kas olete kindel, et soovite kustutada Course {{ id }}?"
+      },
+      "detail": {
+        "title": "Course"
+      },
+      "name": "Name",
+      "shared": "Shared",
+      "mapFinalSmall": "Map Final Small",
+      "location": "Location",
+      "altitudeUp": "Altitude Up",
+      "altitudeDown": "Altitude Down",
+      "length": "Length",
+      "orienteeringMap": "Orienteering Map",
+      "controlpoint": "Controlpoint",
+      "sharedCourse": "Shared Course"
+    }
+  }
+}

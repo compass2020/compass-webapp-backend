@@ -1,0 +1,88 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-result-question-heading" jhiTranslate="compassApp.resultQuestion.home.createOrEditLabel">Create or edit a Result Question</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultQuestion.text" for="field_text">Text</label>
+                    <input type="text" class="form-control" name="text" id="field_text"
+                           formControlName="text"/>
+                    <div *ngIf="editForm.get('text')!.invalid && (editForm.get('text')!.dirty || editForm.get('text')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('text')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultQuestion.type" for="field_type">Type</label>
+                    <select class="form-control" name="type" formControlName="type" id="field_type">
+                        <option value="SINGLE">{{ 'compassApp.QuestionType.SINGLE' | translate }}</option>
+                        <option value="MULTIPLE">{{ 'compassApp.QuestionType.MULTIPLE' | translate }}</option>
+                        <option value="INPUT">{{ 'compassApp.QuestionType.INPUT' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('type')!.invalid && (editForm.get('type')!.dirty || editForm.get('type')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('type')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultQuestion.difficulty" for="field_difficulty">Difficulty</label>
+                    <select class="form-control" name="difficulty" formControlName="difficulty" id="field_difficulty">
+                        <option value="EASY">{{ 'compassApp.Difficulty.EASY' | translate }}</option>
+                        <option value="MEDIUM">{{ 'compassApp.Difficulty.MEDIUM' | translate }}</option>
+                        <option value="HARD">{{ 'compassApp.Difficulty.HARD' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('difficulty')!.invalid && (editForm.get('difficulty')!.dirty || editForm.get('difficulty')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('difficulty')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultQuestion.answeredCorrectly" for="field_answeredCorrectly">Answered Correctly</label>
+                    <input type="checkbox" class="form-control" name="answeredCorrectly" id="field_answeredCorrectly"
+                           formControlName="answeredCorrectly"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultQuestion.category" for="field_category">Category</label>
+                    <select class="form-control" id="field_category" name="category" formControlName="category">
+                        <option *ngIf="!editForm.get('category')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="categoryOption.id === editForm.get('category')!.value?.id ? editForm.get('category')!.value : categoryOption" *ngFor="let categoryOption of categories; trackBy: trackById">{{ categoryOption.id }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('category')!.invalid && (editForm.get('category')!.dirty || editForm.get('category')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('category')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

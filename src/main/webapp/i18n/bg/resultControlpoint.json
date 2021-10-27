@@ -1,0 +1,31 @@
+{
+  "compassApp": {
+    "resultControlpoint": {
+      "home": {
+        "title": "Result Controlpoints",
+        "createLabel": "Създайте нов Result Controlpoint",
+        "createOrEditLabel": "Създайте или редактирайте Result Controlpoint",
+        "notFound": "Result Controlpoints не са намерени"
+      },
+      "created": "Създаден е нов Result Controlpoint с идентификатор {{ param }}",
+      "updated": "Result Controlpoint с идентификатор {{ param }} e oбновен",
+      "deleted": "Result Controlpoint с идентификатор {{ param }} е изтрит",
+      "delete": {
+        "question": "Наистина ли искате да изтриете Result Controlpoint {{ id }}?"
+      },
+      "detail": {
+        "title": "Result Controlpoint"
+      },
+      "sequence": "Sequence",
+      "timeReached": "Time Reached",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "skipAllowed": "Skip Allowed",
+      "reached": "Reached",
+      "borgScale": "Borg Scale",
+      "forceSkipped": "Force Skipped",
+      "resultQuestion": "Result Question",
+      "resultCourse": "Result Course"
+    }
+  }
+}

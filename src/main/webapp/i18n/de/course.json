@@ -1,0 +1,31 @@
+{
+  "compassApp": {
+    "course": {
+      "home": {
+        "title": "Courses",
+        "createLabel": "Course erstellen",
+        "createOrEditLabel": "Course erstellen oder bearbeiten",
+        "notFound": "No Courses found"
+      },
+      "created": "Course erstellt mit ID {{ param }}",
+      "updated": "Course aktualisiert mit ID {{ param }}",
+      "deleted": "Course gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Course {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Course"
+      },
+      "name": "Name",
+      "shared": "Shared",
+      "mapFinalSmall": "Map Final Small",
+      "location": "Location",
+      "altitudeUp": "Altitude Up",
+      "altitudeDown": "Altitude Down",
+      "length": "Length",
+      "orienteeringMap": "Orienteering Map",
+      "controlpoint": "Controlpoint",
+      "sharedCourse": "Shared Course"
+    }
+  }
+}

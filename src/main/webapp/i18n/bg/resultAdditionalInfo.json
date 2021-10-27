@@ -1,0 +1,24 @@
+{
+  "compassApp": {
+    "resultAdditionalInfo": {
+      "home": {
+        "title": "Result Additional Infos",
+        "createLabel": "Създайте нов Result Additional Info",
+        "createOrEditLabel": "Създайте или редактирайте Result Additional Info",
+        "notFound": "Result Additional Infos не са намерени"
+      },
+      "created": "Създаден е нов Result Additional Info с идентификатор {{ param }}",
+      "updated": "Result Additional Info с идентификатор {{ param }} e oбновен",
+      "deleted": "Result Additional Info с идентификатор {{ param }} е изтрит",
+      "delete": {
+        "question": "Наистина ли искате да изтриете Result Additional Info {{ id }}?"
+      },
+      "detail": {
+        "title": "Result Additional Info"
+      },
+      "gpxTrack": "Gpx Track",
+      "heartRate": "Heart Rate",
+      "resultCourse": "Result Course"
+    }
+  }
+}

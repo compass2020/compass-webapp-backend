@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity ResultCourse.
+    -->
+    <changeSet id="20200624064754-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="result_additionalinfo_id"
+                                 baseTableName="result_course"
+                                 constraintName="fk_result_course_result_additionalinfo_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="result_additional_info"/>
+
+        <addForeignKeyConstraint baseColumnNames="shared_course_id"
+                                 baseTableName="result_course"
+                                 constraintName="fk_result_course_shared_course_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="shared_course"/>
+
+    </changeSet>
+</databaseChangeLog>

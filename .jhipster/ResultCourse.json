@@ -1,0 +1,68 @@
+{
+  "name": "ResultCourse",
+  "fields": [
+    {
+      "fieldName": "nickName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "timeStampFinished",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "timeStampStarted",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "totalDurationInMillis",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "viewCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "showPositionCounter",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "switchAppCounter",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "resultAdditionalInfo",
+      "otherEntityRelationshipName": "resultCourse",
+      "relationshipName": "resultAdditionalinfo",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "resultControlpoint",
+      "otherEntityRelationshipName": "resultCourse",
+      "relationshipName": "resultControlpoint"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "sharedCourse",
+      "otherEntityRelationshipName": "resultCourse",
+      "relationshipValidateRules": "required",
+      "relationshipName": "sharedCourse",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200624064754",
+  "entityTableName": "result_course",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

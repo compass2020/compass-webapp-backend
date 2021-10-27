@@ -1,0 +1,28 @@
+{
+  "compassApp": {
+    "resultQuestion": {
+      "home": {
+        "title": "Result Questions",
+        "createLabel": "Create a new Result Question",
+        "createOrEditLabel": "Create or edit a Result Question",
+        "notFound": "No Result Questions found"
+      },
+      "created": "A new Result Question is created with identifier {{ param }}",
+      "updated": "A Result Question is updated with identifier {{ param }}",
+      "deleted": "A Result Question is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Result Question {{ id }}?"
+      },
+      "detail": {
+        "title": "Result Question"
+      },
+      "text": "Text",
+      "type": "Type",
+      "difficulty": "Difficulty",
+      "answeredCorrectly": "Answered Correctly",
+      "resultAnswer": "Result Answer",
+      "category": "Category",
+      "resultControlpoint": "Result Controlpoint"
+    }
+  }
+}

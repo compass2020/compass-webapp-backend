@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity ResultControlpoint.
+    -->
+    <changeSet id="20200624064854-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="result_controlpoint_id"
+                                 baseTableName="result_controlpoint_result_question"
+                                 constraintName="fk_result_controlpoint_result_question_result_controlpoint_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="result_controlpoint"/>
+
+        <addForeignKeyConstraint baseColumnNames="result_question_id"
+                                 baseTableName="result_controlpoint_result_question"
+                                 constraintName="fk_result_controlpoint_result_question_result_question_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="result_question"/>
+        
+        <addForeignKeyConstraint baseColumnNames="result_course_id"
+                                 baseTableName="result_controlpoint"
+                                 constraintName="fk_result_controlpoint_result_course_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="result_course"/>
+
+    </changeSet>
+</databaseChangeLog>

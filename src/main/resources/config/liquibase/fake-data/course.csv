@@ -1,0 +1,5 @@
+id;name;shared;orienteering_map_id;created_by;map_final_small;map_final_small_content_type;location;altitude_up;altitude_down;length
+1;Orienteering Trail #1;true;1;admin;../fake-data/blob/mapfinalsmall.jpeg;image/jpeg;location1;10;5;3
+2;Sportplatz;true;2;admin;../fake-data/blob/mapfinalsmall.jpeg;image/jpeg;location2;10;5;3
+3;Sportplatz #2;true;3;admin;../fake-data/blob/mapfinalsmall.jpeg;image/jpeg;location3;10;5;3
+4;Obernholz;true;4;admin;../fake-data/blob/mapFinalSmall_Obernholz.jpg;image/jpeg;location4;10;5;3

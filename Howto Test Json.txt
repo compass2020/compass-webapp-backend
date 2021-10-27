@@ -1,0 +1,25 @@
+ResultCourse JSON:
+
+{
+  "nickName": "fichti",
+  "resultControlpoints": [
+    {
+      "borgScale": 9,
+      "latitude": 0,
+      "longitude": 0,
+      "reached": true,
+      "resultQuestions": [
+      ],
+      "sequence": 0,
+      "skipAllowed": true,
+      "timeReached": "2020-12-17T10:10:01.567Z"
+    }
+  ],
+  "sharedCourse": {
+    "id": 1
+  },
+  "timeStampFinished": "2020-12-17T10:10:01.567Z",
+  "timeStampStarted": "2020-12-17T10:10:01.567Z",
+  "totalDurationInMillis": 0,
+  "viewCode": "abcd1"
+}

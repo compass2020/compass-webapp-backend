@@ -1,0 +1,112 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-result-controlpoint-heading" jhiTranslate="compassApp.resultControlpoint.home.createOrEditLabel">Create or edit a Result Controlpoint</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultControlpoint.sequence" for="field_sequence">Sequence</label>
+                    <input type="number" class="form-control" name="sequence" id="field_sequence"
+                           formControlName="sequence"/>
+                    <div *ngIf="editForm.get('sequence')!.invalid && (editForm.get('sequence')!.dirty || editForm.get('sequence')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('sequence')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('sequence')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultControlpoint.timeReached" for="field_timeReached">Time Reached</label>
+                    <div class="d-flex">
+                        <input id="field_timeReached" type="datetime-local" class="form-control" name="timeReached" formControlName="timeReached" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultControlpoint.latitude" for="field_latitude">Latitude</label>
+                    <input type="number" class="form-control" name="latitude" id="field_latitude"
+                           formControlName="latitude"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultControlpoint.longitude" for="field_longitude">Longitude</label>
+                    <input type="number" class="form-control" name="longitude" id="field_longitude"
+                           formControlName="longitude"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultControlpoint.skipAllowed" for="field_skipAllowed">Skip Allowed</label>
+                    <input type="checkbox" class="form-control" name="skipAllowed" id="field_skipAllowed"
+                           formControlName="skipAllowed"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultControlpoint.reached" for="field_reached">Reached</label>
+                    <input type="checkbox" class="form-control" name="reached" id="field_reached"
+                           formControlName="reached"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultControlpoint.borgScale" for="field_borgScale">Borg Scale</label>
+                    <input type="number" class="form-control" name="borgScale" id="field_borgScale"
+                           formControlName="borgScale"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultControlpoint.forceSkipped" for="field_forceSkipped">Force Skipped</label>
+                    <input type="checkbox" class="form-control" name="forceSkipped" id="field_forceSkipped"
+                           formControlName="forceSkipped"/>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="compassApp.resultControlpoint.resultQuestion" for="field_resultQuestions">Result Question</label>
+                    <select class="form-control" id="field_resultQuestions" multiple name="resultQuestions" formControlName="resultQuestions">
+                        <option [ngValue]="getSelected(editForm.get('resultQuestions')!.value, resultQuestionOption)" *ngFor="let resultQuestionOption of resultquestions; trackBy: trackById">{{ resultQuestionOption.id }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('resultQuestions')!.invalid && (editForm.get('resultQuestions')!.dirty || editForm.get('resultQuestions')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('resultQuestions')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.resultControlpoint.resultCourse" for="field_resultCourse">Result Course</label>
+                    <select class="form-control" id="field_resultCourse" name="resultCourse" formControlName="resultCourse">
+                        <option *ngIf="!editForm.get('resultCourse')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="resultCourseOption.id === editForm.get('resultCourse')!.value?.id ? editForm.get('resultCourse')!.value : resultCourseOption" *ngFor="let resultCourseOption of resultcourses; trackBy: trackById">{{ resultCourseOption.id }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('resultCourse')!.invalid && (editForm.get('resultCourse')!.dirty || editForm.get('resultCourse')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('resultCourse')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

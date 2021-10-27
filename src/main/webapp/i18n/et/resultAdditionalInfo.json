@@ -1,0 +1,24 @@
+{
+  "compassApp": {
+    "resultAdditionalInfo": {
+      "home": {
+        "title": "Result Additional Infos",
+        "createLabel": "Lisa uus Result Additional Info",
+        "createOrEditLabel": "Lisa või muuda Result Additional Info",
+        "notFound": "No Result Additional Infos found"
+      },
+      "created": "Uus Result Additional Info on loodud identifikaatoriga {{ param }}",
+      "updated": "Result Additional Info identifikaatoriga {{ param }} on muudetud",
+      "deleted": "Result Additional Info identifikaatoriga {{ param }} on kustutatud",
+      "delete": {
+        "question": "Kas olete kindel, et soovite kustutada Result Additional Info {{ id }}?"
+      },
+      "detail": {
+        "title": "Result Additional Info"
+      },
+      "gpxTrack": "Gpx Track",
+      "heartRate": "Heart Rate",
+      "resultCourse": "Result Course"
+    }
+  }
+}

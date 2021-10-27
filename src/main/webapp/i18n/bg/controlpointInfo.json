@@ -1,0 +1,27 @@
+{
+  "compassApp": {
+    "controlpointInfo": {
+      "home": {
+        "title": "Controlpoint Infos",
+        "createLabel": "Създайте нов Controlpoint Info",
+        "createOrEditLabel": "Създайте или редактирайте Controlpoint Info",
+        "notFound": "Controlpoint Infos не са намерени"
+      },
+      "created": "Създаден е нов Controlpoint Info с идентификатор {{ param }}",
+      "updated": "Controlpoint Info с идентификатор {{ param }} e oбновен",
+      "deleted": "Controlpoint Info с идентификатор {{ param }} е изтрит",
+      "delete": {
+        "question": "Наистина ли искате да изтриете Controlpoint Info {{ id }}?"
+      },
+      "detail": {
+        "title": "Controlpoint Info"
+      },
+      "image": "Image",
+      "col": "Col",
+      "description": "Description",
+      "messageKey": "Message Key",
+      "sort": "Sort",
+      "controlpoint": "Controlpoint"
+    }
+  }
+}

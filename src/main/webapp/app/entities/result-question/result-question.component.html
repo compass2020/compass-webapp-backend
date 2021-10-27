@@ -1,0 +1,73 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="compassApp.resultQuestion.home.title">Result Questions</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-result-question" [routerLink]="['/result-question/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="compassApp.resultQuestion.home.createLabel">
+            Create a new Result Question
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="resultQuestions?.length === 0">
+        <span jhiTranslate="compassApp.resultQuestion.home.notFound">No resultQuestions found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="resultQuestions && resultQuestions.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.resultQuestion.text">Text</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.resultQuestion.type">Type</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.resultQuestion.difficulty">Difficulty</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.resultQuestion.answeredCorrectly">Answered Correctly</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.resultQuestion.category">Category</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let resultQuestion of resultQuestions ;trackBy: trackId">
+                    <td><a [routerLink]="['/result-question', resultQuestion.id, 'view']">{{ resultQuestion.id }}</a></td>
+                    <td>{{ resultQuestion.text }}</td>
+                    <td jhiTranslate="{{ 'compassApp.QuestionType.' + resultQuestion.type }}">{{ resultQuestion.type }}</td>
+                    <td jhiTranslate="{{ 'compassApp.Difficulty.' + resultQuestion.difficulty }}">{{ resultQuestion.difficulty }}</td>
+                    <td>{{ resultQuestion.answeredCorrectly }}</td>
+                    <td>
+                        <div *ngIf="resultQuestion.category">
+                            <a [routerLink]="['/category', resultQuestion.category?.id, 'view']" >{{ resultQuestion.category?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/result-question', resultQuestion.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/result-question', resultQuestion.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(resultQuestion)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+{
+  "compassApp": {
+    "QuestionType": {
+      "null": "",
+      "SINGLE": "SINGLE",
+      "MULTIPLE": "MULTIPLE",
+      "INPUT": "INPUT"
+    }
+  }
+}

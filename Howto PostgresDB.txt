@@ -1,0 +1,56 @@
+#########################
+## Wichtige SQL Befehle
+#########################
+
+Autocommit im PGAdmin Query Tool immer deaktivieren sonst kein ROLLBACK möglich!!!
+
+##########
+# Postgres
+##########
+
+## Compass Datenbank und Rolle erzeugen
+
+create role compass with login encrypted password 'compass123';
+drop database compass;
+create database compass;
+
+## Constraints deaktivieren / aktivieren
+
+SET session_replication_role = 'replica';
+SET session_replication_role = 'origin';
+
+###########
+# Liquibase
+###########
+
+## Lock entfernen
+
+select * from databasechangeloglock;
+UPDATE DATABASECHANGELOGLOCK SET LOCKED=false;
+
+
+## Validation Error beheben (Beispiel)
+
+Zu einem Validation Fehler kommt es wenn ein csv (Daten die unter config/liquibase/data ligen zB user.csv) oder xml verändert wird welches bereits in die DB durch liquibase eingespielt wurde.
+faker-data sollte nicht betroffen sein.
+
+Mit folgenden Befehl korrigiert liquibase die MD5SUM ohne das Script neu einzuspielen. Im server.log sieht man genau das xml file und die Id die betroffen ist. 
+
+UPDATE DATABASECHANGELOG SET MD5SUM = null where ID = 'xxx'
+wobei xxx die ID in der Exception ist oder einfach im entsprechenden changelog xml nachschauen src/main/resources/config/liquibase/changelog/*.xml
+
+
+## Schema-Änderungen
+
+Diese müssen ab sofort mit einem zusäzlichen changeset hinzugefügt werden
+Liquibase prüft ob das changeset mit der ID schon eingespielt wurde und spielt es automatisch ein und hinterlegt die MD5SOM (Tabelle DATABASECHANGELOG)
+
+Beispiel für eine neue Saplte name2 in der Tabelle Course:
+
+    <changeSet id="20200528095742-2" author="tficht">
+		<addColumn tableName="course">
+            <column name="name2" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+		</addColumn>
+	</changeSet>

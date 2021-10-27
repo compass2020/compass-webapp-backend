@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="course">
+            <h2><span jhiTranslate="compassApp.course.detail.title">Course</span> {{ course.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="compassApp.course.name">Name</span></dt>
+                <dd>
+                    <span>{{ course.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.course.shared">Shared</span></dt>
+                <dd>
+                    <span>{{ course.shared }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.course.mapFinalSmall">Map Final Small</span></dt>
+                <dd>
+                    <div *ngIf="course.mapFinalSmall">
+                        <a (click)="openFile(course.mapFinalSmallContentType, course.mapFinalSmall)">
+                            <img [src]="'data:' + course.mapFinalSmallContentType + ';base64,' + course.mapFinalSmall" style="max-width: 100%;" alt="course image"/>
+                        </a>
+                        {{ course.mapFinalSmallContentType }}, {{ byteSize(course.mapFinalSmall) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="compassApp.course.location">Location</span></dt>
+                <dd>
+                    <span>{{ course.location }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.course.altitudeUp">Altitude Up</span></dt>
+                <dd>
+                    <span>{{ course.altitudeUp }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.course.altitudeDown">Altitude Down</span></dt>
+                <dd>
+                    <span>{{ course.altitudeDown }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.course.length">Length</span></dt>
+                <dd>
+                    <span>{{ course.length }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.course.orienteeringMap">Orienteering Map</span></dt>
+                <dd>
+                    <div *ngIf="course.orienteeringMap">
+                        <a [routerLink]="['/orienteering-map', course.orienteeringMap?.id, 'view']">{{ course.orienteeringMap?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/course', course.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

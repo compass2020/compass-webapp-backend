@@ -1,0 +1,100 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-course-heading" jhiTranslate="compassApp.course.home.createOrEditLabel">Create or edit a Course</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.course.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                    <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('name')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.course.shared" for="field_shared">Shared</label>
+                    <input type="checkbox" class="form-control" name="shared" id="field_shared"
+                           formControlName="shared"/>
+                    <div *ngIf="editForm.get('shared')!.invalid && (editForm.get('shared')!.dirty || editForm.get('shared')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('shared')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.course.mapFinalSmall" for="field_mapFinalSmall">Map Final Small</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('mapFinalSmallContentType')!.value + ';base64,' + editForm.get('mapFinalSmall')!.value" style="max-height: 100px;" *ngIf="editForm.get('mapFinalSmall')!.value" alt="course image"/>
+                        <div *ngIf="editForm.get('mapFinalSmall')!.value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{ editForm.get('mapFinalSmallContentType')!.value }}, {{ byteSize(editForm.get('mapFinalSmall')!.value) }}</span>
+                            <button type="button" (click)="clearInputImage('mapFinalSmall', 'mapFinalSmallContentType', 'file_mapFinalSmall')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_mapFinalSmall" (change)="setFileData($event, 'mapFinalSmall', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="mapFinalSmall" id="field_mapFinalSmall"
+                           formControlName="mapFinalSmall"/>
+                    <input type="hidden" class="form-control" name="mapFinalSmallContentType" id="field_mapFinalSmallContentType"
+                           formControlName="mapFinalSmallContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.course.location" for="field_location">Location</label>
+                    <input type="text" class="form-control" name="location" id="field_location"
+                           formControlName="location"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.course.altitudeUp" for="field_altitudeUp">Altitude Up</label>
+                    <input type="number" class="form-control" name="altitudeUp" id="field_altitudeUp"
+                           formControlName="altitudeUp"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.course.altitudeDown" for="field_altitudeDown">Altitude Down</label>
+                    <input type="number" class="form-control" name="altitudeDown" id="field_altitudeDown"
+                           formControlName="altitudeDown"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.course.length" for="field_length">Length</label>
+                    <input type="number" class="form-control" name="length" id="field_length"
+                           formControlName="length"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="compassApp.course.orienteeringMap" for="field_orienteeringMap">Orienteering Map</label>
+                    <select class="form-control" id="field_orienteeringMap" name="orienteeringMap" formControlName="orienteeringMap">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="orienteeringMapOption.id === editForm.get('orienteeringMap')!.value?.id ? editForm.get('orienteeringMap')!.value : orienteeringMapOption" *ngFor="let orienteeringMapOption of orienteeringmaps; trackBy: trackById">{{ orienteeringMapOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

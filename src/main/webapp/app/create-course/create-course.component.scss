@@ -1,0 +1,87 @@
+/* create-course.component.scss */
+
+.mat-horizontal-stepper-header-container {
+  margin-bottom: 10px;
+}
+
+.stepper-nav-buttons {
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+  border-radius: 10px 10px 0px 0px;
+  border: solid 1px #ccc;
+  border-bottom: none;
+  margin-top: 50px;
+}
+
+.stepper-nav-buttons button {
+  float: none;
+  margin: 10px;
+}
+
+.stepWrapper {
+  margin: 10px;
+  margin-bottom: 0px;
+}
+.component_wrapper {
+  margin-top: -20px;
+}
+
+::ng-deep .mat-horizontal-content-container {
+  padding-bottom: 0px;
+  border-radius: 10px;
+  border: solid 1px #ccc;
+  margin-bottom: 10px;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.radio-button {
+  margin: 5px;
+}
+
+.controlDescriptionTable,
+.controlDescriptionTable th,
+.controlDescriptionTable td {
+  border: 3px solid #bf1377;
+  min-width: 43px;
+  height: 43px;
+  padding: 0px;
+}
+
+.controlDescriptionTable {
+  table-layout: fixed;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.controlDescriptionTable td img {
+  width: 40px;
+  height: 40px;
+}
+
+.expertToggle {
+  margin-bottom: 20px;
+}
+
+/* On screens that are 410px or less */
+@media screen and (max-width: 410px) {
+  .controlDescriptionTable td img {
+    width: 25px;
+    height: 25px;
+  }
+
+  .controlDescriptionTable,
+  .controlDescriptionTable th,
+  .controlDescriptionTable td {
+    min-width: 30px;
+    height: 30px;
+  }
+}

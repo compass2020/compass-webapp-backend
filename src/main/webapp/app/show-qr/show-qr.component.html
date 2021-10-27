@@ -1,0 +1,51 @@
+<div style="text-align: center; margin-top: 20px;">
+  <h2 *ngIf="this.sharedCourse.course.name" style="text-align: center;">
+    <span jhiTranslate="results.course"></span>&nbsp;{{ this.sharedCourse.course.name }}
+  </h2>
+  <p *ngIf="this.sharedCourse" style="text-align: center;">
+    <span jhiTranslate="searchAndOrder.nameOfSession"></span>: {{ this.sharedCourse.name }}<br />
+    <span jhiTranslate="my-courses.gameMode"></span>: {{ this.sharedCourse.gameModus }}<br />
+    <mat-checkbox class="disabledCheckbox" [ngModel]="this.sharedCourse.showCourseBeforeStart" color="primary" [disabled]="true"
+      ><span jhiTranslate="my-courses.showCourseBeforeStartShort"></span></mat-checkbox
+    ><br />
+    <mat-checkbox class="disabledCheckbox" [ngModel]="this.sharedCourse.showPositionAllowed" color="primary" [disabled]="true"
+      ><span jhiTranslate="my-courses.showPositionAllowed"></span></mat-checkbox
+    ><br />
+    <span jhiTranslate="my-courses.timeOfFirstShare"></span>:
+    {{ this.sharedCourse.timeStampShared | date: 'short':'':this.jhiTranslateLanguage.currentLang }}<br /><ng-container
+      *ngIf="sharedCourse.numberOfCustomQrCodes > 0"
+      ><span jhiTranslate="my-courses.numberOfCustomQrCodes"></span>:&nbsp; {{ sharedCourse.numberOfCustomQrCodes }}<br
+    /></ng-container>
+    <ng-container *ngIf="!(sharedCourse.timeStampStart === null || sharedCourse.timeStampStart === undefined)"
+      ><span jhiTranslate="my-courses.activeTimerange"></span>:&nbsp;{{
+        sharedCourse.timeStampStart | date: 'short':'':this.jhiTranslateLanguage.currentLang
+      }}&nbsp;-&nbsp;{{ sharedCourse.timeStampEnd | date: 'short':'':this.jhiTranslateLanguage.currentLang }}</ng-container
+    >
+  </p>
+  <qrcode
+    id="qrCodeElement"
+    *ngIf="sharedCourse.qrCode !== undefined"
+    [qrdata]="sharedCourse.qrCode"
+    [width]="200"
+    [errorCorrectionLevel]="'H'"
+  ></qrcode>
+
+  <button
+    mat-button
+    mat-raised-button
+    color="primary"
+    (click)="saveAsImage()"
+    jhiTranslate="my-courses.downloadQRCode"
+    style="margin-bottom: 10px;"
+  ></button>
+
+  <button
+    *ngIf="sharedCourse.numberOfCustomQrCodes > 0"
+    mat-button
+    mat-raised-button
+    color="primary"
+    id="printOneTimeCodesButton"
+    routerLink="/printShareQRs/{{ sharedCourse.id }}"
+    jhiTranslate="my-courses.printOneTimeQRCodes"
+  ></button>
+</div>

@@ -1,0 +1,39 @@
+<div>
+  <h3 jhiTranslate="create-course.controlpointsOfCourse">Controlpoints of Course</h3>
+  <div class="controlpoint-list">
+    <div class="controlpoint-box" *ngFor="let controlpoint of this.controlpoints; let i = index">
+      <div>
+        <img width="40px" *ngIf="i !== 0 && i !== this.controlpoints.length - 1" src="/content/images/assets/controlpoint.gif" />
+        <img width="40px" *ngIf="i === 0" src="/content/images/assets/start.gif" />
+        <img
+          width="40px"
+          *ngIf="i === this.controlpoints.length - 1 && this.controlpoints.length > 1"
+          src="/content/images/assets/finish.gif"
+        />
+        <mat-hint class="pinkStyle" *ngIf="i !== 0 && i !== this.controlpoints.length - 1">{{ i }}</mat-hint>
+      </div>
+      <mat-checkbox
+        [hidden]="controlpoint.team || i < 2 || i == this.controlpoints.length - 1"
+        [checked]="controlpoint.skippable"
+        (change)="skipValueChange($event, i)"
+        color="primary"
+        ><span jhiTranslate="create-course.isSkippableInList"></span
+      ></mat-checkbox>
+      <button mat-button mat-raised-button color="primary" (click)="removeControlpoint(i)" jhiTranslate="create-course.remove">
+        Remove
+      </button>
+    </div>
+    <div class="controlpoint-box">
+      <button
+        style="margin: 10px;"
+        mat-button
+        mat-raised-button
+        color="primary"
+        (click)="clearCourse()"
+        jhiTranslate="create-course.clearCourse"
+      >
+        Clear Course
+      </button>
+    </div>
+  </div>
+</div>

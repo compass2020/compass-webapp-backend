@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="controlpointInfo">
+            <h2><span jhiTranslate="compassApp.controlpointInfo.detail.title">Controlpoint Info</span> {{ controlpointInfo.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="compassApp.controlpointInfo.image">Image</span></dt>
+                <dd>
+                    <div *ngIf="controlpointInfo.image">
+                        <a (click)="openFile(controlpointInfo.imageContentType, controlpointInfo.image)">
+                            <img [src]="'data:' + controlpointInfo.imageContentType + ';base64,' + controlpointInfo.image" style="max-width: 100%;" alt="controlpointInfo image"/>
+                        </a>
+                        {{ controlpointInfo.imageContentType }}, {{ byteSize(controlpointInfo.image) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="compassApp.controlpointInfo.col">Col</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'compassApp.ControlpointInfoColumn.' + controlpointInfo.col }}">{{ controlpointInfo.col }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.controlpointInfo.description">Description</span></dt>
+                <dd>
+                    <span>{{ controlpointInfo.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.controlpointInfo.messageKey">Message Key</span></dt>
+                <dd>
+                    <span>{{ controlpointInfo.messageKey }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.controlpointInfo.sort">Sort</span></dt>
+                <dd>
+                    <span>{{ controlpointInfo.sort }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/controlpoint-info', controlpointInfo.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+{
+  "compassApp": {
+    "resultAnswer": {
+      "home": {
+        "title": "Result Answers",
+        "createLabel": "Result Answer erstellen",
+        "createOrEditLabel": "Result Answer erstellen oder bearbeiten",
+        "notFound": "No Result Answers found"
+      },
+      "created": "Result Answer erstellt mit ID {{ param }}",
+      "updated": "Result Answer aktualisiert mit ID {{ param }}",
+      "deleted": "Result Answer gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Result Answer {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Result Answer"
+      },
+      "text": "Text",
+      "correct": "Correct",
+      "answeredCorrectly": "Answered Correctly",
+      "resultQuestion": "Result Question"
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "name": "SharedCourse",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "qrCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "gameModus",
+      "fieldType": "GameModus",
+      "fieldValues": "QRCODE,GPS,NFC",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "timeStampShared",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "visible",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "timeStampStart",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "timeStampEnd",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "numberOfCustomQrCodes",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "showCourseBeforeStart",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "showPositionAllowed",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "resultCourse",
+      "otherEntityRelationshipName": "sharedCourse",
+      "relationshipName": "resultCourse"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "sharedCourseQrCode",
+      "otherEntityRelationshipName": "sharedCourse",
+      "relationshipName": "sharedCourseQrCode"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "course",
+      "otherEntityRelationshipName": "sharedCourse",
+      "relationshipValidateRules": "required",
+      "relationshipName": "course",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200618125255",
+  "entityTableName": "shared_course",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

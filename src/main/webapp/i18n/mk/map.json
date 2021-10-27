@@ -1,0 +1,30 @@
+{
+  "compassApp": {
+    "map": {
+      "home": {
+        "title": "Maps",
+        "createLabel": "Create a new Map",
+        "createOrEditLabel": "Create or edit a Map",
+        "notFound": "No Maps found"
+      },
+      "created": "A new Map is created with identifier {{ param }}",
+      "updated": "A Map is updated with identifier {{ param }}",
+      "deleted": "A Map is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Map {{ id }}?"
+      },
+      "detail": {
+        "title": "Map"
+      },
+      "mapOrigin": "Map Origin",
+      "mapFinal": "Map Final",
+      "mapKmlOverlay": "Map Kml Overlay",
+      "scaleX": "Scale X",
+      "scaleY": "Scale Y",
+      "centerX": "Center X",
+      "centerY": "Center Y",
+      "rotation": "Rotation",
+      "course": "Course"
+    }
+  }
+}

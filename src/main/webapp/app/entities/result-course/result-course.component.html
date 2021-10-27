@@ -1,0 +1,85 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="compassApp.resultCourse.home.title">Result Courses</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-result-course" [routerLink]="['/result-course/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="compassApp.resultCourse.home.createLabel">
+            Create a new Result Course
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="resultCourses?.length === 0">
+        <span jhiTranslate="compassApp.resultCourse.home.notFound">No resultCourses found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="resultCourses && resultCourses.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.resultCourse.nickName">Nick Name</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.resultCourse.timeStampFinished">Time Stamp Finished</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.resultCourse.timeStampStarted">Time Stamp Started</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.resultCourse.totalDurationInMillis">Total Duration In Millis</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.resultCourse.viewCode">View Code</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.resultCourse.showPositionCounter">Show Position Counter</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.resultCourse.switchAppCounter">Switch App Counter</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.resultCourse.resultAdditionalinfo">Result Additionalinfo</span></th>
+                    <th scope="col" ><span jhiTranslate="compassApp.resultCourse.sharedCourse">Shared Course</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let resultCourse of resultCourses ;trackBy: trackId">
+                    <td><a [routerLink]="['/result-course', resultCourse.id, 'view']">{{ resultCourse.id }}</a></td>
+                    <td>{{ resultCourse.nickName }}</td>
+                    <td>{{ resultCourse.timeStampFinished | date:'medium' }}</td>
+                    <td>{{ resultCourse.timeStampStarted | date:'medium' }}</td>
+                    <td>{{ resultCourse.totalDurationInMillis }}</td>
+                    <td>{{ resultCourse.viewCode }}</td>
+                    <td>{{ resultCourse.showPositionCounter }}</td>
+                    <td>{{ resultCourse.switchAppCounter }}</td>
+                    <td>
+                        <div *ngIf="resultCourse.resultAdditionalinfo">
+                            <a [routerLink]="['/result-additional-info', resultCourse.resultAdditionalinfo?.id, 'view']" >{{ resultCourse.resultAdditionalinfo?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="resultCourse.sharedCourse">
+                            <a [routerLink]="['/shared-course', resultCourse.sharedCourse?.id, 'view']" >{{ resultCourse.sharedCourse?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/result-course', resultCourse.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/result-course', resultCourse.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(resultCourse)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

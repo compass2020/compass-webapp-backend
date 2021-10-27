@@ -1,0 +1,26 @@
+{
+  "compassApp": {
+    "sharedCourseQrCode": {
+      "home": {
+        "title": "Shared Course Qr Codes",
+        "createLabel": "Shared Course Qr Code erstellen",
+        "createOrEditLabel": "Shared Course Qr Code erstellen oder bearbeiten",
+        "notFound": "No Shared Course Qr Codes found"
+      },
+      "created": "Shared Course Qr Code erstellt mit ID {{ param }}",
+      "updated": "Shared Course Qr Code aktualisiert mit ID {{ param }}",
+      "deleted": "Shared Course Qr Code gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Shared Course Qr Code {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Shared Course Qr Code"
+      },
+      "device": "Device",
+      "qrCode": "Qr Code",
+      "scanned": "Scanned",
+      "timeStampScanned": "Time Stamp Scanned",
+      "sharedCourse": "Shared Course"
+    }
+  }
+}

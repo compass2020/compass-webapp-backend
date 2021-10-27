@@ -1,0 +1,31 @@
+{
+  "compassApp": {
+    "orienteeringMap": {
+      "home": {
+        "title": "Orienteering Maps",
+        "createLabel": "Create a new Orienteering Map",
+        "createOrEditLabel": "Create or edit a Orienteering Map",
+        "notFound": "No Orienteering Maps found"
+      },
+      "created": "A new Orienteering Map is created with identifier {{ param }}",
+      "updated": "A Orienteering Map is updated with identifier {{ param }}",
+      "deleted": "A Orienteering Map is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Orienteering Map {{ id }}?"
+      },
+      "detail": {
+        "title": "Orienteering Map"
+      },
+      "mapOverlayImage": "Map Overlay Image",
+      "mapOverlayKml": "Map Overlay Kml",
+      "mapFinal": "Map Final",
+      "imageScaleX": "Image Scale X",
+      "imageScaleY": "Image Scale Y",
+      "imageCenterX": "Image Center X",
+      "imageCenterY": "Image Center Y",
+      "imageRotation": "Image Rotation",
+      "declination": "Declination",
+      "course": "Course"
+    }
+  }
+}

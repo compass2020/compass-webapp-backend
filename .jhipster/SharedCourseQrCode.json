@@ -1,0 +1,42 @@
+{
+  "name": "SharedCourseQrCode",
+  "fields": [
+    {
+      "fieldName": "device",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "qrCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "scanned",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "timeStampScanned",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "sharedCourse",
+      "otherEntityRelationshipName": "sharedCourseQrCode",
+      "relationshipValidateRules": "required",
+      "relationshipName": "sharedCourse",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210114124019",
+  "entityTableName": "shared_course_qr_code",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

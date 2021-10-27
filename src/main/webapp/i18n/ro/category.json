@@ -1,0 +1,24 @@
+{
+  "compassApp": {
+    "category": {
+      "home": {
+        "title": "Categories",
+        "createLabel": "Creeare o nouă entitate Category",
+        "createOrEditLabel": "Creeare sau editare Category",
+        "notFound": "No Categories found"
+      },
+      "created": "A fost creată o nouă entitate Category cu identificatorul {{ param }}",
+      "updated": "Category cu identificatorul {{ param }} a fost actualizată",
+      "deleted": "Category cu identificatorul {{ param }} a fost ștearsă",
+      "delete": {
+        "question": "Sunteți sigur că doriți să ștergeți Category {{ id }}?"
+      },
+      "detail": {
+        "title": "Category"
+      },
+      "text": "Text",
+      "question": "Question",
+      "resultQuestion": "Result Question"
+    }
+  }
+}

@@ -1,0 +1,1 @@
+describe('MyCoursesComponent Tests', () => {});

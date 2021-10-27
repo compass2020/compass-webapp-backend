@@ -1,0 +1,28 @@
+{
+  "compassApp": {
+    "resultQuestion": {
+      "home": {
+        "title": "Result Questions",
+        "createLabel": "Lisa uus Result Question",
+        "createOrEditLabel": "Lisa või muuda Result Question",
+        "notFound": "No Result Questions found"
+      },
+      "created": "Uus Result Question on loodud identifikaatoriga {{ param }}",
+      "updated": "Result Question identifikaatoriga {{ param }} on muudetud",
+      "deleted": "Result Question identifikaatoriga {{ param }} on kustutatud",
+      "delete": {
+        "question": "Kas olete kindel, et soovite kustutada Result Question {{ id }}?"
+      },
+      "detail": {
+        "title": "Result Question"
+      },
+      "text": "Text",
+      "type": "Type",
+      "difficulty": "Difficulty",
+      "answeredCorrectly": "Answered Correctly",
+      "resultAnswer": "Result Answer",
+      "category": "Category",
+      "resultControlpoint": "Result Controlpoint"
+    }
+  }
+}

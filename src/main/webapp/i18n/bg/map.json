@@ -1,0 +1,30 @@
+{
+  "compassApp": {
+    "map": {
+      "home": {
+        "title": "Maps",
+        "createLabel": "Създайте нов Map",
+        "createOrEditLabel": "Създайте или редактирайте Map",
+        "notFound": "Maps не са намерени"
+      },
+      "created": "Създаден е нов Map с идентификатор {{ param }}",
+      "updated": "Map с идентификатор {{ param }} e oбновен",
+      "deleted": "Map с идентификатор {{ param }} е изтрит",
+      "delete": {
+        "question": "Наистина ли искате да изтриете Map {{ id }}?"
+      },
+      "detail": {
+        "title": "Map"
+      },
+      "mapOrigin": "Map Origin",
+      "mapFinal": "Map Final",
+      "mapKmlOverlay": "Map Kml Overlay",
+      "scaleX": "Scale X",
+      "scaleY": "Scale Y",
+      "centerX": "Center X",
+      "centerY": "Center Y",
+      "rotation": "Rotation",
+      "course": "Course"
+    }
+  }
+}

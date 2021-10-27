@@ -1,0 +1,172 @@
+<div fxLayout="row wrap" fxLayout.sm="column" fxLayout.lt-sm="column" fxLayoutAlign="space-around stretch">
+  <div fxFlex="55" fxFlexFill id="fullscreen">
+    <div id="map" class="map"></div>
+
+    <div id="imgMap"></div>
+
+    <div id="popup" class="ol-popup">
+      <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+      <div class="popup-content">
+        <h4>
+          <span *ngIf="this.popUpID !== 0 && this.popUpID !== this.course.controlpoints?.length - 1" class="textOverQRCode"
+            ><span jhiTranslate="compassApp.question.controlpoint"></span>&nbsp;#{{ this.popUpID }}</span
+          >
+          <span *ngIf="this.popUpID === 0" class="textOverQRCode" jhiTranslate="create-course.start">Start</span>
+          <span *ngIf="this.popUpID === this.course.controlpoints?.length - 1" class="textOverQRCode" jhiTranslate="create-course.finish"
+            >Finish</span
+          >
+        </h4>
+        <p style="margin-bottom: 0px;">Lat: {{ this.latPopUp }}</p>
+        <p>Lon: {{ this.lonPopUp }}</p>
+      </div>
+      <mat-checkbox
+        *ngIf="!this.skipDisabled"
+        color="primary"
+        labelPosition="after"
+        [checked]="this.skipControlpointPopUp"
+        (change)="skipValueChange($event)"
+        ><span jhiTranslate="create-course.isSkippable"></span
+      ></mat-checkbox>
+      <mat-label style="margin-top: 20px; margin-right: 10px;" jhiTranslate="create-course.radius">Radius [m]: </mat-label>
+      <mat-slider
+        color="primary"
+        class="popUpSlider"
+        thumbLabel
+        min="10"
+        max="50"
+        step="1"
+        [value]="this.radiusPopUp"
+        (change)="radiusValueChange($event)"
+      ></mat-slider>
+    </div>
+  </div>
+  <div fxFlex="40" class="rightBox">
+    <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxLayoutGap="10px" style="margin-bottom: 20px;">
+      <mat-icon style="color: #e95420;">info</mat-icon>
+      <mat-label jhiTranslate="create-course.clickOnMapToAddControlpoints"></mat-label>
+    </div>
+    <mat-label jhiTranslate="create-course.addControlpointFromCoords" *ngIf="this.expertMode"></mat-label>
+    <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="10px" style="margin-bottom: 20px;" *ngIf="this.expertMode">
+      <mat-form-field style="width: 60%;">
+        <mat-label jhiTranslate="create-course.coordinates"></mat-label>
+        <input matInput type="text" [maxLength]="255" class="form-control" id="enteredLatLon" (keyup.enter)="addControlpointFromCoords()" />
+      </mat-form-field>
+      <button
+        mat-button
+        mat-raised-button
+        color="primary"
+        (click)="addControlpointFromCoords()"
+        jhiTranslate="create-course.addControlpoint"
+      ></button>
+    </div>
+    <div style="margin-right: 20px; float: left; margin-bottom: 10px;">
+      <button mat-button mat-raised-button color="primary" (click)="centerMyLocation()" jhiTranslate="create-course.getMyLocation">
+        Get my location
+      </button>
+    </div>
+    <div style="margin-right: 20px; float: left; margin-bottom: 10px;">
+      <button mat-button mat-raised-button color="primary" (click)="openSearchBar()" jhiTranslate="create-course.search">
+        Search Location
+      </button>
+    </div>
+    <div style="margin-right: 20px; float: left; margin-bottom: 10px;" *ngIf="this.expertMode">
+      <input #imgOverlayInput hidden="true" type="file" onclick="this.value=null" (change)="imgOverlay($event)" accept="image/*" />
+      <button
+        *ngIf="!this.overlayImageIsActive"
+        mat-button
+        mat-raised-button
+        color="primary"
+        (click)="imgOverlayInput.click()"
+        jhiTranslate="create-course.overlayImage"
+      >
+        Overlay image
+      </button>
+      <button
+        *ngIf="this.overlayImageIsActive"
+        mat-button
+        mat-raised-button
+        color="primary"
+        (click)="removeImageOverlay()"
+        jhiTranslate="create-course.removeOverlayImage"
+      >
+        Remove image overlay
+      </button>
+    </div>
+
+    <div style="margin-right: 20px; float: left; margin-bottom: 10px;" *ngIf="this.expertMode">
+      <button
+        id="toggleLayerButton"
+        mat-button
+        mat-raised-button
+        color="primary"
+        (click)="toggleTileLayer()"
+        jhiTranslate="create-course.changeToSatellite"
+      ></button>
+    </div>
+    <div style="margin-right: 20px; float: left; margin-bottom: 10px;" *ngIf="this.expertMode">
+      <input #kmlFileInput hidden="true" type="file" onclick="this.value=null" (change)="kmlUpload($event)" accept=".kml" />
+      <button
+        *ngIf="!this.kmlOverlayIsActive"
+        mat-button
+        mat-raised-button
+        color="primary"
+        (click)="kmlFileInput.click()"
+        jhiTranslate="create-course.overlayKML"
+      >
+        Overlay KML
+      </button>
+      <button
+        *ngIf="this.kmlOverlayIsActive"
+        mat-button
+        mat-raised-button
+        color="primary"
+        (click)="removeKMLfromMap()"
+        jhiTranslate="create-course.removeOverlayKML"
+      >
+        Remove KML Overlay
+      </button>
+    </div>
+    <div *ngIf="this.overlayImageIsActive" style="width: 100%; clear: both;">
+      <mat-label style="margin-right: 20px;" jhiTranslate="create-course.overlayImageOpacity"></mat-label>
+      <mat-slider
+        color="primary"
+        *ngIf="this.overlayImageIsActive"
+        thumbLabel
+        min="0"
+        max="1"
+        step="0.1"
+        [value]="1"
+        style="margin-top: 20px;"
+        (change)="this.geoImageLayer.setOpacity($event.value)"
+      ></mat-slider>
+    </div>
+
+    <div
+      id="chart"
+      style="width: 100%; height: 30%; clear: both; margin-bottom: 40px;"
+      [style.display]="this.expertMode ? 'block' : 'none'"
+    ></div>
+    <div style="clear: both;">
+      <p
+        style="display: inline-block; margin-right: 20px; margin-bottom: 0px;"
+        class="infoText"
+        jhiTranslate="create-course.courseLength"
+      ></p>
+      <p style="display: inline-block; margin-bottom: 0px;">{{ this.course.length | metersPipe }}</p>
+      <br />
+      <div fxLayout="row wrap" fxLayoutAlign="start stretch" fxLayoutGap="10px" style="margin-bottom: 10px;">
+        <fa-icon icon="angle-up" [fixedWidth]="true" size="2x" [styles]="{ color: '#e95420' }"></fa-icon>
+        <p style="line-height: 35px;">{{ this.course.altitudeUp | metersPipe }}</p>
+        <div></div>
+        <fa-icon icon="angle-down" [fixedWidth]="true" size="2x" [styles]="{ color: '#e95420' }"></fa-icon>
+        <p style="line-height: 35px;">{{ this.course.altitudeDown | metersPipe }}</p>
+      </div>
+
+      <jhi-controlpoint-list
+        [controlpoints]="this.course.controlpoints"
+        (controlpointsChange)="changeFromList($event)"
+        (removeAltitude)="removeFromAltitudeArr($event)"
+      ></jhi-controlpoint-list>
+    </div>
+  </div>
+</div>

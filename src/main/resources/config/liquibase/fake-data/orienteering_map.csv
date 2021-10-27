@@ -1,0 +1,5 @@
+id;map_overlay_image;map_overlay_image_content_type;map_overlay_kml;map_overlay_kml_content_type;image_scale_x;image_scale_y;image_center_x;image_center_y;image_rotation;declination
+1;../fake-data/blob/mapoverlay.jpg;image/jpeg;NULL;NULL;1.901472605606316;1.901472605606316;1811565.2514854935;6147579.863322694;0.06691861269148397;4.65366711255602
+2;NULL;NULL;NULL;NULL;NULL;NULL;NULL;NULL;NULL;4.664614404384691
+3;NULL;NULL;NULL;NULL;NULL;NULL;NULL;NULL;NULL;4.669981671398832
+4;NULL;NULL;NULL;NULL;NULL;NULL;NULL;NULL;NULL;4.5961332915859225

@@ -1,0 +1,70 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="resultControlpoint">
+            <h2><span jhiTranslate="compassApp.resultControlpoint.detail.title">Result Controlpoint</span> {{ resultControlpoint.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="compassApp.resultControlpoint.sequence">Sequence</span></dt>
+                <dd>
+                    <span>{{ resultControlpoint.sequence }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.resultControlpoint.timeReached">Time Reached</span></dt>
+                <dd>
+                    <span>{{ resultControlpoint.timeReached }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.resultControlpoint.latitude">Latitude</span></dt>
+                <dd>
+                    <span>{{ resultControlpoint.latitude }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.resultControlpoint.longitude">Longitude</span></dt>
+                <dd>
+                    <span>{{ resultControlpoint.longitude }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.resultControlpoint.skipAllowed">Skip Allowed</span></dt>
+                <dd>
+                    <span>{{ resultControlpoint.skipAllowed }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.resultControlpoint.reached">Reached</span></dt>
+                <dd>
+                    <span>{{ resultControlpoint.reached }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.resultControlpoint.borgScale">Borg Scale</span></dt>
+                <dd>
+                    <span>{{ resultControlpoint.borgScale }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.resultControlpoint.forceSkipped">Force Skipped</span></dt>
+                <dd>
+                    <span>{{ resultControlpoint.forceSkipped }}</span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.resultControlpoint.resultQuestion">Result Question</span></dt>
+                <dd>
+                    <span *ngFor="let resultQuestion of resultControlpoint.resultQuestions; let last = last">
+                        <a [routerLink]="['/result-question', resultQuestion?.id, 'view']">{{ resultQuestion.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="compassApp.resultControlpoint.resultCourse">Result Course</span></dt>
+                <dd>
+                    <div *ngIf="resultControlpoint.resultCourse">
+                        <a [routerLink]="['/result-course', resultControlpoint.resultCourse?.id, 'view']">{{ resultControlpoint.resultCourse?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/result-controlpoint', resultControlpoint.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

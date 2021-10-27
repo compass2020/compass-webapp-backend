@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="resultAdditionalInfo">
+            <h2><span jhiTranslate="compassApp.resultAdditionalInfo.detail.title">Result Additional Info</span> {{ resultAdditionalInfo.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="compassApp.resultAdditionalInfo.gpxTrack">Gpx Track</span></dt>
+                <dd>
+                    <div *ngIf="resultAdditionalInfo.gpxTrack">
+                        <a (click)="openFile(resultAdditionalInfo.gpxTrackContentType, resultAdditionalInfo.gpxTrack)" jhiTranslate="entity.action.open">open</a>
+                        {{ resultAdditionalInfo.gpxTrackContentType }}, {{ byteSize(resultAdditionalInfo.gpxTrack) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="compassApp.resultAdditionalInfo.heartRate">Heart Rate</span></dt>
+                <dd>
+                    <div *ngIf="resultAdditionalInfo.heartRate">
+                        <a (click)="openFile(resultAdditionalInfo.heartRateContentType, resultAdditionalInfo.heartRate)" jhiTranslate="entity.action.open">open</a>
+                        {{ resultAdditionalInfo.heartRateContentType }}, {{ byteSize(resultAdditionalInfo.heartRate) }}
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/result-additional-info', resultAdditionalInfo.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
